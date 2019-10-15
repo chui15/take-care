@@ -1,6 +1,6 @@
 const path = require('path');
 
-const srcPath = path.resolve(__dirname, 'client/src');
+const srcPath = path.resolve(__dirname, 'client');
 const publicPath = path.resolve(__dirname, 'server/public');
 
 module.exports = {
@@ -39,7 +39,7 @@ module.exports = {
       '/api': {
         target: 'http://localhost',
         headers: {
-          Host: 'wicked-sales.localhost'
+          Host: 'takecare.localhost'
         }
       }
     }
