@@ -6,8 +6,13 @@ class App extends React.Component {
   render(){
     return (
       <Router>
-      <div>
-        <h1>hello world</h1>
+      <div className="title-screen">
+        <div className="row justify-content-center">
+          <div className="col bulbasaur-home"></div>
+        </div>
+        <div className="row justify-content-center">
+          <div className="col-8 intro-message"></div>
+        </div>
       </div>
       </Router>
     );
