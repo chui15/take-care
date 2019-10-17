@@ -15,7 +15,7 @@ body {
     height: 50px;
     width: 60px;
     background-color: white;
-    border-radius: 5px;
+    border-radius: 25px;
     margin-top: 50px;
     box-shadow: 5px 5px 5px black;
     border: 2px solid black;
@@ -29,11 +29,18 @@ body {
     padding: 6px;
 }
 
+.home-message {
+    font-family: 'Manuale', serif;
+    vertical-align: center;
+    font-size: 19.5px;
+    padding: 2px;
+}
+
 .button, .header {
     font-family: 'Manuale', serif;
     height: 65px;
     background-color: white;
-    border-radius: 15px;
+    border-radius: 25px;
     margin-top: 75px;
     font-size: 35px;
     text-align: center;
@@ -42,26 +49,17 @@ body {
     opacity: 0.95;
 }
 
-.home.{
-    font-family: 'Manuale', serif;
-    height: 65px;
-    background-color: white;
-    border-radius: 15px;
-    margin-top: 35px;
-    font-size: 35px;
-    text-align: center;
-    box-shadow: 5px 5px 5px black;
-    border: 2px solid black;
-    opacity: 0.95;
+.intro-click {
+    color: black;
 }
+
 .header {
     height: 75px;
     font-size: 30px;
     vertical-align: center;
     padding: 10px;
-    box-shadow: 5px 5px 5px black;
-    border: 2px solid black;
-    opacity: 0.95;
+    margin-top: 20px;
+    border-radius: 25px;
 }
 
 .garden-header-content, .goal-header-content {
@@ -69,5 +67,57 @@ body {
 }
 
 .timer-header-content {
-    font-size: 23px;
+    font-size: 20px;
+    padding: 4px;
+}
+
+.button-home, .button-home-timer {
+    font-family: 'Manuale', serif;
+    height: 65px;
+    background-color: white;
+    border-radius: 25px;
+    margin-top: 50px;
+    font-size: 30px;
+    text-align: center;
+    box-shadow: 5px 5px 5px black;
+    border: 2px solid black;
+    opacity: 0.95;
+    padding: 5px;
+}
+
+.home-message-container {
+    height: 100px;
+    width: 175px;
+    background-color: white;
+    border-radius: 20px;
+    margin-top: 50px;
+    box-shadow: 5px 5px 5px black;
+    border: 2px solid black;
+    opacity: 0.95;
+}
+
+.home-image {
+    background-image: url('./images/bulbasaur-home.png');
+    background-size: contain;
+    height: 170px;
+    width: 190px;
+}
+
+.return-home {
+    color: black;
+    font-size: 25px;
+    padding: 7px;
+    font-family: 'Manuale', serif;
+}
+
+.return-home-button {
+    height: 50x;
+    width: 85px;
+    background-color: white;
+    border-radius: 10px;
+    margin-top: 25px;
+    margin-left: 35px;
+    box-shadow: 5px 5px 5px black;
+    border: 2px solid black;
+    opacity: 0.95;
 }

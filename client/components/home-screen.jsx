@@ -1,52 +1,45 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Garden from './garden';
 import AddGoal from './add-goal';
 import TimerScreen from './timer-main';
 import GoalsList from './goals-list';
 
 class HomeScreen extends React.Component {
-  constructor(props) {
-    super(props);
-  }
 
   render() {
+    let user = localStorage.getItem('UserName');
     return (
-      <Router>
         <div className="home-screen">
           <div className="row justify-content-center">
             <div className="col-9 header">
               <span className="header-content">Take Care (･ω･*⊂)</span>
             </div>
           </div>
-          <div className="row justify-content-center">
-            <div className="col-10 intro-message-container">
-              <span className="intro-message">Put pun/qoute here</span>
+          <div className="row">
+            <div className="col-md-8 ml-2 home-image"></div>
+            <div className="col-md-4 home-message-container align-items-start">
+            <span className="home-message">Hello, {user}! Here's to a productive day~</span>
             </div>
           </div>
           <div className="row justify-content-center">
-            <div className="col-6 button">
-              <Route path="/add-goal" Component={AddGoal} />
-              <span>Add Goal</span>
+            <div className="col-6 button-home">
+              <Link to="/goals/add" className="intro-click">Add Goal</Link>
             </div>
           </div><div className="row justify-content-center">
-            <div className="col-6 button">
-              <Route path="/goals-list" Component={GoalsList} />
-              <span>GoalTracker</span>
+            <div className="col-6 button-home">
+              <Link to="/goals" className="intro-click">Goal Tracker</Link>
             </div>
           </div><div className="row justify-content-center">
-            <div className="col-6 button">
-              <Route path="/timer-main" Component={TimerScreen} />
-              <span>Stop Watch</span>
+            <div className="col-6 button-home">
+              <Link to="/timer" className="intro-click">Timer</Link>
             </div>
           </div><div className="row justify-content-center">
-            <div className="col-6 button">
-              <Route path="/garden" Component={Garden}/>
-              <span>Garden</span>
+            <div className="col-6 button-home">
+              <Link to="/garden" className="intro-click">Garden</Link>
             </div>
           </div>
         </div>
-      </Router>
     );
   }
 }

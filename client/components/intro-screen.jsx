@@ -1,13 +1,19 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 
 class IntroScreen extends React.Component {
   constructor(props){
     super(props);
     this.switchView = this.switchView.bind(this);
+    this.handleNameChange = this.handleNameChange.bind(this);
   }
 
   switchView(){
     this.props.setView('home', {});
+  }
+
+  handleNameChange(){
+    localStorage.setItem('UserName', event.target.value);
   }
 
   render(){
@@ -22,13 +28,11 @@ class IntroScreen extends React.Component {
           </div>
         </div>
         <div className="row justify-content-center">
-          <div className="col-6 button">
-            <span>Jan</span>
-          </div>
+              <input type="text" className="col-6 button" onChange={this.handleNameChange}/>
         </div>
         <div className="row justify-content-center">
           <div className="col-6 button">
-            <span onClick={this.switchView}>Let's Go!</span>
+            <Link to="/dashboard" className="intro-click">Let's Go!</Link>
           </div>
         </div>
       </div>
