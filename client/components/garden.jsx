@@ -1,11 +1,11 @@
 import React from 'react';
 
-class Garden extends React.Component{
-  constructor(props){
+class Garden extends React.Component {
+  constructor(props) {
     super(props);
   }
 
-  render(){
+  render() {
     return (
       <div className="garden-screen">
         <div className="row justify-content-center">
