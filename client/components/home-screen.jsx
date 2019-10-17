@@ -9,7 +9,9 @@ class HomeScreen extends React.Component {
     return (
       <div className="home-screen">
         <div className="row justify-content-center">
-          <div className="col header"></div>
+          <div className="col-9 header">
+            <span className="header-content">Take Care (･ω･*⊂)</span>
+          </div>
         </div>
       </div>
     );
