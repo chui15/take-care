@@ -17,6 +17,9 @@ body {
     background-color: white;
     border-radius: 5px;
     margin-top: 50px;
+    box-shadow: 5px 5px 5px black;
+    border: 2px solid black;
+    opacity: 0.95;
 }
 
 .intro-message {
@@ -26,7 +29,7 @@ body {
     padding: 6px;
 }
 
-.button {
+.button, .header {
     font-family: 'Manuale', serif;
     height: 65px;
     background-color: white;
@@ -34,4 +37,25 @@ body {
     margin-top: 75px;
     font-size: 35px;
     text-align: center;
+    box-shadow: 5px 5px 5px black;
+    border: 2px solid black;
+    opacity: 0.95;
+}
+
+.header {
+    height: 75px;
+    font-size: 30px;
+    vertical-align: center;
+    padding: 10px;
+    box-shadow: 5px 5px 5px black;
+    border: 2px solid black;
+    opacity: 0.95;
+}
+
+.garden-header-content, .goal-header-content {
+    font-size: 25px;
+}
+
+.timer-header-content {
+    font-size: 23px;
 }

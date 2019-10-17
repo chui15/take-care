@@ -1,16 +1,16 @@
 import React from 'react';
 
-class TimerScreen extends React.Component {
+class GoalDetails extends React.Component {
   constructor(props) {
     super(props);
   }
 
   render() {
     return (
-      <div className="timer-screen">
+      <div className="goal-details-screen">
         <div className="row justify-content-center">
           <div className="col-8 header">
-            <span className="timer-header-content">Productivity Timer (๑•̀ㅂ•́)و</span>
+            <span className="goal-header-content">Goal Details (ง •̀ω•́)ง✧</span>
           </div>
         </div>
       </div>
@@ -18,4 +18,4 @@ class TimerScreen extends React.Component {
   }
 }
 
-export default TimerScreen;
+export default GoalDetails;
