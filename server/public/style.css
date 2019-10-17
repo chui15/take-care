@@ -42,6 +42,18 @@ body {
     opacity: 0.95;
 }
 
+.home.{
+    font-family: 'Manuale', serif;
+    height: 65px;
+    background-color: white;
+    border-radius: 15px;
+    margin-top: 35px;
+    font-size: 35px;
+    text-align: center;
+    box-shadow: 5px 5px 5px black;
+    border: 2px solid black;
+    opacity: 0.95;
+}
 .header {
     height: 75px;
     font-size: 30px;
