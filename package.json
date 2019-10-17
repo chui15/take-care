@@ -26,22 +26,22 @@
   },
   "devDependencies": {
     "@babel/core": "^7.6.4",
-    "babel-eslint": "10.0.1",
     "@babel/plugin-transform-react-jsx": "^7.3.0",
+    "babel-eslint": "10.0.1",
     "babel-loader": "^8.0.6",
     "eslint": "5.16.0",
     "eslint-config-standard": "12.0.0",
     "eslint-plugin-import": "2.17.2",
     "eslint-plugin-node": "9.0.1",
     "eslint-plugin-promise": "4.1.1",
-    "eslint-plugin-standard": "4.0.0",
     "eslint-plugin-react": "7.13.0",
-    "webpack": "^4.41.1",
+    "eslint-plugin-standard": "4.0.0",
+    "webpack": "^4.41.2",
     "webpack-cli": "^3.3.9",
     "webpack-dev-server": "^3.8.2"
   },
   "eslintIgnore": [
-      "server/public/main.js"
+    "server/public/main.js"
   ],
   "eslintConfig": {
     "env": {
