@@ -1,41 +1,43 @@
 import React from 'react';
-import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+import {Switch, Route} from 'react-router-dom';
 import IntroScreen from './intro-screen';
 import HomeScreen from './home-screen';
+import GoalsList from './goals-list';
+import EditGoal from './edit-goal';
+import Garden from './garden';
+import TimerScreen from './timer-main';
+import AddGoal from './add-goal';
 
 class App extends React.Component {
-  constructor(props){
-    super(props);
-    this.state = {
-      view: {
-        name: 'intro',
-        params: {}
-      }
-    };
-    this.setView = this.setView.bind(this);
-  }
-
-  setView(name, params){
-    this.setState({
-      view: {
-        name: name,
-        params: params
-      }
-    });
-  }
 
   render(){
-    let screen;
-    if (this.state.view.name === 'intro'){
-      screen = <IntroScreen setView={this.setView} />;
-    } else if (this.state.view.name === 'home'){
-      screen = <HomeScreen />;
-    }
     return (
-      <>
-      {screen}
-      </>
-    );
+      <div className="">
+        <Switch>
+          <Route path="/" exact>
+            <IntroScreen />
+          </Route>
+          <Route path="/dashboard">
+            <HomeScreen />
+          </Route>
+          <Route path="/goals" exact>
+            <GoalsList />
+          </Route>
+          <Route path="/goals/:goal_id/edit">
+            <EditGoal/>
+          </Route>
+          <Route path="/goals/add">
+            <AddGoal />
+          </Route>
+          <Route path="/garden">
+            <Garden />
+          </Route>
+          <Route path="/timer" exact>
+            <TimerScreen />
+          </Route>
+        </Switch>
+      </div>
+    )
   }
 }
 
