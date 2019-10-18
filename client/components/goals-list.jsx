@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 class GoalsList extends React.Component {
   constructor(props) {
@@ -8,6 +9,11 @@ class GoalsList extends React.Component {
   render() {
     return (
       <div className="goals-screen">
+        <div className="row align-items-start">
+          <div className="return-home-button">
+            <Link to="/dashboard" className="return-home">Home</Link>
+          </div>
+        </div>
         <div className="row justify-content-center">
           <div className="col-8 header">
             <span className="goal-header-content">Goal Tracker (ง •̀ω•́)ง✧</span>
