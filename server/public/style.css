@@ -163,13 +163,14 @@
     opacity: 0.91;
 }
 
-.button-start-timer {
+.button-start-timer, .button-reset-timer {
     font-family: 'Manuale', serif;
     height: 65px;
     background-color: white;
     border-radius: 25px;
-    font-size: 25px;
+    font-size: 30px;
     padding: 6px;
+    margin: 5px;
     margin-top: 60px;
     text-align: center;
     box-shadow: 5px 5px 5px black;
