@@ -224,3 +224,38 @@
     border: 2px solid black;
     opacity: 0.95;
 }
+
+.garden-container {
+    background-image: url('./images/garden-backround.png');
+    background-size: cover;
+    height: 350px;
+    width: 350px;
+    margin: 10px;
+}
+
+.grid-container {
+    margin-top: 44px;
+    margin-left: 34px;
+    height: 268px;
+    width: 280px;
+}
+
+.garden-row {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+}
+
+.plant-item, .plant-item-1 {
+    flex-basis: 24.2%;
+    position: relative;
+    padding: 10px;
+    box-sizing: border-box;
+    height: 65px;
+    border: 2px solid white;
+    margin: 1px;
+}
+
+.plant-item:hover {
+    cursor: pointer;
+}
