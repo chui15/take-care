@@ -8,6 +8,7 @@ import EditGoal from './edit-goal';
 import Garden from './garden';
 import TimerScreen from './timer-main';
 import AddGoal from './add-goal';
+import PlantDetails from "./plant-details";
 
 class App extends React.Component {
 
@@ -38,6 +39,9 @@ class App extends React.Component {
           </Route>
           <Route path="/timer" exact>
             <TimerScreen />
+          </Route>
+          <Route path="/plantdetails">
+            <PlantDetails />
           </Route>
         </Switch>
       </div>
