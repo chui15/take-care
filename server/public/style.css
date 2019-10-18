@@ -58,12 +58,12 @@ body {
     font-size: 30px;
     vertical-align: center;
     padding: 10px;
-    margin-top: 20px;
+    margin-top: 25px;
     border-radius: 25px;
 }
 
 .garden-header-content, .goal-header-content {
-    font-size: 25px;
+    font-size: 23px;
 }
 
 .timer-header-content {
@@ -122,6 +122,7 @@ body {
     opacity: 0.95;
 }
 
+
 .goals-container {
     height: 600px;
     width: 390px;
@@ -153,9 +154,49 @@ body {
     background-color: white;
     border-radius: 5px;
     margin-top: 10px;
+
+.timer-container {
+    height: 150px;
+    width: 350px;
+    background-color: white;
+    border-radius: 20px;
+    margin-top: 60px;
+    box-shadow: 5px 5px 5px black;
+    border: 2px solid black;
+    opacity: 0.91;
+}
+
+.button-start-timer {
+    font-family: 'Manuale', serif;
+    height: 65px;
+    background-color: white;
+    border-radius: 25px;
+    font-size: 25px;
+    padding: 6px;
+    margin-top: 60px;
+    text-align: center;
+    box-shadow: 5px 5px 5px black;
+    border: 2px solid black;
+    opacity: 0.95;
+    width: 150px;
+}
+
+.stop-timer {
+    margin-left: 20px;
+}
+
+.timer-message-container {
+    height: 110px;
+    width: 300px;
+    background-color: white;
+    border-radius: 20px;
+    margin-top: 70px;
+    box-shadow: 5px 5px 5px black;
+  
     border: 2px solid black;
     opacity: 0.95;
 }
+
 
 .goal-input{
     height: 45px;
@@ -164,4 +205,18 @@ body {
     background-color: white;
     border-radius: 5px;
     border: 2px solid black;
+
+.water-reminder {
+    font-size: 20px;
+    font-family: 'Manuale', serif;
+    display: block;
+    text-align: center;
+    padding: 4px;
+}
+
+.timer-display {
+    font-size: 85px;
+    text-align: center;
+    margin-left: 5px;
+
 }
