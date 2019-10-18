@@ -1,22 +1,22 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 class IntroScreen extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.switchView = this.switchView.bind(this);
     this.handleNameChange = this.handleNameChange.bind(this);
   }
 
-  switchView(){
+  switchView() {
     this.props.setView('home', {});
   }
 
-  handleNameChange(){
+  handleNameChange() {
     localStorage.setItem('UserName', event.target.value);
   }
 
-  render(){
+  render() {
     return (
       <div className="title-screen">
         <div className="row justify-content-center">
@@ -28,7 +28,7 @@ class IntroScreen extends React.Component {
           </div>
         </div>
         <div className="row justify-content-center">
-              <input type="text" className="col-6 button" onChange={this.handleNameChange}/>
+          <input type="text" className="col-6 button" onChange={this.handleNameChange}/>
         </div>
         <div className="row justify-content-center">
           <div className="col-6 button">

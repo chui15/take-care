@@ -2,7 +2,7 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 
 class EditGoal extends React.Component {
-  render(){
+  render() {
     const params = this.props.match.params;
 
     console.log('PARAMS:', params);
