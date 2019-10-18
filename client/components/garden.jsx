@@ -5,14 +5,20 @@ class Garden extends React.Component {
 
   constructor(props){
     super(props);
-    this.placePlant = this.placePlant.bind(this);
+    this.state = {
+      isClicked: false
+    };
+    this.clickPlant = this.clickPlant.bind(this);
   }
 
-  placePlant(){
-
+  clickPlant(){
+    this.setState({
+      isClicked: true
+    });
   }
 
   render() {
+    let plantClass = this.state.isClicked ? 'succulent1' : 'plant-item';
     let user = localStorage.getItem('UserName');
     return (
       <div className="garden-screen">
@@ -36,7 +42,7 @@ class Garden extends React.Component {
           <div className="garden-container">
             <div className="grid-container">
               <div className="garden-row">
-                <div className="plant-item-1"></div>
+                <div className={plantClass} onClick={this.clickPlant}></div>
                 <div className="plant-item"></div>
                 <div className="plant-item"></div>
                 <div className="plant-item"></div>

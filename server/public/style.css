@@ -246,16 +246,39 @@
     justify-content: flex-start;
 }
 
-.plant-item, .plant-item-1 {
+.plant-item {
     flex-basis: 24.2%;
     position: relative;
     padding: 10px;
     box-sizing: border-box;
     height: 65px;
-    border: 2px solid white;
     margin: 1px;
 }
 
 .plant-item:hover {
     cursor: pointer;
+}
+
+.succulent1, .succulent2, .succulent3, .succulent4, .succulent5 {
+    background-image: url('./images/aloe-plant.png');
+    background-size: cover;
+    height: 60px;
+    width: 24%;
+    margin-left: 3px;
+}
+
+.succulent2 {
+    background-image: url('./images/blueberry-bush.png');
+}
+
+.succulent3 {
+    background-image: url('./images/bonxai-tree.png');
+}
+
+.succulent4 {
+    background-image: url('./images/orange-bush.png');
+}
+
+.succulent5 {
+    background-image: url('./images/vine-plant.png');
 }
