@@ -152,6 +152,39 @@
     opacity: 0.95;
 }
 
+
+.goals-container {
+    height: 600px;
+    width: 390px;
+    border-radius: 5px;
+    margin-top: 50px;
+    margin-left: 5px;
+    /* box-shadow: 5px 5px 5px black;
+    border: 2px solid black;
+    background-color: white;
+    opacity: 0.95; */
+    justify-content: center;
+
+}
+
+.goals-item {
+    height: 100px;
+    width: 90%;
+    background-color: white;
+    border-radius: 5px;
+    margin-top: 10px;
+    border: 2px solid black;
+    opacity: 0.95;
+}
+
+.checkbox{
+    max-height: 23px;
+    max-width: 20px;
+    margin-left:7px;
+    background-color: white;
+    border-radius: 5px;
+    margin-top: 10px;
+
 .timer-container {
     height: 150px;
     width: 350px;
@@ -189,9 +222,19 @@
     border-radius: 20px;
     margin-top: 70px;
     box-shadow: 5px 5px 5px black;
+  
     border: 2px solid black;
     opacity: 0.95;
 }
+
+
+.goal-input{
+    height: 45px;
+    width: 80%;
+    float: right;
+    background-color: white;
+    border-radius: 5px;
+    border: 2px solid black;
 
 .water-reminder {
     font-size: 20px;
@@ -202,9 +245,10 @@
 }
 
 .timer-display {
-    font-size: 85px;
+    font-size: 70px;
     text-align: center;
     margin-left: 5px;
+
 }
 
 .input-title {
