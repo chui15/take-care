@@ -122,38 +122,16 @@ body {
     opacity: 0.95;
 }
 
-
-.goals-container {
-    height: 600px;
-    width: 390px;
-    border-radius: 5px;
-    margin-top: 50px;
-    margin-left: 5px;
-    /* box-shadow: 5px 5px 5px black;
-    border: 2px solid black;
-    background-color: white;
-    opacity: 0.95; */
-    justify-content: center;
-
-}
-
-.goals-item {
-    height: 100px;
-    width: 90%;
-    background-color: white;
-    border-radius: 5px;
-    margin-top: 10px;
-    border: 2px solid black;
-    opacity: 0.95;
-}
-
 .checkbox{
-    max-height: 23px;
-    max-width: 20px;
-    margin-left:7px;
+    max-height: 400px;
+    max-width: 30px;
     background-color: white;
     border-radius: 5px;
     margin-top: 10px;
+}
+.checkmark{
+ background-image: url( "http://csscheckbox.com/checkboxes/lite-x-red.png")
+}
 
 .timer-container {
     height: 150px;
@@ -192,7 +170,6 @@ body {
     border-radius: 20px;
     margin-top: 70px;
     box-shadow: 5px 5px 5px black;
-  
     border: 2px solid black;
     opacity: 0.95;
 }
@@ -202,9 +179,34 @@ body {
     height: 45px;
     width: 80%;
     float: right;
+    font-size: 25px;
     background-color: white;
+    font-family: 'Manuale', serif;
+    color: black;
+}
+
+.goals-container {
+    height: 600px;
+    width: 350px;
     border-radius: 5px;
+    margin-top: 50px;
+    margin-left: 5px;
+    /* box-shadow: 5px 5px 5px black;
     border: 2px solid black;
+    background-color: white; */
+    opacity: 0.95;
+    justify-content: center;
+}
+
+.goals-item {
+    height: 120px;
+    width: 300px;
+    background-color: white;
+    border-radius: 10px;
+    margin-top: 10px;
+    margin-left: 20px;
+    border: 2px solid black;
+}
 
 .water-reminder {
     font-size: 20px;
@@ -219,4 +221,53 @@ body {
     text-align: center;
     margin-left: 5px;
 
+}
+
+.slidecontainer {
+    position: relative;
+    width: 100%;
+}
+
+.slider {
+    -webkit-appearance: none;
+    width: 70%;
+    height: 2px;
+    margin-left: 35px;
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+}
+
+.slider:hover {
+    opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    border-radius: 20px;
+    cursor: pointer;
+    background-size: cover;
+    height: 40px;
+    width: 40px;
+    margin-bottom: 20px;
+    justify-content: center;
+    background-image: url('./images/bulbasaur-home.png');
+}
+
+.goal-plant-empty{
+    background-size: cover;
+    height: 25px;
+    width: 10%;
+    justify-content: center;
+    /* background-image: url('./images/vine-plant.png'); */
+}
+
+.goal-plant-full{
+    background-size: cover;
+    height: 25px;
+    width: 10%;
+    justify-content: center;
+    /* background-image: url('./images/bonxai-tree.png'); */
 }

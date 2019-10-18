@@ -1,9 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Garden from './garden';
-import AddGoal from './add-goal';
-import TimerScreen from './timer-main';
-import GoalsList from './goals-list';
 
 class HomeScreen extends React.Component {
 

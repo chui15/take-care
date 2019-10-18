@@ -4,6 +4,12 @@ import { Link } from 'react-router-dom';
 class GoalsList extends React.Component {
   constructor(props) {
     super(props);
+    this.state = { value: 0 };
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange(event) {
+    this.setState = ({ value: this.state.value });
   }
 
   render() {
@@ -19,46 +25,21 @@ class GoalsList extends React.Component {
             <span className="goal-header-content">Goal Tracker (ง •̀ω•́)ง✧</span>
           </div>
         </div>
-        <div className="goals-container, row justify-content-center">
-          <div className="goals-item">
-            <div className="goal-description">
-              <input className="goal-input" type="text" placeholder="Get tacos" />
-            </div>
-            <div className="checkbox">
-              ✓
-            </div>
-          </div>
-          <form className="multi-range-field my-5 pb-5">
-            <input id="multi1" className="multi-range" type="range" />
-          </form>
-          <div className="goals-item">
-            <div className="goal-description">
-              <input className="goal-input" type="text" placeholder="Learn to code" />
-            </div>
-            <div className="checkbox">
-              ✓
-            </div>
-          </div><div className="goals-item">
-            <div className="goal-description">
-              <input className="goal-input" type="text" placeholder="Do Laundry" />
-            </div>
-            <div className="checkbox">
-              ✓
-            </div>
-          </div><div className="goals-item">
-            <div className="goal-description">
-              <input className="goal-input" type="text" placeholder="Build a Keyboards" />
-            </div>
-            <div className="checkbox">
-              ✓
-            </div>
-          </div>
-          <div className="goals-item">
-            <div className="goal-description">
-              <input className="goal-input" type="text" placeholder="yolo" />
-            </div>
-            <div className="checkbox">
-              ✓
+        <div className="row justify-content-center">
+          <div className="goals-container">
+            <div className="col goals-item align-items-center">
+              <div className="goal-description">
+              </div>
+              <div className="checkbox">
+                <input type="checkbox" className="checkmark"></input>
+              </div>
+              <div className="goal-plant-empty"></div>
+              <div className="slidecontainer">
+                <input type="range" min="1" max="100"
+                  defaultValue="0" className="slider" onChange={this.handleChange}></input>
+                <p>Progress: {this.state.value}</p>
+              </div>
+              <div className="goal-plant-full"></div>
             </div>
           </div>
         </div>
