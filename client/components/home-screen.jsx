@@ -14,13 +14,14 @@ class HomeScreen extends React.Component {
         <div className="row justify-content-center">
           <div className="col-9 header">
             <span className="header-content">Take Care (･ω･*⊂)</span>
+            </div>
           </div>
-        </div>
         <div className="row">
           <div className="col-md-8 ml-2 home-image"></div>
           <div className="col-md-4 home-message-container align-items-start">
             <span className="home-message">Hello, {user}! Here's to a productive day~</span>
           </div>
+        </div>
           <div className="row justify-content-center">
             <div className="col-6 button-home">
               <Link to="/goals/add" className="intro-click">Add Goal</Link>
@@ -40,7 +41,6 @@ class HomeScreen extends React.Component {
             <div className="col-6 button-home">
               <Link to="/garden" className="intro-click">Garden</Link>
             </div>
-          </div>
         </div>
       </div>
     );
