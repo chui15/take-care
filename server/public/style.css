@@ -1,6 +1,15 @@
-body {
+.title-screen {
     background-image: url('./images/introscreen.png');
     background-size: cover;
+    height: 812px;
+    width: 375px;
+}
+
+.add-goal-screen, .home-screen, .goals-screen, .timer-screen, .garden-screen, .goal-details-screen {
+    height: 812px;
+    width: 375px;
+    background-image: linear-gradient(-145deg, white, rgb(138, 219, 138));
+
 }
 
 .bulbasaur-home {
@@ -47,6 +56,27 @@ body {
     box-shadow: 5px 5px 5px black;
     border: 2px solid black;
     opacity: 0.95;
+}
+
+.goal-input, .description-input {
+    font-family: 'Manuale', serif;
+    height: 50px;
+    background-color: white;
+    border-radius: 25px;
+    font-size: 20px;
+    text-align: left;
+    box-shadow: 5px 5px 5px black;
+    border: 2px solid black;
+    opacity: 0.95;
+    margin-left: 5px;
+}
+
+.description-input {
+    height: 80px;
+    padding-top:0;
+    padding-bottom:0.4em;
+    padding-right: 0.4em;
+    text-align: left;
 }
 
 .intro-click {
@@ -175,4 +205,28 @@ body {
     font-size: 85px;
     text-align: center;
     margin-left: 5px;
+}
+
+.input-title {
+    font-family: 'Manuale', serif;
+    font-size: 24px;
+    display: block;
+    margin: 10px;
+}
+
+.goal-detail-info {
+    font-family: 'Manuale', serif;
+    height: 45px;
+    background-color: white;
+    border-radius: 25px;
+    font-size: 20px;
+    text-align: left;
+    box-shadow: 5px 5px 5px black;
+    border: 2px solid black;
+    opacity: 0.95;
+}
+
+.edit-button {
+    height: 40px;
+    width: 100px;
 }

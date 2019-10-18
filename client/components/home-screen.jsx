@@ -26,15 +26,18 @@ class HomeScreen extends React.Component {
             <div className="col-6 button-home">
               <Link to="/goals/add" className="intro-click">Add Goal</Link>
             </div>
-          </div><div className="row justify-content-center">
+          </div>
+          <div className="row justify-content-center">
             <div className="col-6 button-home">
               <Link to="/goals" className="intro-click">Goal Tracker</Link>
             </div>
-          </div><div className="row justify-content-center">
+          </div>
+          <div className="row justify-content-center">
             <div className="col-6 button-home">
               <Link to="/timer" className="intro-click">Timer</Link>
             </div>
-          </div><div className="row justify-content-center">
+          </div>
+          <div className="row justify-content-center">
             <div className="col-6 button-home">
               <Link to="/garden" className="intro-click">Garden</Link>
             </div>
