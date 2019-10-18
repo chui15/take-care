@@ -70,26 +70,29 @@ class TimerScreen extends React.Component {
           </div>
         </div>
         <div className="row justify-content-center timer">
-          <div className="col-10 timer-container" onClick={this.handleReset}>
+          <div className="col-10 timer-container">
             <span className="timer-display">{hours}:{minutes}:{seconds}</span>
           </div>
         </div>
         <div className="row justify-content-center">
           {this.state.timerOn === false && this.state.timerTime === 0 && (
             <div className="button-start-timer">
-              <span onClick={this.handleClick}>Start Timer</span>
+              <span onClick={this.handleClick}>Start</span>
             </div>
           )}
           {this.state.timerOn === true && (
             <div className="button-start-timer stop-timer">
-              <span onClick={this.stopTimer}>Stop Timer</span>
+              <span onClick={this.stopTimer}>Stop</span>
             </div>
           )}
           {this.state.timerOn === false && this.state.timerTime > 0 && (
             <div className="button-start-timer">
-              <span onClick={this.handleClick}>Start Timer</span>
+              <span onClick={this.handleClick}>Resume</span>
             </div>
           )}
+          <div className="button-reset-timer">
+            <span onClick={this.handleReset}>Reset</span>
+          </div>
         </div>
         <div className="row justify-content-center">
           <div className="timer-message-container align-items-start">
