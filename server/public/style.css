@@ -225,28 +225,61 @@
     border: 2px solid black;
     opacity: 0.95;
 }
-.plantImg {
-    background-image: url("./images/aloe-plant.png");
-    height: 200px;
-    width: 200px;
+
+.garden-container {
+    background-image: url('./images/garden-backround.png');
     background-size: cover;
-    margin: auto;
-    margin-top: 100px;
+    height: 350px;
+    width: 350px;
+    margin: 10px;
 }
-.back-container .back-button{
-    padding: 15px;
-    font-size: 20px;
+
+.grid-container {
+    margin-top: 44px;
+    margin-left: 34px;
+    height: 268px;
+    width: 280px;
 }
-.info-container {
-    text-align: center;
-    margin-top: 30px;
+
+.garden-row {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
 }
-.succulent-icon-container,.date-container,.goal-origin-container {
-    background-color: white;
-    margin: 50px;
-    margin-left: 75px;
-    margin-right: 75px;
-    font-size: 20px;
-    border: 3px solid black;
-    border-radius: 20px;
+
+.plant-item {
+    flex-basis: 24.2%;
+    position: relative;
+    padding: 10px;
+    box-sizing: border-box;
+    height: 65px;
+    margin: 1px;
+}
+
+.plant-item:hover {
+    cursor: pointer;
+}
+
+.succulent1, .succulent2, .succulent3, .succulent4, .succulent5 {
+    background-image: url('./images/aloe-plant.png');
+    background-size: cover;
+    height: 60px;
+    width: 24%;
+    margin-left: 3px;
+}
+
+.succulent2 {
+    background-image: url('./images/blueberry-bush.png');
+}
+
+.succulent3 {
+    background-image: url('./images/bonxai-tree.png');
+}
+
+.succulent4 {
+    background-image: url('./images/orange-bush.png');
+}
+
+.succulent5 {
+    background-image: url('./images/vine-plant.png');
 }
