@@ -21,14 +21,13 @@ class PlantDetails extends React.Component {
         </div>
         <div className="info-container">
           <div className="succulent-icon-container">
-            <div className="succulent-name">Succulent:</div>
-            <span>small icon</span>
+            <div className="succulent-name"><strong>Succulent Name:</strong>The ganja plant</div>
           </div>
           <div className="date-container">
-            <div className="date-planted">Date Planted:</div>
+            <div className="date-planted"><strong>Date Planted:</strong> 10/17/2019</div>
           </div>
           <div className="goal-origin-container">
-            <div className="goal-origin">Earned From Goal:</div>
+            <div className="goal-origin"><strong>Earned From Goal:</strong> Eating my vegetables</div>
           </div>
         </div>
       </div>
