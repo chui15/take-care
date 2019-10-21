@@ -28,42 +28,11 @@ class GoalsList extends React.Component {
         <div className="row justify-content-center">
           <div className="goals-container">
             <div className="col goals-item align-items-center">
+              <div className="goal-plant-empty"></div>
+              <div className="goal-plant-full"></div>
               <input type="checkbox" className="checkmark"></input>
               <div className="goal-description">
                 <p className="goal">Doing laundry</p>
-              </div>
-              <div className="slidecontainer">
-                <input type="range" min="0" max="100"
-                  value={this.state.value} className="slider" onChange={this.handleChange}></input>
-                <p className="progress">Progress: {this.state.value}%</p>
-              </div>
-            </div>
-            <div className="col goals-item align-items-center">
-              <input type="checkbox" className="checkmark"></input>
-              <div className="goal-description">
-                <p className="goal">Compare Tacos</p>
-              </div>
-              <div className="slidecontainer">
-                <input type="range" min="0" max="100"
-                  value={this.state.value} className="slider" onChange={this.handleChange}></input>
-                <p className="progress">Progress: {this.state.value}%</p>
-              </div>
-            </div>
-            <div className="col goals-item align-items-center">
-              <input type="checkbox" className="checkmark"></input>
-              <div className="goal-description">
-                <p className="goal">Buy Cereal</p>
-              </div>
-              <div className="slidecontainer">
-                <input type="range" min="0" max="100"
-                  value={this.state.value} className="slider" onChange={this.handleChange}></input>
-                <p className="progress">Progress: {this.state.value}%</p>
-              </div>
-            </div>
-            <div className="col goals-item align-items-center">
-              <input type="checkbox" className="checkmark"></input>
-              <div className="goal-description">
-                <p className="goal">Eat Cereal</p>
               </div>
               <div className="slidecontainer">
                 <input type="range" min="0" max="100"
