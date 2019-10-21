@@ -39,7 +39,7 @@ module.exports = {
       '/api': {
         target: 'http://localhost',
         headers: {
-          Host: 'takecare.localhost'
+          Host: 'take-care.localhost'
         }
       }
     }
