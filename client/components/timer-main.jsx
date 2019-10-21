@@ -15,14 +15,16 @@ class TimerScreen extends React.Component {
     this.stopTimer = this.stopTimer.bind(this);
     this.handleReset = this.handleReset.bind(this);
   }
+
   handleClick(){
+
     this.setState({
       isClicked: true
     });
     this.startTimer();
   }
 
-  startTimer(){
+  startTimer() {
     this.setState({
       timerOn: true,
       timerTime: this.state.timerTime,
@@ -35,7 +37,7 @@ class TimerScreen extends React.Component {
     }, 10);
   }
 
-  stopTimer(){
+  stopTimer() {
     this.setState({
       timerOn: false
     });
@@ -44,6 +46,7 @@ class TimerScreen extends React.Component {
 
   handleReset(){
     this.stopTimer();
+
     this.setState({
       timerStart: 0,
       timerTime: 0,
