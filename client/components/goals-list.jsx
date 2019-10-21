@@ -1,48 +1,37 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import GoalsListItem from './goals-list-item';
 
 class GoalsList extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { value: 0 };
-    this.handleChange = this.handleChange.bind(this);
+    this.state = {
+      goals: []
+    };
+    this.getGoals = this.getGoals.bind(this);
   }
 
-  handleChange(event) {
-    this.setState({ value: event.target.value });
+  getGoals(){
+    fetch('/api/goals_list.php')
+      .then(res => res.json())
+      .then(data => this.setState({
+        goals: this.state.goals.concat(data)
+      }))
+      .catch(error => console.error('Fetch failed', error));
+  }
+
+  componentDidMount(){
+    this.getGoals();
   }
 
   render() {
     return (
-      <div className="goals-screen">
-        <div className="row align-items-start">
-          <div className="return-home-button">
-            <Link to="/dashboard" className="return-home">Home</Link>
-          </div>
-        </div>
-        <div className="row justify-content-center">
-          <div className="col-8 header">
-            <span className="goal-header-content">Goal Tracker (ง •̀ω•́)ง✧</span>
-          </div>
-        </div>
-        <div className="row justify-content-center">
-          <div className="goals-container">
-            <div className="col goals-item align-items-center">
-              <div className="goal-plant-empty"></div>
-              <div className="goal-plant-full"></div>
-              <input type="checkbox" className="checkmark"></input>
-              <div className="goal-description">
-                <p className="goal">Doing laundry</p>
-              </div>
-              <div className="slidecontainer">
-                <input type="range" min="0" max="100"
-                  value={this.state.value} className="slider" onChange={this.handleChange}></input>
-                <p className="progress">Progress: {this.state.value}%</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      this.state.goals.map(goal => {
+        return (
+          <GoalsListItem key={goal.id}
+            goal={goal} />
+        );
+      })
     );
   }
 }

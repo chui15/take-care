@@ -14,14 +14,13 @@ if (!$result) {
 
 $output = [];
 
-
 if (!mysqli_num_rows($result)) {
   print "No data was available";
   exit();
 }
 
 while ($row = mysqli_fetch_assoc($result)) {
-  array_push($output["data"], $row);
+  array_push($output, $row);
 }
 
 $json_output = json_encode($output);
