@@ -4,10 +4,12 @@ $dataBase = "";
 $username = "";
 $password = "";
 // Create connection
-$conn = mysqli_connect($server, $username, $password, $dataBase);
+$conn = new mysqli($server, $username, $password, $dataBase);
+
 
 // Check connection
-if ($conn->connect_error) {
+if ($conn->connect_errno) {
+    print $conn->connect_error;
     die("Connection failed: " . $conn->connect_error);
 }
 $conn->set_charset("utf8");
