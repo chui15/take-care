@@ -299,22 +299,27 @@
     background-image: url('./images/bulbasaur-home.png');
 }
 
-/* .goal-plant-empty{
+.goal-plant-empty{
     background-size: cover;
-    height: 25px;
-    max-width: 10%;
+    height: 30px;
+    width: 30px;
+    position: absolute;
+    left: 30px;
+    bottom: 20px;
     justify-content: center;
-    background-image: url('./images/vine-plant.png');
+    background-image: url('./images/ball-cactus.png');
 }
 
 .goal-plant-full{
     background-size: cover;
-    height: 25px;
-    max-width: 10%;
-    margin-right: 100px;
+    height: 30px;
+    width: 30px;
+    position: absolute;
+    right: 30px;
+    bottom: 20px;
     justify-content: center;
     background-image: url('./images/aloe-plant.png');
-} */
+}
 
 .progress{
 background-color: white;
@@ -416,4 +421,3 @@ font-size: 13px;
     font-size: 20px;
     border: 3px solid black;
     border-radius: 20px;
-
