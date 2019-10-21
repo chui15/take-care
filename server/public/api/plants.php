@@ -1,8 +1,5 @@
 <?php
-require_once('functions.php');
-set_exception_handler('exception_handler');
-require_once('../../config/connect.php');
-header("Content-type:application/json");
+require_once('start-app.php');
 
 $query = "SELECT * FROM `plants`";
 
@@ -12,11 +9,8 @@ if (!$result) {
   throw new Exception("The connection failed or no data was received!",  mysqli_connect_error());
 }
 
-$output =
-  [
-    "success" => true,
-    "data" => []
-  ];
+$output = [];
+
 
 if (!mysqli_num_rows($result)) {
   print "No data was available";

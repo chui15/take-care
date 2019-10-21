@@ -1,8 +1,5 @@
 <?php
-require_once('functions.php');
-set_exception_handler('exception_handler');
-require_once('connect.php');
-header("Content-type:application/json");
+require_once('start-app.php');
 
 $query = "SELECT * FROM `users`";
 
