@@ -12,11 +12,7 @@ if (!$result) {
   throw new Exception("The connection failed or no data was received!",  mysqli_connect_error());
 }
 
-$output =
-  [
-    "success" => true,
-    "data" => []
-  ];
+$output = [];
 
 if (!mysqli_num_rows($result)) {
   print "No data was available";
@@ -24,7 +20,7 @@ if (!mysqli_num_rows($result)) {
 }
 
 while ($row = mysqli_fetch_assoc($result)) {
-  array_push($output["data"], $row);
+  array_push($output, $row);
 }
 
 $json_output = json_encode($output);

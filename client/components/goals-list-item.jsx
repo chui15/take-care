@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 class GoalsListItem extends React.Component {
   constructor(props){
@@ -17,6 +18,7 @@ class GoalsListItem extends React.Component {
 
   render(){
     let name = this.props.goal.title;
+    console.log(this.props.goal);
     return (
       <div className="row justify-content-center">
           <div className="col goals-item align-items-center">
