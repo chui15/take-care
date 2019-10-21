@@ -7,7 +7,8 @@ class TimerScreen extends React.Component {
     this.state = {
       isClicked: false,
       timerOn: false,
-      second: 0
+      timerStart: 0,
+      timerTime: 0,
     };
     this.handleClick = this.handleClick.bind(this);
     this.startTimer = this.startTimer.bind(this);
@@ -15,7 +16,8 @@ class TimerScreen extends React.Component {
     this.handleReset = this.handleReset.bind(this);
   }
 
-  handleClick() {
+  handleClick(){
+
     this.setState({
       isClicked: true
     });
@@ -25,13 +27,14 @@ class TimerScreen extends React.Component {
   startTimer() {
     this.setState({
       timerOn: true,
-      second: this.state.second
+      timerTime: this.state.timerTime,
+      timerStart: Date.now() - this.state.timerTime,
     });
     this.timer = setInterval(() => {
       this.setState({
-        second: this.state.second + 1
+        timerTime: Date.now() - this.state.timerStart
       });
-    }, 1000);
+    }, 10);
   }
 
   stopTimer() {
@@ -41,15 +44,22 @@ class TimerScreen extends React.Component {
     clearInterval(this.timer);
   }
 
-  handleReset() {
+  handleReset(){
+    this.stopTimer();
+
     this.setState({
-      second: 0,
-      start: 0
+      timerStart: 0,
+      timerTime: 0,
     });
   }
 
   render() {
     let user = localStorage.getItem('UserName');
+    let timerTime = this.state.timerTime;
+    let seconds = ("0" + (Math.floor(timerTime / 1000) % 60)).slice(-2);
+    let minutes = ("0" + (Math.floor(timerTime / 60000) % 60)).slice(-2);
+    let hours = ("0" + Math.floor(timerTime / 3600000)).slice(-2);
+
     return (
       <div className="timer-screen">
         <div className="row align-items-start">
@@ -62,27 +72,30 @@ class TimerScreen extends React.Component {
             <span className="timer-header-content">Productivity Timer (๑•̀ㅂ•́)و</span>
           </div>
         </div>
-        <div className="row justify-content-center">
-          <div className="col-10 timer-container" onClick={this.handleReset}>
-            <span className="timer-display">{this.state.second}</span>
+        <div className="row justify-content-center timer">
+          <div className="col-10 timer-container">
+            <span className="timer-display">{hours}:{minutes}:{seconds}</span>
           </div>
         </div>
         <div className="row justify-content-center">
-          {this.state.timerOn === false && this.state.second === 0 && (
+          {this.state.timerOn === false && this.state.timerTime === 0 && (
             <div className="button-start-timer">
-              <span onClick={this.handleClick}>Start Timer</span>
+              <span onClick={this.handleClick}>Start</span>
             </div>
           )}
           {this.state.timerOn === true && (
             <div className="button-start-timer stop-timer">
-              <span onClick={this.stopTimer}>Stop Timer</span>
+              <span onClick={this.stopTimer}>Stop</span>
             </div>
           )}
-          {this.state.timerOn === false && this.state.second > 0 && (
+          {this.state.timerOn === false && this.state.timerTime > 0 && (
             <div className="button-start-timer">
-              <span onClick={this.handleClick}>Start Timer</span>
+              <span onClick={this.handleClick}>Resume</span>
             </div>
           )}
+          <div className="button-reset-timer">
+            <span onClick={this.handleReset}>Reset</span>
+          </div>
         </div>
         <div className="row justify-content-center">
           <div className="timer-message-container align-items-start">

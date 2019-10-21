@@ -1,6 +1,15 @@
-body {
+.title-screen {
     background-image: url('./images/introscreen.png');
     background-size: cover;
+    height: 812px;
+    width: 375px;
+}
+
+.add-goal-screen, .home-screen, .goals-screen, .timer-screen, .garden-screen, .goal-details-screen, .plant-details-screen {
+    height: 812px;
+    width: 375px;
+    background-image: linear-gradient(-145deg, white, rgb(138, 219, 138));
+
 }
 
 .bulbasaur-home {
@@ -47,6 +56,27 @@ body {
     box-shadow: 5px 5px 5px black;
     border: 2px solid black;
     opacity: 0.95;
+}
+
+.goal-input, .description-input {
+    font-family: 'Manuale', serif;
+    height: 50px;
+    background-color: white;
+    border-radius: 25px;
+    font-size: 20px;
+    text-align: left;
+    box-shadow: 5px 5px 5px black;
+    border: 2px solid black;
+    opacity: 0.95;
+    margin-left: 5px;
+}
+
+.description-input {
+    height: 80px;
+    padding-top:0;
+    padding-bottom:0.4em;
+    padding-right: 0.4em;
+    text-align: left;
 }
 
 .intro-click {
@@ -122,6 +152,7 @@ body {
     opacity: 0.95;
 }
 
+
 .checkmark{
     margin-top: 10px;
     background-size: cover;
@@ -130,8 +161,9 @@ body {
     justify-content: center;
 }
 
+
 .timer-container {
-    height: 150px;
+    height: 120px;
     width: 350px;
     background-color: white;
     border-radius: 20px;
@@ -141,13 +173,14 @@ body {
     opacity: 0.91;
 }
 
-.button-start-timer {
+.button-start-timer, .button-reset-timer {
     font-family: 'Manuale', serif;
     height: 65px;
     background-color: white;
     border-radius: 25px;
-    font-size: 25px;
+    font-size: 30px;
     padding: 6px;
+    margin: 5px;
     margin-top: 60px;
     text-align: center;
     box-shadow: 5px 5px 5px black;
@@ -221,11 +254,17 @@ body {
 }
 
 .timer-display {
-    font-size: 85px;
-    text-align: center;
-    margin-left: 5px;
-
+    font-size: 70px;
+    vertical-align: center;
 }
+
+.input-title {
+    font-family: 'Manuale', serif;
+    font-size: 24px;
+    display: block;
+    margin: 10px;
+}
+
 
 .slidecontainer {
     position: relative;
@@ -282,3 +321,99 @@ background-color: white;
 font-family: 'Manuale', serif;
 font-size: 13px;
 }
+
+.goal-detail-info {
+    font-family: 'Manuale', serif;
+    height: 45px;
+    background-color: white;
+    border-radius: 25px;
+    font-size: 20px;
+    text-align: left;
+    box-shadow: 5px 5px 5px black;
+    border: 2px solid black;
+    opacity: 0.95;
+}
+
+.garden-container {
+    background-image: url('./images/garden-backround.png');
+    background-size: cover;
+    height: 350px;
+    width: 350px;
+    margin: 10px;
+}
+
+.grid-container {
+    margin-top: 44px;
+    margin-left: 34px;
+    height: 268px;
+    width: 280px;
+}
+
+.garden-row {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+}
+
+.plant-item {
+    flex-basis: 24.2%;
+    position: relative;
+    padding: 10px;
+    box-sizing: border-box;
+    height: 65px;
+    margin: 1px;
+}
+
+.plant-item:hover {
+    cursor: pointer;
+}
+
+.succulent1, .succulent2, .succulent3, .succulent4, .succulent5 {
+    background-image: url('./images/aloe-plant.png');
+    background-size: cover;
+    height: 60px;
+    width: 24%;
+    margin-left: 3px;
+}
+
+.succulent2 {
+    background-image: url('./images/blueberry-bush.png');
+}
+
+.succulent3 {
+    background-image: url('./images/bonxai-tree.png');
+}
+
+.succulent4 {
+    background-image: url('./images/orange-bush.png');
+}
+
+.succulent5 {
+    background-image: url('./images/vine-plant.png');
+}
+
+.plantImg {
+    background-image: url("./images/aloe-plant.png");
+    height: 200px;
+    width: 200px;
+    background-size: cover;
+    margin: auto;
+    margin-top: 100px;
+}
+.back-container .back-button{
+    padding: 15px;
+    font-size: 20px;
+}
+.info-container {
+    text-align: center;
+    margin-top: 30px;
+}
+.succulent-icon-container,.date-container,.goal-origin-container {
+    background-color: white;
+    margin: 50px;
+    margin-left: 75px;
+    margin-right: 75px;
+    font-size: 20px;
+    border: 3px solid black;
+    border-radius: 20px;
+
