@@ -20,18 +20,47 @@ class GoalsList extends React.Component {
       .catch(error => console.error('Fetch failed', error));
   }
 
+  // test() {
+  //   fetch('/api/test.php', {
+  //       method: 'POST',
+  //       body: JSON.stringify({
+  //         test: 'Some test data',
+  //         other: 'More stuff'
+  //       })
+  //     })
+  //     .then(res => res.json())
+  //     .then(data => this.setState({
+  //       goals: this.state.goals.concat(data)
+  //     }))
+  //     .catch(error => console.error('Fetch failed', error));
+  // }
+
   componentDidMount(){
     this.getGoals();
   }
 
   render() {
+    const listItems = this.state.goals.map(goal => {
+      return (
+        <GoalsListItem key={goal.id}
+          goal={goal} />
+      );
+    })
+
     return (
-      this.state.goals.map(goal => {
-        return (
-          <GoalsListItem key={goal.id}
-            goal={goal} />
-        );
-      })
+      <div className="goals-screen">
+        <div className="row align-items-start">
+          <div className="return-home-button">
+            <Link to="/dashboard" className="return-home">Home</Link>
+          </div>
+        </div>
+        <div className="row justify-content-center">
+          <div className="col-8 header">
+            <span className="goal-header-content">Goal Tracker (ง •̀ω•́)ง✧</span>
+          </div>
+          { listItems }
+        </div>
+      </div>
     );
   }
 }
