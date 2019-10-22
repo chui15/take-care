@@ -42,7 +42,7 @@ class AddGoal extends React.Component {
           </div>
         </div>
         <div className="row">
-          <div className="col align-self-start">
+          <div className="ml-2 col align-self-start">
             <input type="text" className="col-11 goal-input" placeholder="goal"></input>
           </div>
         </div>
@@ -52,7 +52,7 @@ class AddGoal extends React.Component {
           </div>
         </div>
         <div className="row">
-          <div className="col align-self-start">
+          <div className="ml-2 col align-self-start">
             <input type="text" className="col-11 description-input" placeholder="description"></input>
           </div>
         </div>
@@ -76,7 +76,7 @@ class AddGoal extends React.Component {
           </div>
         </div>
         <div className="row justify-content-center">
-          <div className="col-6 button-home">
+          <div className="col-6 goals-button">
             <Link to="/goals/details" className="intro-click">Add Goal</Link>
           </div>
         </div>

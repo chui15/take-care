@@ -103,6 +103,9 @@ class TimerScreen extends React.Component {
             <span className="water-reminder">~~旦_(-ω-｀｡)</span>
           </div>
         </div>
+        <div className="row justify-content-center">
+          <div className="col-md-8 home-image"></div>
+        </div>
       </div>
     );
   }

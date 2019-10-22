@@ -79,12 +79,12 @@ class GoalDetails extends React.Component {
           </div>
         </div>
         <div className="row justify-content-center">
-          <div className="col-6 button-home">
+          <div className="col-6 goals-button">
             <Link to="/goals" className="intro-click">Save Changes</Link>
           </div>
         </div>
         <div className="row justify-content-center">
-          <div className="col-6 button-home">
+          <div className="col-6 goals-button">
             <Link to="/timer" className="intro-click">Set Timer</Link>
           </div>
         </div>
