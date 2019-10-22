@@ -18,10 +18,11 @@ class GoalsListItem extends React.Component {
 
   render(){
     let name = this.props.goal.title;
-    console.log(this.props.goal);
     return (
       <div className="row justify-content-center">
-          <div className="col goals-item align-items-center">
+          <div className="col-12 goals-item align-self-center">
+          <div className="goal-plant-empty"></div>
+          <div className="goal-plant-full"></div>
             <div className="goal-description">
               <p className="goal">{name}</p>
             </div>

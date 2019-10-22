@@ -152,16 +152,6 @@
     opacity: 0.95;
 }
 
-
-.checkmark{
-    margin-top: 10px;
-    background-size: cover;
-    height: 15px;
-    width: 15px;
-    justify-content: center;
-}
-
-
 .timer-container {
     height: 120px;
     width: 350px;
@@ -204,17 +194,6 @@
     opacity: 0.95;
 }
 
-
-.goal-input{
-    height: 45px;
-    width: 80%;
-    float: right;
-    font-size: 25px;
-    background-color: white;
-    font-family: 'Manuale', serif;
-    color: black;
-}
-
 .goals-container {
     height: 600px;
     width: 370px;
@@ -226,21 +205,19 @@
 }
 
 .goals-item {
-    height: 120px;
+    height: 115px;
     width: 300px;
     background-color: white;
     border-radius: 10px;
-    margin-top: 10px;
-    margin-left: 20px;
     border: 2px solid black;
+    margin-top: 20px;
+    padding: 10px;
 }
 
-.goal{
-    max-height: 27px;
+p.goal {
     width: 100%;
-    font-size: 30px;
+    font-size: 20px;
     font-family: 'Manuale', serif;
-    margin-right:30px;
     justify-content: center;
     text-align: center;
 }
@@ -267,7 +244,8 @@
 
 
 .slidecontainer {
-    position: relative;
+    top: 0px;
+    height: 10px;
     width: 100%;
 }
 
@@ -275,7 +253,7 @@
     -webkit-appearance: none;
     width: 70%;
     height: 2px;
-    margin-left: 35px;
+    margin-left: 40px;
     background: #d3d3d3;
     outline: none;
     opacity: 0.7;
@@ -301,30 +279,33 @@
 
 .goal-plant-empty{
     background-size: cover;
-    height: 30px;
-    width: 30px;
+    height: 45px;
+    width: 45px;
     position: absolute;
-    left: 30px;
+    left: 0px;
     bottom: 20px;
+    margin: 10px;
     justify-content: center;
     background-image: url('./images/ball-cactus.png');
 }
 
 .goal-plant-full{
     background-size: cover;
-    height: 30px;
-    width: 30px;
+    height: 45px;
+    width: 42px;
     position: absolute;
-    right: 30px;
-    bottom: 20px;
+    right: 15px;
+    bottom: 30px;
     justify-content: center;
     background-image: url('./images/aloe-plant.png');
 }
 
-.progress{
-background-color: white;
-font-family: 'Manuale', serif;
-font-size: 13px;
+p.progress {
+    background-color: white;
+    font-family: 'Manuale', serif;
+    font-size: 20px;
+    height: 25px;
+    justify-content: center;
 }
 
 .goal-detail-info {
@@ -421,3 +402,4 @@ font-size: 13px;
     font-size: 20px;
     border: 3px solid black;
     border-radius: 20px;
+}
