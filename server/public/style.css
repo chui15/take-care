@@ -9,15 +9,32 @@ body {
     width: 375px;
 }
 
-.add-goal-screen, .home-screen, .goals-screen, .timer-screen, .garden-screen, .goal-details-screen, .plant-details-screen {
+.home-screen, .garden-screen, .plant-details-screen {
     height: 900px;
     width: 375px;
     background-image: linear-gradient(-130deg, white, rgb(107, 194, 107));
 }
 
 .home-screen {
+    height: 335px;
+    width: 375px;
+}
+
+.add-goal-screen, .goal-details-screen {
+    height: 900px;
+    background-image: linear-gradient(-130deg, white, rgb(179, 127, 179));
+}
+
+.goals-screen {
+    height: 260px;
+    width: 375px;
+    background-image: linear-gradient(-130deg, white, rgb(179, 127, 179));
+}
+
+.timer-screen {
     height: 300px;
     width: 375px;
+    background-image: linear-gradient(-130deg, white, rgb(110, 196, 224));
 }
 
 .bulbasaur-home {
@@ -206,10 +223,9 @@ body {
     margin-top: 60px;
     box-shadow: 0px 0px 2px gray;
     border: 2px solid rgb(146, 144, 144);
-    opacity: 0.91;
 }
 
-.button-start-timer, .button-reset-timer, .goals-button {
+.button-start-timer, .button-reset-timer, .goals-button, .stop-timer {
     font-family: 'Livvic', serif;
     height: 65px;
     background-color: white;
@@ -217,7 +233,7 @@ body {
     font-size: 30px;
     padding: 6px;
     margin: 5px;
-    margin-top: 60px;
+    margin-top: 50px;
     text-align: center;
     box-shadow: 0px 0px 2px gray;
     border: 2px solid rgb(146, 144, 144);
@@ -229,16 +245,12 @@ body {
     margin-top: 35px;
 }
 
-.stop-timer {
-    margin-left: 20px;
-}
-
 .timer-message-container {
     height: 110px;
     width: 300px;
     background-color: white;
     border-radius: 20px;
-    margin-top: 70px;
+    margin-top: 60px;
     box-shadow: 0px 0px 2px gray;
     border: 2px solid rgb(146, 144, 144);
     opacity: 0.95;
@@ -261,7 +273,7 @@ body {
     border-radius: 10px;
     box-shadow: 0px 0px 2px gray;
     border: 2px solid rgb(146, 144, 144);
-    margin-top: 20px;
+    margin-top: 30px;
     padding: 10px;
 }
 
