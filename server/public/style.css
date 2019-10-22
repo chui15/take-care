@@ -15,12 +15,16 @@ body {
     background-size: cover;
     height: 812px;
     width: 375px;
-    overflow: hidden;
 }
 
 .home-screen, .garden-screen, .plant-details-screen {
+    height: 100%;
     width: 375px;
     background-image: linear-gradient(-130deg, white, rgb(107, 194, 107));
+}
+
+.garden-screen {
+    height: 850px;
 }
 
 .home-screen {
