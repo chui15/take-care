@@ -7,13 +7,20 @@ class GoalDetails extends React.Component {
     this.state = {
       value: 0
     };
-    this.handleChange = this.handleChange.bind(this);
+    this.handleProgressChange = this.handleProgressChange.bind(this);
+    this.updateProgressValue = this.updateProgressValue.bind(this);
   }
 
-  handleChange(event) {
+  handleProgressChange(event) {
     this.setState({
       value: event.target.value
     });
+    this.updateProgressValue(this.state.value);
+  }
+
+  updateProgressValue(newValue){
+    //fetch call here to update the value
+    return null;
   }
 
   render() {
@@ -73,7 +80,7 @@ class GoalDetails extends React.Component {
             </div>
             <div className="slidecontainer">
               <input type="range" min="0" max="100"
-                value={this.state.value} className="slider" onChange={this.handleChange}></input>
+                value={this.state.value} className="slider" onChange={this.handleProgressChange}></input>
               <p className="progress">Progress: {this.state.value}%</p>
             </div>
           </div>
