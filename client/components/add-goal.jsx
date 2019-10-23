@@ -17,9 +17,7 @@ class AddGoal extends React.Component {
   }
 
   addGoal(goal){
-    fetch('/api/goals_add.php', {method: 'POST', body: JSON.stringify(goal), headers: {'Content-Type' : 'application/json'}})
-      .then(res => res.json())
-      .catch(error => console.error('POST fetch failed'));
+    fetch('/api/goals_add.php', {method: 'POST', body: JSON.stringify(goal), headers: {'Content-Type' : 'application/json'}});
   }
 
   handleProgressChange(event) {
@@ -48,7 +46,6 @@ class AddGoal extends React.Component {
       description: this.state.description,
       value: progressValue
     };
-    console.log(newGoal);
     this.addGoal(newGoal);
     this.setState({
       title: '',
