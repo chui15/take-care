@@ -5,14 +5,14 @@ class GardenModal extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isClicked: true
+      isClicked: true,
+      counter: 0
     };
     this.close = this.close.bind(this);
     this.handleAloe = this.handleAloe.bind(this);
     this.handleBlueberry = this.handleBlueberry.bind(this);
     this.handleMoonCactus = this.handleMoonCactus.bind(this);
     this.handleBallCactus = this.handleBallCactus.bind(this);
-
   }
 
   close(){
@@ -21,13 +21,14 @@ class GardenModal extends React.Component {
     });
   }
 
+
   handleAloe(event){
     let plantClass = 'succulent1';
     this.setState({
       isClicked: true
     });
     this.props.getPlantClass(plantClass);
-    this.close();
+    var timeout = window.setTimeout(this.close,[1000]);
   }
 
   handleBlueberry(event) {
@@ -36,7 +37,7 @@ class GardenModal extends React.Component {
       isClicked: true
     });
     this.props.getPlantClass(plantClass);
-    this.close();
+    var timeout = window.setTimeout(this.close, [1000]);
   }
 
   handleMoonCactus(event) {
@@ -45,7 +46,7 @@ class GardenModal extends React.Component {
       isClicked: true
     });
     this.props.getPlantClass(plantClass);
-    this.close();
+    var timeout = window.setTimeout(this.close, [1000]);
   }
 
   handleBallCactus(event) {
@@ -54,10 +55,8 @@ class GardenModal extends React.Component {
       isClicked: true,
     });
     this.props.getPlantClass(plantClass);
-    this.close();
+    var timeout = window.setTimeout(this.close, [1000]);
   }
-
-
 
   render() {
     let initialClass = this.state.isClicked ? 'modal-plant-item': 'hidden';
@@ -69,10 +68,10 @@ class GardenModal extends React.Component {
               <button type="button" className="close-plant" onClick={this.close}> &times;</button>
               </div>
                 <div className="row justify-content-center">
-                  <div className="succulent1" onClick={this.handleAloe}></div>
-                  <div className="succulent2" onClick={this.handleBlueberry}></div>
-                  <div className="succulent3" onClick={this.handleMoonCactus}></div>
-                  <div className="succulent4" onClick={this.handleBallCactus}></div>
+                  <div className="succulent1 highlight-plant" onClick={this.handleAloe}></div>
+                  <div className="succulent2 highlight-plant" onClick={this.handleBlueberry}></div>
+                  <div className="succulent3 highlight-plant" onClick={this.handleMoonCactus}></div>
+                  <div className="succulent4 highlight-plant" onClick={this.handleBallCactus}></div>
               </div>
             </div>
     );
