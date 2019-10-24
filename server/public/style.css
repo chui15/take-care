@@ -422,8 +422,8 @@ p.progress {
 .succulent1, .succulent2, .succulent3, .succulent4, .succulent5 {
     background-image: url('./images/aloe-plant.png');
     background-size: cover;
-    height: 60px;
-    width: 24%;
+    height: 65px;
+    width: 23%;
     margin-left: 3px;
 }
 
@@ -432,15 +432,15 @@ p.progress {
 }
 
 .succulent3 {
-    background-image: url('./images/bonxai-tree.png');
+    background-image: url('./images/moon-cactus.png');
 }
 
 .succulent4 {
-    background-image: url('./images/orange-bush.png');
+    background-image: url('./images/ball-cactus.png');
 }
 
 .succulent5 {
-    background-image: url('./images/vine-plant.png');
+    background-image: url('./images/yellow-daffodil.png');
 }
 
 .plantImg {
@@ -467,4 +467,34 @@ p.progress {
     font-size: 20px;
     border: 3px solid black;
     border-radius: 20px;
+}
+.home-image {
+     animation: shake 2.5s infinite cubic-bezier(.36,.07,.19,.97) both;
+     transform: translate3d(0, 0, 0);
+     backface-visibility: hidden;
+     perspective: 1000px;
+}
+
+@keyframes shake {
+    10%, 90% {transform: translate3d(-1px, 0, 0);}
+    20%, 80% {transform: translate3d(2px, 0, 0);}
+    30%, 50%, 70% {transform: translate3d(-4px, 0, 0);}
+    40%, 60% {transform: translate3d(4px, 0, 0);}
+}
+
+.modal-plant-item{
+    background-color: white;
+    width: 90%;
+    height: 20vh;
+    border: 2px solid black;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+}
+
+.hidden{
+    position: absolute;
+    visibility: hidden;
 }

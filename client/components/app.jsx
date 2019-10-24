@@ -6,6 +6,7 @@ import GoalsList from './goals-list';
 import GoalDetails from './goal-details';
 import EditGoal from './edit-goal';
 import Garden from './garden';
+import GardenModal from './garden-item-modal';
 import TimerScreen from './timer-main';
 import AddGoal from './add-goal';
 import PlantDetails from "./plant-details";

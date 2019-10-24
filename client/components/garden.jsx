@@ -1,24 +1,35 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import GardenModal from './garden-item-modal';
 
 class Garden extends React.Component {
 
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
-      isClicked: false
+      isClicked: false,
+      plantClass: ''
     };
     this.clickPlant = this.clickPlant.bind(this);
+    this.getPlantClass = this.getPlantClass.bind(this);
   }
 
-  clickPlant(){
+  clickPlant() {
     this.setState({
       isClicked: true
     });
   }
 
+  getPlantClass(plantClassName){
+    let plantClass = plantClassName;
+    console.log(plantClass);
+    this.setState({
+      plantClass: plantClass
+    });
+  }
+
   render() {
-    let plantClass = this.state.isClicked ? 'succulent1' : 'plant-item';
+    let plantClass = this.state.isClicked ? this.state.plantClass : 'plant-item';
     let user = localStorage.getItem('UserName');
     return (
       <div className="garden-screen">
@@ -43,30 +54,33 @@ class Garden extends React.Component {
             <div className="grid-container">
               <div className="garden-row">
                 <div className={plantClass} onClick={this.clickPlant}></div>
-                <div className="plant-item"></div>
-                <div className="plant-item"></div>
-                <div className="plant-item"></div>
+                <div className="plant-item" onClick={this.clickPlant}></div>
+                <div className="plant-item" onClick={this.clickPlant}></div>
+                <div className="plant-item" onClick={this.clickPlant}></div>
               </div>
               <div className="garden-row">
-                <div className="plant-item"></div>
-                <div className="plant-item"></div>
-                <div className="plant-item"></div>
-                <div className="plant-item"></div>
+                <div className="plant-item" onClick={this.clickPlant}></div>
+                <div className="plant-item" onClick={this.clickPlant}></div>
+                <div className="plant-item" onClick={this.clickPlant}></div>
+                <div className="plant-item" onClick={this.clickPlant}></div>
               </div>
               <div className="garden-row">
-                <div className="plant-item"></div>
-                <div className="plant-item"></div>
-                <div className="plant-item"></div>
-                <div className="plant-item"></div>
+                <div className="plant-item" onClick={this.clickPlant}></div>
+                <div className="plant-item" onClick={this.clickPlant}></div>
+                <div className="plant-item" onClick={this.clickPlant}></div>
+                <div className="plant-item" onClick={this.clickPlant}></div>
               </div>
               <div className="garden-row">
-                <div className="plant-item"></div>
-                <div className="plant-item"></div>
-                <div className="plant-item"></div>
-                <div className="plant-item"></div>
+                <div className="plant-item" onClick={this.clickPlant}></div>
+                <div className="plant-item" onClick={this.clickPlant}></div>
+                <div className="plant-item" onClick={this.clickPlant}></div>
+                <div className="plant-item" onClick={this.clickPlant}></div>
               </div>
             </div>
           </div>
+        </div>
+        <div>
+          <GardenModal getPlantClass={this.getPlantClass} />
         </div>
       </div>
     );
