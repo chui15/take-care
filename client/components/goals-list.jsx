@@ -53,6 +53,11 @@ class GoalsList extends React.Component {
           <div className={initialClass}>
             <div className="col-md-8 ml-2 home-image"></div>
             <span className="no-goals-content">What are we going to do today, {user}?</span>
+            <div className="row justify-content-center">
+              <div className="col-6 goals-button">
+                <Link to="/goals/add" className="intro-click" onClick={this.handleSubmit}>Add Goal</Link>
+              </div>
+            </div>
           </div>
         </div>
       </div>
