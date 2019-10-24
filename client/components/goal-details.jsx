@@ -86,6 +86,9 @@ class GoalDetails extends React.Component {
           </div>
         </div>
         <div className="row justify-content-center">
+          <div className="goal-completed">
+            <h1>yodasdasdas</h1>
+          </div>
           <div className="col-6 goals-button">
             <Link to="/goals" className="intro-click">Save Changes</Link>
           </div>
