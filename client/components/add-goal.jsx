@@ -7,13 +7,15 @@ class AddGoal extends React.Component {
     this.state = {
       title: '',
       description: '',
-      value: 0
+      value: 0,
+      goalAdded: false
     };
     this.handleGoalChange = this.handleGoalChange.bind(this);
     this.handleDescriptionChange = this.handleDescriptionChange.bind(this);
     this.handleProgressChange = this.handleProgressChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.addGoal = this.addGoal.bind(this);
+    this.fadeGoal = this.fadeGoal.bind(this);
   }
 
   addGoal(goal){
@@ -38,8 +40,12 @@ class AddGoal extends React.Component {
     });
   }
 
+
   handleSubmit(event){
     event.preventDefault();
+    if(this.state.title === '' || this.state.description === ''){
+      alert('Fields can\'t be empty');
+    } else {
     let progressValue = Number.parseFloat(this.state.value);
     let newGoal = {
       title: this.state.title,
@@ -50,12 +56,22 @@ class AddGoal extends React.Component {
     this.setState({
       title: '',
       description: '',
-      value: 0
+      value: 0,
+      goalAdded: true
     });
+    var timeout = window.setTimeout(this.fadeGoal, [1500]);
+  }
+  }
+
+  fadeGoal(){
+    this.setState({
+      goalAdded: false
+    })
   }
 
   render() {
     let user = localStorage.getItem('UserName');
+    let catchFade = this.state.goalAdded ? 'goal-completed' : 'hidden';
     return (
       <div className="add-goal-screen">
         <div className="row align-items-start">
@@ -108,6 +124,9 @@ class AddGoal extends React.Component {
           </div>
         </div>
         <div className="row justify-content-center">
+          <div className={catchFade}>
+            <span >Goal added! <br/> (つ▀¯▀)つ</span>
+          </div>
           <div className="col-6 goals-button">
             <span className="intro-click" onClick={this.handleSubmit}>Add Goal</span>
           </div>
