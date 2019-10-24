@@ -35,7 +35,7 @@ class App extends React.Component {
           <Route path="/goals/add">
             <AddGoal />
           </Route>
-          <Route path="/garden">
+          <Route path="/garden/:garden_id">
             <Garden />
           </Route>
           <Route path="/timer" exact>

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import GardenModal from './garden-item-modal';
+import GardenItem from './garden-item';
 
 class Garden extends React.Component {
 
@@ -9,32 +10,76 @@ class Garden extends React.Component {
     this.state = {
       isClicked: false,
       plantClass: '',
+      plantGrids: []
     };
-    this.clickPlant = this.clickPlant.bind(this);
     this.getPlantClass = this.getPlantClass.bind(this);
+    this.getGrids = this.getGrids.bind(this);
+    this.handleGridClick = this.handleGridClick.bind(this);
+    this.updatePlantClass = this.updatePlantClass.bind(this);
+    this.handleTap = this.handleTap.bind(this);
   }
 
-  clickPlant() {
-    this.setState({
-      isClicked: true
-    });
+  getGrids(){
+    fetch('/api/garden_items.php?garden_id=1')
+      .then(res => res.json())
+      .then(data => this.setState({
+        plantGrids: this.state.plantGrids.concat(data)
+      }));
+  }
+
+  componentDidMount(){
+    this.getGrids();
+  }
+
+  handleGridClick(value){
+    if(value === true){
+      console.log('grid clicked!');
+      this.setState({
+        isClicked: true
+      });
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  handleTap(){
+    console.log('hi');
+    return true;
   }
 
   getPlantClass(plantClassName){
-    let plantClass = plantClassName;
+    console.log(plantClassName);
     this.setState({
-      plantClass: plantClass
+      plantClass: plantClassName
     });
   }
 
+  updatePlantClass(newClass) {
+    newClass.className = this.state.plantClass;
+    fetch('/api/garden_item_class.php', { method: 'POST', body: JSON.stringify(newClass), headers: { 'Content-type': 'application/json' } })
+  }
+
   render() {
-    let plantClass = this.state.isClicked ? this.state.plantClass : 'plant-item';
+    let plantClass = this.state.plantClass;
     let user = localStorage.getItem('UserName');
+    let modalShow = false;
+
+    const gridItems = this.state.plantGrids.map(grid => {
+        let plantID = grid['plant-id']
+        return (
+          <GardenItem key={grid.id} {...grid} isClicked={() => { this.handleGridClick() }} updatePlantClass={this.updatePlantClass} />
+        );
+      })
+
     return (
       <div className="garden-screen">
-        <div className="row align-items-start">
-          <div className="return-home-button">
+        <div className="row">
+          <div className="return-home-button align-self-start">
             <Link to="/dashboard" className="return-home">Home</Link>
+          </div>
+          <div className="col-5 clear-garden-button align-self-end">
+            <span className="clear-garden">Clear Garden</span>
           </div>
         </div>
         <div className="row justify-content-center">
@@ -45,41 +90,20 @@ class Garden extends React.Component {
         <div className="row">
           <div className="col-md-8 ml-2 home-image"></div>
           <div className="col-md-4 home-message-container align-items-start">
-            <span className="home-message">Hey {user}, tap to view more or plant (◕ᴗ◕✿)</span>
+            <span className="home-message" onClick={this.handleTap}>Hey {user}, tap to view more or plant (◕ᴗ◕✿)</span>
           </div>
         </div>
         <div className="row justify-content-center">
           <div className="garden-container">
             <div className="grid-container">
               <div className="garden-row">
-                <div className={plantClass} onClick={this.clickPlant}></div>
-                <div className="plant-item" onClick={this.clickPlant}></div>
-                <div className="plant-item" onClick={this.clickPlant}></div>
-                <div className="plant-item" onClick={this.clickPlant}></div>
-              </div>
-              <div className="garden-row">
-                <div className="plant-item" onClick={this.clickPlant}></div>
-                <div className="plant-item" onClick={this.clickPlant}></div>
-                <div className="plant-item" onClick={this.clickPlant}></div>
-                <div className="plant-item" onClick={this.clickPlant}></div>
-              </div>
-              <div className="garden-row">
-                <div className="plant-item" onClick={this.clickPlant}></div>
-                <div className="plant-item" onClick={this.clickPlant}></div>
-                <div className="plant-item" onClick={this.clickPlant}></div>
-                <div className="plant-item" onClick={this.clickPlant}></div>
-              </div>
-              <div className="garden-row">
-                <div className="plant-item" onClick={this.clickPlant}></div>
-                <div className="plant-item" onClick={this.clickPlant}></div>
-                <div className="plant-item" onClick={this.clickPlant}></div>
-                <div className="plant-item" onClick={this.clickPlant}></div>
+                { gridItems }
               </div>
             </div>
           </div>
         </div>
         <div>
-          <GardenModal getPlantClass={this.getPlantClass} />
+          <GardenModal getPlantClass={this.getPlantClass} isClicked={modalShow} />
         </div>
       </div>
     );
