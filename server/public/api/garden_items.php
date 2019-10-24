@@ -2,7 +2,9 @@
 
 require_once('start-app.php');
 
-$query = "SELECT * FROM `garden-items`";
+$gardenID = $_GET['garden_id'];
+
+$query = "SELECT * FROM `garden-items` WHERE `garden-id` = $gardenID";
 
 $result = mysqli_query($conn, $query);
 
@@ -19,7 +21,7 @@ if (!mysqli_num_rows($result)) {
 }
 
 while ($row = mysqli_fetch_assoc($result)) {
-  array_push($output["data"], $row);
+  array_push($output, $row);
 }
 
 $json_output = json_encode($output);

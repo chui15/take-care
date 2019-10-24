@@ -21,8 +21,6 @@ if(!$result){
 
 $goalsRowCheck = mysqli_affected_rows($conn);
 if(!$goalsRowCheck < 0){
-  $rollbackQuery = "ROLLBACK";
-  $rollbackResult = mysqli_query($conn, $rollbackQuery);
   throw new Exception('Progress not updated: ' . mysqli_error($conn));
 }
 
