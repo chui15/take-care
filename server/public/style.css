@@ -426,6 +426,7 @@ p.goal {
     bottom: 30px;
     justify-content: center;
     background-image: url('./images/aloe-plant.png');
+
 }
 
 p.progress {
@@ -531,7 +532,7 @@ p.progress {
     border: 3px solid black;
     border-radius: 20px;
 }
-.home-image {
+/* .home-image {
      animation: shake 2.5s infinite cubic-bezier(.36,.07,.19,.97) both;
      transform: translate3d(0, 0, 0);
      backface-visibility: hidden;
@@ -542,8 +543,8 @@ p.progress {
     10%, 90% {transform: translate3d(-1px, 0, 0);}
     20%, 80% {transform: translate3d(2px, 0, 0);}
     30%, 50%, 70% {transform: translate3d(-4px, 0, 0);}
-    40%, 60% {transform: translate3d(4px, 0, 0);}
-}
+    40%, 60% {transform: translate3d(4px, 0, 0);} */
+/* } */
 
 .modal-plant-item{
     background-color: white;
@@ -554,7 +555,11 @@ p.progress {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+}
 
+.highlight-plant{
+    order: 1px solid purple;
+    background-color: lightgreen;
 }
 
 .hidden{

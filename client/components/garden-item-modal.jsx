@@ -12,6 +12,7 @@ class GardenModal extends React.Component {
     this.handleBlueberry = this.handleBlueberry.bind(this);
     this.handleMoonCactus = this.handleMoonCactus.bind(this);
     this.handleBallCactus = this.handleBallCactus.bind(this);
+
   }
 
   close(){
@@ -26,6 +27,7 @@ class GardenModal extends React.Component {
       isClicked: true
     });
     this.props.getPlantClass(plantClass);
+    this.close();
   }
 
   handleBlueberry(event) {
@@ -34,6 +36,7 @@ class GardenModal extends React.Component {
       isClicked: true
     });
     this.props.getPlantClass(plantClass);
+    this.close();
   }
 
   handleMoonCactus(event) {
@@ -42,18 +45,23 @@ class GardenModal extends React.Component {
       isClicked: true
     });
     this.props.getPlantClass(plantClass);
+    this.close();
   }
 
   handleBallCactus(event) {
     let plantClass = 'succulent4';
     this.setState({
-      isClicked: true
+      isClicked: true,
     });
     this.props.getPlantClass(plantClass);
+    this.close();
   }
+
+
 
   render() {
     let initialClass = this.state.isClicked ? 'modal-plant-item': 'hidden';
+    let selectPlate = this.state.isClicked ? 'highlight-plant' : 'hidden'
     return (
           <div className={initialClass} >
             <div className="modal-header">
