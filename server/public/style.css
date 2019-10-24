@@ -1,3 +1,11 @@
+html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    overflow-x: hidden;
+}
+
 body {
     background-color: whitesmoke;
 }
@@ -6,18 +14,22 @@ body {
     background-image: url('./images/introscreen.png');
     background-size: cover;
     height: 812px;
-    width: 375px;
+    width: 100%;
 }
 
 .home-screen, .garden-screen, .plant-details-screen {
-    height: 900px;
-    width: 375px;
+    height: 100%;
+    width: 100%;
     background-image: linear-gradient(-130deg, white, rgb(107, 194, 107));
+}
+
+.garden-screen {
+    height: 850px;
 }
 
 .home-screen {
     height: 335px;
-    width: 375px;
+    width: 100%;
 }
 
 .add-goal-screen, .goal-details-screen {
@@ -27,13 +39,13 @@ body {
 
 .goals-screen {
     height: 260px;
-    width: 375px;
+    width: 100%;
     background-image: linear-gradient(-130deg, white, rgb(179, 127, 179));
 }
 
 .timer-screen {
     height: 300px;
-    width: 375px;
+    width: 100%;
     background-image: linear-gradient(-130deg, white, rgb(110, 196, 224));
 }
 
@@ -109,6 +121,14 @@ body {
     font-size: 23px;
     color: black;
     text-align: left;
+}
+
+.goal-click {
+    font-family: 'Livvic', serif;
+    font-size: 20px;
+    color: black;
+    justify-content: center;
+    margin-bottom: 10px;
 }
 
 .header {
@@ -222,7 +242,7 @@ body {
     border-radius: 20px;
     margin-top: 60px;
     box-shadow: 0px 0px 2px gray;
-    border: 2px solid rgb(146, 144, 144);
+    border: 2px solid green;
 }
 
 .button-start-timer, .button-reset-timer, .goals-button, .stop-timer {
@@ -241,8 +261,45 @@ body {
     width: 150px;
 }
 
+.button-start-timer {
+    color: green;
+    border: 2px solid green;
+}
+
+.stop-timer {
+    color: red;
+    border: 2px solid red;
+}
+
 .goals-button {
     margin-top: 35px;
+}
+
+.no-goals {
+    height: 250px;
+    width: 150px;
+    background-color: white;
+    border-radius: 20px;
+    margin-top: 40px;
+    box-shadow: 0px 0px 2px gray;
+    border: 2px solid rgb(146, 144, 144);
+}
+
+.no-goals-hidden {
+    height: 250px;
+    width: 150px;
+    background-color: white;
+    border-radius: 20px;
+    margin-top: 40px;
+    box-shadow: 0px 0px 2px gray;
+    border: 2px solid rgb(146, 144, 144);
+    display: none;
+}
+
+.no-goals-content {
+    font-family: 'Livvic', 'serif';
+    font-size: 20px;
+    vertical-align: center;
 }
 
 .timer-message-container {
@@ -266,8 +323,8 @@ body {
     justify-content: center;
 }
 
-.goals-item {
-    height: 120px;
+.goals-item, .goals-item-completed {
+    height: 125px;
     width: 300px;
     background-color: white;
     border-radius: 10px;
@@ -275,6 +332,12 @@ body {
     border: 2px solid rgb(146, 144, 144);
     margin-top: 30px;
     padding: 10px;
+}
+
+.goals-item-completed {
+    box-shadow: 0px 0px 2px gray;
+    border: 2px solid lightgreen;
+    opacity: 0.8;
 }
 
 p.goal {

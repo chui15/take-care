@@ -16,36 +16,27 @@ class GoalsList extends React.Component {
       .then(res => res.json())
       .then(data => this.setState({
         goals: this.state.goals.concat(data)
-      }))
-      .catch(error => console.error('Fetch failed', error));
+      }));
   }
-
-  // test() {
-  //   fetch('/api/test.php', {
-  //       method: 'POST',
-  //       body: JSON.stringify({
-  //         test: 'Some test data',
-  //         other: 'More stuff'
-  //       })
-  //     })
-  //     .then(res => res.json())
-  //     .then(data => this.setState({
-  //       goals: this.state.goals.concat(data)
-  //     }))
-  //     .catch(error => console.error('Fetch failed', error));
-  // }
 
   componentDidMount(){
     this.getGoals();
   }
 
   render() {
+    let user = localStorage.getItem('UserName');
     const listItems = this.state.goals.map(goal => {
       return (
         <GoalsListItem key={goal.id}
           goal={goal} />
       );
     })
+    let initialClass = '';
+    if (this.state.goals.length === 0){
+      initialClass = 'col-8 no-goals';
+    } else {
+      initialClass = 'no-goals-hidden';
+    }
 
     return (
       <div className="goals-screen">
@@ -59,6 +50,15 @@ class GoalsList extends React.Component {
             <span className="goal-header-content">Goal Tracker (ง •̀ω•́)ง✧</span>
           </div>
           { listItems }
+          <div className={initialClass}>
+            <div className="col-md-8 ml-2 home-image"></div>
+            <span className="no-goals-content">What are we going to do today, {user}?</span>
+            <div className="row justify-content-center">
+              <div className="col-6 goals-button">
+                <Link to="/goals/add" className="intro-click" onClick={this.handleSubmit}>Add Goal</Link>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     );

@@ -21,22 +21,22 @@ class HomeScreen extends React.Component {
         <div className="home-buttons-container">
           <div className="home-row">
             <div className="button-home">
-              <Link to="/goals/add" className="intro-click">Add Goal</Link>
-              <img src="/images/addgoal.jpg" className="button-home-image"></img>
+              <Link to="/goals/add" className="intro-click">Add Goal
+              <img src="/images/addgoal.png" className="button-home-image"></img></Link>
             </div>
             <div className="button-home">
-              <Link to="/goals" className="intro-click">View Goals</Link>
-              <img src="/images/viewgoals.jpg" className="button-home-image"></img>
+              <Link to="/goals" className="intro-click">View Goals
+              <img src="/images/vector-checklist-icon.png" className="button-home-image"></img></Link>
             </div>
           </div>
           <div className="home-row">
             <div className="button-home">
-              <Link to="/timer" className="intro-click">Timer</Link>
-              <img src="/images/timer.jpg" className="button-home-image"></img>
+              <Link to="/timer" className="intro-click">Timer
+              <img src="/images/timer.png" className="button-home-image"></img></Link>
             </div>
             <div className="button-home">
-              <Link to="/garden" className="intro-click">Garden</Link>
-              <img src="/images/garden.jpg" className="button-home-image-garden"></img>
+              <Link to="/garden" className="intro-click">Garden
+              <img src="/images/garden.png" className="button-home-image-garden"></img></Link>
             </div>
           </div>
         </div>
