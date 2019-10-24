@@ -558,9 +558,29 @@ p.progress {
 }
 
 .highlight-plant:hover{
-    order: 1px solid purple;
     background-color: springgreen;
 
+}
+.goal-completed{
+    position: absolute;
+    z-index: 1;
+    width: 80%;
+    font-family: 'Livvic', serif;
+    background-color: white;
+    border-radius: 20px;
+    font-size: 25px;
+    text-align: center;
+    border: 2px solid green;
+    margin-top: 35px;
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 2s linear;
+}
+
+.fade {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s 5s, opacity 2s linear;
 }
 
 .hidden{
