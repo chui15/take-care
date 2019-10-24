@@ -1,11 +1,15 @@
-import React from "react";
+import React from 'react';
 
 class PlantDetails extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
 
-    }
+    };
+  }
+
+  randomItems() {
+
   }
 
   render() {
