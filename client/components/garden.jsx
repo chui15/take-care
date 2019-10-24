@@ -8,7 +8,7 @@ class Garden extends React.Component {
     super(props);
     this.state = {
       isClicked: false,
-      plantClass: ''
+      plantClass: '',
     };
     this.clickPlant = this.clickPlant.bind(this);
     this.getPlantClass = this.getPlantClass.bind(this);
@@ -22,7 +22,6 @@ class Garden extends React.Component {
 
   getPlantClass(plantClassName){
     let plantClass = plantClassName;
-    console.log(plantClass);
     this.setState({
       plantClass: plantClass
     });
