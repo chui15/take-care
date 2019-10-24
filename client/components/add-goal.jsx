@@ -75,7 +75,7 @@ class AddGoal extends React.Component {
         </div>
         <div className="row">
           <div className="ml-2 col align-self-start">
-            <input type="text" className="col-11 goal-input" value={this.state.title} placeholder="goal" onChange={this.handleGoalChange}></input>
+            <input type="text" className="col-11 goal-input" value={this.state.title} placeholder="i.e. cook dinner" onChange={this.handleGoalChange}></input>
           </div>
         </div>
         <div className="row">
@@ -85,7 +85,7 @@ class AddGoal extends React.Component {
         </div>
         <div className="row">
           <div className="ml-2 col align-self-start">
-            <input type="text" className="col-11 description-input" value={this.state.description} placeholder="description" onChange={this.handleDescriptionChange}></input>
+            <input type="text" className="col-11 description-input" value={this.state.description} placeholder="i.e. beef noodle soup" onChange={this.handleDescriptionChange}></input>
           </div>
         </div>
         <div className="row">
@@ -109,7 +109,7 @@ class AddGoal extends React.Component {
         </div>
         <div className="row justify-content-center">
           <div className="col-6 goals-button">
-            <Link to="/goals/details" className="intro-click" onClick={this.handleSubmit}>Add Goal</Link>
+            <span className="intro-click" onClick={this.handleSubmit}>Add Goal</span>
           </div>
         </div>
       </div>
