@@ -8,7 +8,9 @@ class AddGoal extends React.Component {
       title: '',
       description: '',
       value: 0,
-      goalAdded: false
+      goalAdded: false,
+      goalCheck: '',
+      descriptionCheck: ''
     };
     this.handleGoalChange = this.handleGoalChange.bind(this);
     this.handleDescriptionChange = this.handleDescriptionChange.bind(this);
@@ -29,6 +31,7 @@ class AddGoal extends React.Component {
     });
   }
 
+
   handleGoalChange(event){
     this.setState({
       title: event.target.value
@@ -43,8 +46,20 @@ class AddGoal extends React.Component {
 
   handleSubmit(event){
     event.preventDefault();
-    if(this.state.title === '' || this.state.description === ''){
-      alert('Fields can\'t be empty');
+    const regex = /.{5,}/;
+    if (!regex.test(this.state.description) && this.state.description !== '' && !regex.test(this.state.title) && this.state.title !== '') {
+      this.setState({
+        goalCheck: 'We can do bigger ( •̀ω•́ )σ',
+        descriptionCheck: 'bigger (/#-_-)/~┻┻〃'
+      })
+    } else if (!regex.test(this.state.description) && this.state.description !== '') {
+      this.setState({
+        descriptionCheck: 'bigger (/#-_-)/~┻┻〃'
+      })
+    } else if (!regex.test(this.state.title) && this.state.title !== '') {
+      this.setState({
+        goalCheck: 'We can do bigger ( •̀ω•́ )σ'
+      })
     } else {
     let progressValue = Number.parseFloat(this.state.value);
     let newGoal = {
@@ -96,7 +111,9 @@ class AddGoal extends React.Component {
         </div>
         <div className="row">
           <div className="col align-self-start">
-            <span className="input-title">Goal Name :</span>
+            <span className="input-title">Goal Name :
+              <span className="goal-check"> {this.state.goalCheck}</span>
+            </span>
           </div>
         </div>
         <div className="row">
@@ -106,7 +123,9 @@ class AddGoal extends React.Component {
         </div>
         <div className="row">
           <div className="col align-self-start">
-            <span className="input-title">Description :</span>
+            <span className="input-title">Description :
+              <span className="goal-check"> {this.state.descriptionCheck}</span>
+            </span>
           </div>
         </div>
         <div className="row">
@@ -116,7 +135,9 @@ class AddGoal extends React.Component {
         </div>
         <div className="row">
           <div className="col align-self-start">
-            <span className="input-title">Current Progress :</span>
+            <span className="input-title">Current Progress :
+              <span className="goal-progress"> {this.state.value}%</span>
+            </span>
           </div>
         </div>
         <div className="row justify-content-center">
