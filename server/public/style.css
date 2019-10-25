@@ -652,4 +652,11 @@ p.progress {
     text-align: center;
     color: black;
     font-size: 20px;
+  
+.goal-check{
+    font-family: 'Livvic', serif;
+    font-size: 18px;
+    display: inline-block;
+    color: red;
+    margin-left: 10px;
 }
