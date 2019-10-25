@@ -6,7 +6,7 @@ class GardenModal extends React.Component {
     super(props);
     this.state = {
       isClicked: true,
-      plantModal: false
+      plantModal: true
     };
     this.close = this.close.bind(this);
     this.handleAloe = this.handleAloe.bind(this);
@@ -17,8 +17,7 @@ class GardenModal extends React.Component {
 
   close(){
     this.setState({
-      isClicked: false,
-      plantModal: true
+      plantModal: false
     });
   }
 
