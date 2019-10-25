@@ -19,7 +19,6 @@ class GardenItem extends React.Component {
     let plantClass = {
       id: this.props.id
     };
-    console.log(plantClass);
     const classForPlant = this.props.updatePlantClass(plantClass);
     this.setState({plantClass: classForPlant});
   }

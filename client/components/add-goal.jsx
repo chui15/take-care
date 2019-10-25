@@ -16,10 +16,11 @@ class AddGoal extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.addGoal = this.addGoal.bind(this);
     this.fadeGoal = this.fadeGoal.bind(this);
+    this.cancelRequest = this.cancelRequest.bind(this);
   }
 
   addGoal(goal){
-    fetch('/api/goals_add.php', {method: 'POST', body: JSON.stringify(goal), headers: {'Content-Type' : 'application/json'}});
+    fetch('/api/goals_add.php', {method: 'POST', body: JSON.stringify(goal), signal: signal, headers: {'Content-Type' : 'application/json'}});
   }
 
   handleProgressChange(event) {
@@ -39,7 +40,6 @@ class AddGoal extends React.Component {
       description: event.target.value
     });
   }
-
 
   handleSubmit(event){
     event.preventDefault();
@@ -67,6 +67,16 @@ class AddGoal extends React.Component {
     this.setState({
       goalAdded: false
     })
+  }
+
+  cancelRequest(){
+    const controller = new AbortController();
+    const signal = controller.signal;
+    controller.abort();
+  }
+
+  componentWillUnmount(){
+    this.cancelRequest();
   }
 
   render() {

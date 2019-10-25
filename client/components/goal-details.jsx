@@ -28,7 +28,7 @@ class GoalDetails extends React.Component {
       <div className="goal-details-screen">
         <div className="row align-items-start">
           <div className="return-home-button">
-            <Link to="/dashboard" className="return-home">Home</Link>
+            <Link to="/goals" className="return-home">Back</Link>
           </div>
         </div>
         <div className="row justify-content-center">
@@ -83,11 +83,6 @@ class GoalDetails extends React.Component {
                 value={this.state.value} className="slider" onChange={this.handleProgressChange}></input>
               <p className="progress">Progress: {this.state.value}%</p>
             </div>
-          </div>
-        </div>
-        <div className="row justify-content-center">
-          <div className="col-6 goals-button">
-            <Link to="/goals" className="intro-click">Save Changes</Link>
           </div>
         </div>
         <div className="row justify-content-center">
