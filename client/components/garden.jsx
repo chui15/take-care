@@ -66,7 +66,7 @@ class Garden extends React.Component {
     let modalShow = false;
 
     const gridItems = this.state.plantGrids.map(grid => {
-        let plantID = grid['plant-id']
+        // let plantID = grid['plant-id']
         return (
           <GardenItem key={grid.id} {...grid} isClicked={() => { this.handleGridClick() }} updatePlantClass={this.updatePlantClass} />
         );
