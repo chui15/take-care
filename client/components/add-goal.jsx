@@ -10,7 +10,8 @@ class AddGoal extends React.Component {
       value: 0,
       goalAdded: false,
       goalCheck: '',
-      descriptionCheck: ''
+      descriptionCheck: '',
+      fieldsCheck: ''
     };
     this.handleGoalChange = this.handleGoalChange.bind(this);
     this.handleDescriptionChange = this.handleDescriptionChange.bind(this);
@@ -47,7 +48,9 @@ class AddGoal extends React.Component {
   handleSubmit(event){
     event.preventDefault();
     if (this.state.title === '' || this.state.description === ''){
-      alert ('Fields can\'t be empty');
+      this.setState({
+        fieldsCheck: 'Fields can\'t be empty(◕︿◕✿)'
+      })
     } else {
       const regex = /.{5,}/;
       if (!regex.test(this.state.description) && this.state.description !== '' && !regex.test(this.state.title) && this.state.title !== '') {
@@ -164,6 +167,11 @@ class AddGoal extends React.Component {
           </div>
           <div className="col-6 goals-button">
             <span className="intro-click" onClick={this.handleSubmit}>Add Goal</span>
+          </div>
+          <div className="row">
+            <div className="goal-check">
+              <span>{this.state.fieldsCheck}</span>
+            </div>
           </div>
         </div>
       </div>

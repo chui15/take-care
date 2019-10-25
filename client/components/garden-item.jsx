@@ -11,15 +11,21 @@ class GardenItem extends React.Component {
   }
 
   handleGridClick(){
-    this.setState({
-      isClicked: true
-    });
-    this.props.isClicked(this.state.isClicked);
-    let plantClass = {
-      id: this.props.id
-    };
-    const classForPlant = this.props.updatePlantClass(plantClass);
-    this.setState({plantClass: classForPlant});
+    if (this.state.plantClass === 'plant-item'){
+      console.log('grid clicked');
+      this.setState({
+        isClicked: true
+      });
+      this.props.isClicked(this.state.isClicked);
+      let plantClass = {
+        id: this.props.id
+      };
+      const classForPlant = this.props.updatePlantClass(plantClass);
+      this.setState({ plantClass: classForPlant });
+    } else {
+      console.log('cant click again');
+      return null;
+    }
   }
 
   render(){

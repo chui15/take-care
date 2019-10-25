@@ -6,7 +6,8 @@ class GoalModal extends React.Component {
     super(props);
     this.state = {
       isClicked: true,
-      showModal: true
+      showModal: true,
+      cancelClicked: false
     };
     this.close = this.close.bind(this);
   }
@@ -20,6 +21,7 @@ class GoalModal extends React.Component {
   render(){
     let user = localStorage.getItem('UserName');
     let showModal = this.state.showModal ? 'modal-goal-item' : 'hidden';
+
     return (
       <div className={showModal}>
         <div className="modal-header">

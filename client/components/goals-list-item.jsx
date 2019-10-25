@@ -6,7 +6,8 @@ class GoalsListItem extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      value: this.props.goal.progress
+      value: this.props.goal.progress,
+      isCompleted: this.props.goal['is-completed']
     };
     this.handleChange = this.handleChange.bind(this);
     this.debounce = this.debounce.bind(this);
@@ -59,10 +60,10 @@ class GoalsListItem extends React.Component {
     }
 
     let goalModal;
-    if(Number.parseFloat(this.state.value) === 100){
-      goalModal = <GoalModal />;
-    } else {
+    if (this.state.isCompleted === 'true'){
       goalModal = null;
+    } else if (Number.parseFloat(this.state.value) === 100){
+      goalModal = <GoalModal />;
     }
 
     return (
