@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import GoalModal from './goal-completion-modal';
 
 class GoalsListItem extends React.Component {
   constructor(props){
@@ -57,6 +58,13 @@ class GoalsListItem extends React.Component {
       initialClass = 'col-12 goals-item align-self-center';
     }
 
+    let goalModal;
+    if(Number.parseFloat(this.state.value) === 100){
+      goalModal = <GoalModal />;
+    } else {
+      goalModal = null;
+    }
+
     return (
       <div className="row justify-content-center">
           <div className={initialClass}>
@@ -70,6 +78,9 @@ class GoalsListItem extends React.Component {
                 value={this.state.value} className="slider" onChange={this.handleChange}></input>
               <p className="progress">Progress: {this.state.value}%</p>
             </div>
+          </div>
+          <div>
+            {goalModal}
           </div>
         </div>
     );
