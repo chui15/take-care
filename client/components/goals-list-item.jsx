@@ -49,6 +49,7 @@ class GoalsListItem extends React.Component {
 
   render(){
     let name = this.props.goal.title;
+    let goalID = this.props.goal.id;
     let initialClass = '';
     if (Number.parseFloat(this.state.value) === 100){
       initialClass = 'col-12 goals-item-completed align-self-center';

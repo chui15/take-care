@@ -15,17 +15,6 @@ class GardenModal extends React.Component {
     this.handleBallCactus = this.handleBallCactus.bind(this);
   }
 
-  // handleTap(){
-  //   console.log(this.props.isClicked);
-  //   if (this.props.isClicked){
-  //     this.setState({
-  //       isClicked: true
-  //     });
-  //   } else {
-  //     return false;
-  //   }
-  // }
-
   close(){
     this.setState({
       isClicked: false
