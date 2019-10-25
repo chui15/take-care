@@ -16,7 +16,7 @@ class GardenItem extends React.Component {
     });
     this.props.isClicked(this.state.isClicked);
     let plantClass = {
-      id: this.props.grid.id
+      id: this.props.id
     };
     console.log(plantClass);
     this.props.updatePlantClass(plantClass);
