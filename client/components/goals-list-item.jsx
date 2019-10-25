@@ -51,6 +51,7 @@ class GoalsListItem extends React.Component {
   render(){
     let name = this.props.goal.title;
     let goalID = this.props.goal.id;
+    let goalCompleted = this.props.goal['is-completed'];
     let initialClass = '';
     if (Number.parseFloat(this.state.value) === 100){
       initialClass = 'col-12 goals-item-completed align-self-center';
@@ -59,12 +60,11 @@ class GoalsListItem extends React.Component {
     }
 
     let goalModal;
-    if(Number.parseFloat(this.state.value) === 100){
-      goalModal = <GoalModal />;
-    } else {
+    if (goalCompleted === 'true') {
       goalModal = null;
+    } else if (Number.parseFloat(this.state.value) === 100){
+      goalModal = <GoalModal />;
     }
-
     return (
       <div className="row justify-content-center">
           <div className={initialClass}>
