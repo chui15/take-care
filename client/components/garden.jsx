@@ -10,7 +10,8 @@ class Garden extends React.Component {
     this.state = {
       isClicked: false,
       plantClass: '',
-      plantGrids: []
+      plantGrids: [],
+      plantMessageClicked: false
     };
     this.getPlantClass = this.getPlantClass.bind(this);
     this.getGrids = this.getGrids.bind(this);
@@ -42,13 +43,19 @@ class Garden extends React.Component {
       return false;
     }
   }
-
+  
   // resetGarden(baseClass){
   //   fetch('/api/reset_garden.php?garden_id=1',
   //   {method: 'POST',
   //   body: JSON.stringify(baseClass),
   //   headers: {'Content-type' : 'application/json'}})
   // }
+        
+  handleTap(){
+    this.setState({
+      plantMessageClicked: true
+    });
+  }
 
   getPlantClass(plantClassName){
     console.log(plantClassName);
@@ -69,7 +76,12 @@ class Garden extends React.Component {
   render() {
     let plantClass = this.state.plantClass;
     let user = localStorage.getItem('UserName');
-    let modalShow = false;
+    let modalShow;
+    if(!this.state.plantMessageClicked === false){
+      modalShow = <GardenModal getPlantClass={this.getPlantClass} />
+    } else {
+      modalShow = null
+    }
 
     const gridItems = this.state.plantGrids.map(grid => {
         // let plantID = grid['plant-id']
@@ -109,7 +121,7 @@ class Garden extends React.Component {
           </div>
         </div>
         <div>
-          <GardenModal getPlantClass={this.getPlantClass} isClicked={modalShow} />
+          { modalShow }
         </div>
       </div>
     );
