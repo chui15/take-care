@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import GoalsListItem from './goals-list-item';
+import GoalModal from './goal-completion-modal';
 
 class GoalsList extends React.Component {
   constructor(props) {

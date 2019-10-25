@@ -61,18 +61,18 @@ class GardenModal extends React.Component {
     let user = localStorage.getItem('UserName');
     let showModal = this.state.plantModal ? 'modal-plant-item' : 'hidden';
     return (
-          <div className={showModal} >
-            <div className="modal-header garden-modal">
-              <h5 className="modal-title garden-modal-title">Hey {user}, choose a plant (◕▿◕✿)</h5>
-                <button type="button" className="close-plant" onClick={this.close}></button>
-              </div>
-                <div className="row justify-content-center">
-                  <div className="succulent1 highlight-plant" onClick={this.handleAloe}></div>
-                  <div className="succulent2 highlight-plant" onClick={this.handleBlueberry}></div>
-                  <div className="succulent3 highlight-plant" onClick={this.handleMoonCactus}></div>
-                  <div className="succulent4 highlight-plant" onClick={this.handleBallCactus}></div>
-              </div>
-            </div>
+      <div className={showModal} >
+        <div className="modal-header garden-modal">
+          <h5 className="modal-title garden-modal-title">Hey {user}, choose a plant (◕▿◕✿)</h5>
+            <button type="button" className="close-plant" onClick={this.close}></button>
+        </div>
+        <div className="row justify-content-center">
+          <div className="succulent1 highlight-plant" onClick={this.handleAloe}></div>
+          <div className="succulent2 highlight-plant" onClick={this.handleBlueberry}></div>
+          <div className="succulent3 highlight-plant" onClick={this.handleMoonCactus}></div>
+          <div className="succulent4 highlight-plant" onClick={this.handleBallCactus}></div>
+        </div>
+      </div>
     );
   }
 }
