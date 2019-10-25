@@ -17,7 +17,7 @@ class Garden extends React.Component {
     this.getGrids = this.getGrids.bind(this);
     this.handleGridClick = this.handleGridClick.bind(this);
     this.updatePlantClass = this.updatePlantClass.bind(this);
-    this.handleTap = this.handleTap.bind(this);
+    // this.resetGarden = this.resetGarden.bind(this);
   }
 
   getGrids(){
@@ -43,7 +43,14 @@ class Garden extends React.Component {
       return false;
     }
   }
-
+  
+  // resetGarden(baseClass){
+  //   fetch('/api/reset_garden.php?garden_id=1',
+  //   {method: 'POST',
+  //   body: JSON.stringify(baseClass),
+  //   headers: {'Content-type' : 'application/json'}})
+  // }
+        
   handleTap(){
     this.setState({
       plantMessageClicked: true
@@ -59,8 +66,11 @@ class Garden extends React.Component {
 
   updatePlantClass(newClass) {
     newClass.className = this.state.plantClass;
-    fetch('/api/garden_item_class.php', { method: 'POST', body: JSON.stringify(newClass), headers: { 'Content-type': 'application/json' } });
-
+    fetch('/api/garden_item_class.php',
+    { method: 'POST',
+    body: JSON.stringify(newClass),
+    headers: { 'Content-type': 'application/json' } })
+    return this.state.plantClass;
   }
 
   render() {
@@ -74,7 +84,7 @@ class Garden extends React.Component {
     }
 
     const gridItems = this.state.plantGrids.map(grid => {
-        let plantID = grid['plant-id']
+        // let plantID = grid['plant-id']
         return (
           <GardenItem key={grid.id} {...grid} isClicked={() => { this.handleGridClick() }} updatePlantClass={this.updatePlantClass} />
         );
@@ -98,7 +108,7 @@ class Garden extends React.Component {
         <div className="row">
           <div className="col-md-8 ml-2 home-image"></div>
           <div className="col-md-4 home-message-container align-items-start">
-            <span className="home-message" onClick={this.handleTap}>Hey {user}, tap to view more or plant (◕ᴗ◕✿)</span>
+            <span className="home-message">Hey {user}, tap to view more or plant (◕ᴗ◕✿)</span>
           </div>
         </div>
         <div className="row justify-content-center">
