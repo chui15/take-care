@@ -17,9 +17,9 @@ class GardenModal extends React.Component {
 
   close(){
     this.setState({
+      isClicked: false,
       plantModal: true
     });
-
   }
 
   handleAloe(event){
@@ -60,7 +60,7 @@ class GardenModal extends React.Component {
 
   render() {
     let user = localStorage.getItem('UserName');
-    let showModal = this.state.plantModal ? 'hidden' : 'modal-plant-item';
+    let showModal = this.state.plantModal ? 'modal-plant-item' : 'hidden';
     return (
           <div className={showModal} >
             <div className="modal-header garden-modal">

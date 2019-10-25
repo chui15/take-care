@@ -43,18 +43,20 @@ class Garden extends React.Component {
       return false;
     }
   }
-  
+
   // resetGarden(baseClass){
   //   fetch('/api/reset_garden.php?garden_id=1',
   //   {method: 'POST',
   //   body: JSON.stringify(baseClass),
   //   headers: {'Content-type' : 'application/json'}})
   // }
-        
+
   handleTap(){
     this.setState({
       plantMessageClicked: true
     });
+    console.log('hi');
+    return true;
   }
 
   getPlantClass(plantClassName){
