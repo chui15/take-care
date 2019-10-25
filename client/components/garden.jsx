@@ -10,7 +10,8 @@ class Garden extends React.Component {
     this.state = {
       isClicked: false,
       plantClass: '',
-      plantGrids: []
+      plantGrids: [],
+      plantMessageClicked: false
     };
     this.getPlantClass = this.getPlantClass.bind(this);
     this.getGrids = this.getGrids.bind(this);
@@ -44,8 +45,9 @@ class Garden extends React.Component {
   }
 
   handleTap(){
-    console.log('hi');
-    return true;
+    this.setState({
+      plantMessageClicked: true
+    });
   }
 
   getPlantClass(plantClassName){
@@ -57,13 +59,19 @@ class Garden extends React.Component {
 
   updatePlantClass(newClass) {
     newClass.className = this.state.plantClass;
-    fetch('/api/garden_item_class.php', { method: 'POST', body: JSON.stringify(newClass), headers: { 'Content-type': 'application/json' } })
+    fetch('/api/garden_item_class.php', { method: 'POST', body: JSON.stringify(newClass), headers: { 'Content-type': 'application/json' } });
+
   }
 
   render() {
     let plantClass = this.state.plantClass;
     let user = localStorage.getItem('UserName');
-    let modalShow = false;
+    let modalShow;
+    if(!this.state.plantMessageClicked === false){
+      modalShow = <GardenModal getPlantClass={this.getPlantClass} />
+    } else {
+      modalShow = null
+    }
 
     const gridItems = this.state.plantGrids.map(grid => {
         let plantID = grid['plant-id']
@@ -103,7 +111,7 @@ class Garden extends React.Component {
           </div>
         </div>
         <div>
-          <GardenModal getPlantClass={this.getPlantClass} isClicked={modalShow} />
+          { modalShow }
         </div>
       </div>
     );
