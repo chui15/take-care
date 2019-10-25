@@ -4,7 +4,7 @@ require_once('start-app.php');
 
 $gardenID = $_GET['garden_id'];
 
-$query = "UPDATE `garden-items` SET `plantClass` = 'plant-item' WHERE `garden-id` = '$gardenID'";
+$query = "UPDATE `garden-items` SET `plantClass` = 'plant-item' WHERE `garden-id` = $gardenID";
 
 $result = mysqli_query($conn, $query);
 

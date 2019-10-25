@@ -17,7 +17,8 @@ class Garden extends React.Component {
     this.getGrids = this.getGrids.bind(this);
     this.handleGridClick = this.handleGridClick.bind(this);
     this.updatePlantClass = this.updatePlantClass.bind(this);
-    // this.resetGarden = this.resetGarden.bind(this);
+    this.handleTap = this.handleTap.bind(this);
+    this.resetGarden = this.resetGarden.bind(this);
   }
 
   getGrids(){
@@ -43,22 +44,35 @@ class Garden extends React.Component {
       return false;
     }
   }
-  
-  // resetGarden(baseClass){
-  //   fetch('/api/reset_garden.php?garden_id=1',
-  //   {method: 'POST',
-  //   body: JSON.stringify(baseClass),
-  //   headers: {'Content-type' : 'application/json'}})
-  // }
-        
+
+  resetGarden(){
+    fetch('/api/reset_garden.php?garden_id=1')
+    .then(() => {
+      let copy = Object.assign(this.state.plantGrids);
+      for (var grid in copy){
+        for (var plantClass in grid){
+          plantClass: 'plant-item'
+        }
+      };
+      this.setState({
+        plantGrids: copy
+      });
+      location.reload();
+    });
+  }
+
   handleTap(){
     this.setState({
       plantMessageClicked: true
     });
+    setTimeout(() => {
+      this.setState({
+        plantMessageClicked: false
+      });
+    }, 6000);
   }
 
   getPlantClass(plantClassName){
-    console.log(plantClassName);
     this.setState({
       plantClass: plantClassName
     });
@@ -77,14 +91,13 @@ class Garden extends React.Component {
     let plantClass = this.state.plantClass;
     let user = localStorage.getItem('UserName');
     let modalShow;
-    if(!this.state.plantMessageClicked === false){
-      modalShow = <GardenModal getPlantClass={this.getPlantClass} />
+    if(this.state.plantMessageClicked !== false){
+      modalShow = <GardenModal getPlantClass={this.getPlantClass} />;
     } else {
-      modalShow = null
+      modalShow = null;
     }
 
     const gridItems = this.state.plantGrids.map(grid => {
-        // let plantID = grid['plant-id']
         return (
           <GardenItem key={grid.id} {...grid} isClicked={() => { this.handleGridClick() }} updatePlantClass={this.updatePlantClass} />
         );
@@ -97,7 +110,7 @@ class Garden extends React.Component {
             <Link to="/dashboard" className="return-home">Home</Link>
           </div>
           <div className="col-5 clear-garden-button align-self-end">
-            <span className="clear-garden">Clear Garden</span>
+            <span className="clear-garden" onClick={this.resetGarden}>Clear Garden</span>
           </div>
         </div>
         <div className="row justify-content-center">
@@ -108,7 +121,7 @@ class Garden extends React.Component {
         <div className="row">
           <div className="col-md-8 ml-2 home-image"></div>
           <div className="col-md-4 home-message-container align-items-start">
-            <span className="home-message">Hey {user}, tap to view more or plant (◕ᴗ◕✿)</span>
+            <span className="home-message" onClick={this.handleTap}>Hey {user}, tap to view more or plant (◕ᴗ◕✿)</span>
           </div>
         </div>
         <div className="row justify-content-center">
