@@ -22,7 +22,7 @@ class AddGoal extends React.Component {
   }
 
   addGoal(goal){
-    fetch('/api/goals_add.php', {method: 'POST', body: JSON.stringify(goal), signal: signal, headers: {'Content-Type' : 'application/json'}});
+    fetch('/api/goals_add.php', {method: 'POST', body: JSON.stringify(goal), headers: {'Content-Type' : 'application/json'}});
   }
 
   handleProgressChange(event) {
@@ -46,36 +46,40 @@ class AddGoal extends React.Component {
 
   handleSubmit(event){
     event.preventDefault();
-    const regex = /.{5,}/;
-    if (!regex.test(this.state.description) && this.state.description !== '' && !regex.test(this.state.title) && this.state.title !== '') {
-      this.setState({
-        goalCheck: 'We can do bigger ( •̀ω•́ )σ',
-        descriptionCheck: 'bigger (/#-_-)/~┻┻〃'
-      })
-    } else if (!regex.test(this.state.description) && this.state.description !== '') {
-      this.setState({
-        descriptionCheck: 'bigger (/#-_-)/~┻┻〃'
-      })
-    } else if (!regex.test(this.state.title) && this.state.title !== '') {
-      this.setState({
-        goalCheck: 'We can do bigger ( •̀ω•́ )σ'
-      })
+    if (this.state.title === '' || this.state.description === ''){
+      alert ('Fields can\'t be empty');
     } else {
-    let progressValue = Number.parseFloat(this.state.value);
-    let newGoal = {
-      title: this.state.title,
-      description: this.state.description,
-      value: progressValue
-    };
-    this.addGoal(newGoal);
-    this.setState({
-      title: '',
-      description: '',
-      value: 0,
-      goalAdded: true
-    });
-    var timeout = window.setTimeout(this.fadeGoal, [1500]);
-  }
+      const regex = /.{5,}/;
+      if (!regex.test(this.state.description) && this.state.description !== '' && !regex.test(this.state.title) && this.state.title !== '') {
+        this.setState({
+          goalCheck: 'We can do bigger ( •̀ω•́ )σ',
+          descriptionCheck: 'bigger (/#-_-)/~┻┻〃'
+        })
+      } else if (!regex.test(this.state.description) && this.state.description !== '') {
+        this.setState({
+          descriptionCheck: 'bigger (/#-_-)/~┻┻〃'
+        })
+      } else if (!regex.test(this.state.title) && this.state.title !== '') {
+        this.setState({
+          goalCheck: 'We can do bigger ( •̀ω•́ )σ'
+        })
+      } else {
+      let progressValue = Number.parseFloat(this.state.value);
+      let newGoal = {
+        title: this.state.title,
+        description: this.state.description,
+        value: progressValue
+      };
+      this.addGoal(newGoal);
+      this.setState({
+        title: '',
+        description: '',
+        value: 0,
+        goalAdded: true
+      });
+      var timeout = window.setTimeout(this.fadeGoal, [1500]);
+      }
+    }
   }
 
   fadeGoal(){
