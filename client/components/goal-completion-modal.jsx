@@ -29,7 +29,7 @@ class GoalModal extends React.Component {
         </div>
       <div className="row justify-content-center">
         <div className="button-place-plant">
-            <Link to='/garden/:garden_id' className="garden-click">Let's Go!</Link>
+            <Link to='/garden/1' className="garden-click">Let's Go!</Link>
         </div>
         <div className="button-cancel">
           <span onClick={this.close} className="garden-click">I'm OK</span>
