@@ -19,11 +19,12 @@ if (isset($data['email'])) {
 }
 if (isset($data['password'])) {
   $password = $data['password'];
+  $hashed = password_hash($password, PASSWORD_BCRYPT);
 } else {
   $errors[] = 'No password provided';
 }
 
-$query = "INSERT INTO `users` (`name`, `email`, `password`, `created`, `updated`) VALUES ('$user', '$email', '$password', NOW(), NOW())";
+$query = "INSERT INTO `users` (`name`, `email`, `password`, `created`, `updated`) VALUES ('$user', '$email', '$hashed', NOW(), NOW())";
 
 $result = mysqli_query($conn, $query);
 

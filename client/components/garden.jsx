@@ -48,16 +48,9 @@ class Garden extends React.Component {
   resetGarden(){
     fetch('/api/reset_garden.php?garden_id=1')
     .then(() => {
-      let copy = Object.assign(this.state.plantGrids);
-      for (var grid in copy){
-        for (var plantClass in grid){
-          plantClass: 'plant-item'
-        }
-      };
       this.setState({
-        plantGrids: copy
+        plantGrids: []
       });
-      location.reload();
     });
   }
 
