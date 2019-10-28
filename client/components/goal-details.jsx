@@ -5,10 +5,12 @@ class GoalDetails extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: 0
+      value: 0,
+      id: []
     };
     this.handleProgressChange = this.handleProgressChange.bind(this);
     this.updateProgressValue = this.updateProgressValue.bind(this);
+    this.getGoalDetails = this.getGoalDetails.bind(this);
   }
 
   handleProgressChange(event) {
@@ -23,7 +25,25 @@ class GoalDetails extends React.Component {
     return null;
   }
 
+  // /api/garden_items.php?garden_id = 1
+
+  getGoalDetails(goalid) {
+    fetch('/api/goal_details.php?goal_id')
+      .then(res => res.json())
+      .then(data => {
+        this.setState({
+          id: []
+        })
+      });
+  }
+  //transer the id in the url
+
+  componentDidMount(){
+    this.getGoalDetails(this.props.goalid);
+  }
+
   render() {
+    let { id } = this.state;
     return (
       <div className="goal-details-screen">
         <div className="row align-items-start">
@@ -43,7 +63,7 @@ class GoalDetails extends React.Component {
         </div>
         <div className="row justify-content-center">
           <div className="col-10 goal-detail-info align-self-start">
-            <span className="goal-header-content">Goal name here</span>
+            <span className="goal-header-content">Goal Name here</span>
           </div>
         </div>
         <div className="row">
