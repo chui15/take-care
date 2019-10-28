@@ -38,9 +38,8 @@ class App extends React.Component {
           <Route path="/garden/:garden_id">
             <Garden />
           </Route>
-          <Route path="/timer" exact>
-            <TimerScreen />
-          </Route>
+          <Route path="/timer" component={TimerScreen} exact />
+          <Route path="/timer/:goal_id" component={TimerScreen} exact/>
           <Route path="/plantdetails">
             <PlantDetails />
           </Route>
