@@ -172,7 +172,7 @@ class AddGoal extends React.Component {
         </div>
         <div className="row justify-content-center">
           <div className={catchFade}>
-            <span >Goal added! <br/> (つ▀¯▀)つ</span>
+            <span>Goal added! <br/> (つ▀¯▀)つ</span>
           </div>
           <div className="col-6 goals-button">
             <span className="intro-click" onClick={this.handleSubmit}>Add Goal</span>

@@ -14,7 +14,6 @@ body {
     background-image: url('./images/introscreen.png');
     background-size: cover;
     height: 812px;
-    width: 100%;
 }
 
 .home-screen, .garden-screen, .plant-details-screen {
@@ -29,7 +28,6 @@ body {
 
 .home-screen {
     height: 335px;
-    width: 100%;
 }
 
 .add-goal-screen, .goal-details-screen {
@@ -58,8 +56,7 @@ body {
 }
 
 .intro-message-container {
-    height: 55px;
-    width: 60px;
+    height: 50px;
     background-color: white;
     border-radius: 25px;
     margin-top: 50px;
@@ -71,7 +68,7 @@ body {
 .intro-message {
     font-family: 'Livvic', serif;
     vertical-align: center;
-    font-size: 23px;
+    font-size: 21px;
     padding: 11px;
 }
 
@@ -82,7 +79,7 @@ body {
     padding: 2px;
 }
 
-.button, .header {
+.button, .header, .intro-button {
     font-family: 'Livvic', serif;
     height: 65px;
     background-color: white;
@@ -95,7 +92,11 @@ body {
     opacity: 0.95;
 }
 
-.goal-input, .description-input {
+.intro-button {
+    margin-top: 30px;
+}
+
+.goal-input, .description-input, .search-input, .initial-input {
     font-family: 'Livvic', serif;
     height: 50px;
     background-color: white;
@@ -106,6 +107,14 @@ body {
     border: 2px solid rgb(146, 144, 144);
     opacity: 0.95;
     margin-left: 5px;
+}
+
+.initial-input {
+    margin-top: 20px;
+}
+
+.search-input {
+    margin-top: 25px;
 }
 
 .description-input {

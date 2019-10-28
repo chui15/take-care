@@ -7,16 +7,20 @@ class GoalsList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      goals: []
+      goals: [],
+      filtered: [],
+      search: ''
     };
     this.getGoals = this.getGoals.bind(this);
+    this.handleSearch = this.handleSearch.bind(this);
   }
 
   getGoals(){
     fetch('/api/goals_list.php')
       .then(res => res.json())
       .then(data => this.setState({
-        goals: this.state.goals.concat(data)
+        goals: this.state.goals.concat(data),
+        filtered: this.state.filtered.concat(data)
       }));
   }
 
@@ -24,9 +28,38 @@ class GoalsList extends React.Component {
     this.getGoals();
   }
 
+  handleSearch(event){
+    this.setState({
+      search: event.target.value
+    });
+    let currentGoals = [];
+    let newGoals = [];
+    if (this.state.search !== ''){
+      currentGoals = this.state.goals;
+      newGoals = currentGoals.filter(goal => {
+        const lowerCaseGoal = goal.toString().toLocaleLowerCase();
+        const filter = this.state.search.toString().toLocaleLowerCase();
+        return lowerCaseGoal.includes(filter);
+      });
+    } else {
+      newGoals = this.state.goals;
+    }
+    this.setState({
+      filtered: newGoals
+    });
+  }
+
   render() {
     let user = localStorage.getItem('UserName');
-    const listItems = this.state.goals.map(goal => {
+    let filteredGoals;
+    if(this.state.search !== ''){
+      filteredGoals = this.state.filtered.filter(goal => {
+        return goal.title.toString().toLowerCase().includes(this.state.search.toString().toLowerCase());
+      });
+    } else {
+      filteredGoals = this.state.goals;
+    }
+    const listItems = filteredGoals.map(goal => {
       return (
         <GoalsListItem key={goal.id}
           goal={goal} />
@@ -49,6 +82,9 @@ class GoalsList extends React.Component {
         <div className="row justify-content-center">
           <div className="col-8 header">
             <span className="goal-header-content">Goal Tracker (ง •̀ω•́)ง✧</span>
+          </div>
+          <div className="row justify-content-center">
+            <input type="text" value={this.state.search} className="col search-input" placeholder="Search goals" onChange={this.handleSearch}></input>
           </div>
           { listItems }
           <div className={initialClass}>
