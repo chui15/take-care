@@ -7,6 +7,11 @@ class HomeScreen extends React.Component {
     let user = localStorage.getItem('UserName');
     return (
       <div className="home-screen">
+        <div className="row">
+          <div className="return-home-button align-self-start">
+            <Link to="/" className="log-out">Log Out</Link>
+          </div>
+        </div>
         <div className="row justify-content-center">
           <div className="col-9 header">
             <span className="header-content">Take Care (･ω･*⊂)</span>
