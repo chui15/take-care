@@ -40,9 +40,7 @@ class App extends React.Component {
           <Route path="/goals" exact>
             <Auth auth={auth} redirect="/signup" component={GoalsList}/>
           </Route>
-          <Route path="/goals/details">
-            <GoalDetails />
-          </Route>
+          <Route path="/goals/:goal_id/details" component={GoalDetails}/>
           <Route path="/goals/:goal_id/edit">
             <EditGoal/>
           </Route>

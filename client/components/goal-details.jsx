@@ -13,6 +13,12 @@ class GoalDetails extends React.Component {
     this.getGoalDetails = this.getGoalDetails.bind(this);
   }
 
+  componentDidMount(){
+    const goalId = this.props.match.params.goal_id;
+
+    this.getGoalDetails(goalId);
+  }
+
   handleProgressChange(event) {
     this.setState({
       value: event.target.value
@@ -28,19 +34,16 @@ class GoalDetails extends React.Component {
   // /api/garden_items.php?garden_id = 1
 
   getGoalDetails(goalid) {
-    fetch('/api/goal_details.php?goal_id')
+    fetch(`/api/goals_detail.php?goal_id=${goalid}`)
       .then(res => res.json())
       .then(data => {
+        console.log('Goal Details Response:', data);
         this.setState({
           id: []
         })
       });
   }
   //transer the id in the url
-
-  componentDidMount(){
-    this.getGoalDetails(this.props.goalid);
-  }
 
   render() {
     let { id } = this.state;

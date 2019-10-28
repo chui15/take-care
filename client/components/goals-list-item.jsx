@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import GoalModal from './goal-completion-modal';
-import TimerModal from './timer-modal';
+import GoalOptionsModal from './goal-options-modal';
 
 class GoalsListItem extends React.Component {
   constructor(props){
@@ -74,11 +74,11 @@ class GoalsListItem extends React.Component {
     } else if (Number.parseFloat(this.state.value) === 100){
       goalModal = <GoalModal />;
     }
-    let timerModal;
+    let optionsModal;
     if (this.state.clicked === true) {
-      timerModal = <TimerModal goalID={goalID}/>;
+      optionsModal = <GoalOptionsModal goalID={goalID}/>;
     } else {
-      timerModal = null;
+      optionsModal = null;
     }
     return (
       <div className="row justify-content-center">
@@ -96,7 +96,7 @@ class GoalsListItem extends React.Component {
           </div>
           <div>
             {goalModal}
-            {timerModal}
+            {optionsModal}
           </div>
         </div>
     );
