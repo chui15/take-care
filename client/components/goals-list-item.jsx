@@ -1,16 +1,25 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import GoalModal from './goal-completion-modal';
+import TimerModal from './timer-modal';
 
 class GoalsListItem extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      value: this.props.goal.progress
+      value: this.props.goal.progress,
+      clicked: false
     };
+    this.handleClick = this.handleClick.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.debounce = this.debounce.bind(this);
     this.updateProgress = this.debounce(this.updateProgress.bind(this), 500);
+  }
+
+  handleClick () {
+    this.setState({
+      clicked : true
+    });
   }
 
   handleChange(event){
@@ -65,13 +74,19 @@ class GoalsListItem extends React.Component {
     } else if (Number.parseFloat(this.state.value) === 100){
       goalModal = <GoalModal />;
     }
+    let timerModal;
+    if (this.state.clicked === true) {
+      timerModal = <TimerModal goalID={goalID}/>;
+    } else {
+      timerModal = null;
+    }
     return (
       <div className="row justify-content-center">
           <div className={initialClass}>
           <div className="goal-plant-empty"></div>
           <div className="goal-plant-full"></div>
             <div className="row goal-description justify-content-center">
-            <Link to="/goals/details" className="goal-click">{name}</Link>
+            <span className="goal-click" onClick={this.handleClick}>{name}</span>
             </div>
             <div className="slidecontainer">
               <input type="range" min="0" max="100"
@@ -81,6 +96,7 @@ class GoalsListItem extends React.Component {
           </div>
           <div>
             {goalModal}
+            {timerModal}
           </div>
         </div>
     );
