@@ -12,10 +12,10 @@ class IntroScreen extends React.Component {
     this.handleEmailChange = this.handleEmailChange.bind(this);
     this.handlePasswordChange = this.handlePasswordChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleKeyPress = this.handleKeyPress.bind(this);
   }
 
   handleNameChange(event) {
-    localStorage.setItem('UserName', event.target.value);
     this.setState({
       userName: event.target.value
     });
@@ -33,9 +33,15 @@ class IntroScreen extends React.Component {
     });
   }
 
-  handleSubmit(event){
+  handleSubmit(){
     event.preventDefault();
     this.props.logIn(this.state);
+  }
+
+  handleKeyPress(event){
+    if (event.key === 'Enter'){
+      this.handleSubmit(event);
+    }
   }
 
   render() {
@@ -50,10 +56,10 @@ class IntroScreen extends React.Component {
           </div>
         </div>
         <div className="row justify-content-center">
-          <input type="text" value={this.state.email} className="col-8 initial-input" onChange={this.handleEmailChange} placeholder="Email or Username" />
+          <input type="text" value={this.state.email} className="col-8 initial-input" onChange={this.handleEmailChange} placeholder="Email" />
         </div>
         <div className="row justify-content-center">
-          <input type="password" value={this.state.password} className="col-8 initial-input" onChange={this.handlePasswordChange} placeholder="Password"/>
+          <input type="password" value={this.state.password} className="col-8 initial-input" onChange={this.handlePasswordChange} onKeyPress={this.handleKeyPress} placeholder="Password"/>
         </div>
         <div className="row justify-content-center">
           <div className="col-6 intro-button">

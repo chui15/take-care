@@ -64,7 +64,6 @@ class GardenModal extends React.Component {
       <div className={showModal} >
         <div className="modal-header garden-modal">
           <h5 className="modal-title garden-modal-title">Hey {user}, choose a plant (◕▿◕✿)</h5>
-            <button type="button" className="close-plant" onClick={this.close}></button>
         </div>
         <div className="row justify-content-center">
           <div className="succulent1 highlight-plant" onClick={this.handleAloe}></div>

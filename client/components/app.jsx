@@ -31,7 +31,6 @@ class App extends React.Component {
           auth: false
         });
       });
-    console.log('user logged out');
   }
 
   logIn(user) {
@@ -40,8 +39,6 @@ class App extends React.Component {
       body: JSON.stringify(user)
     })
       .then(resp => resp.json()).then(data => {
-        console.log('Login Data:', data);
-        console.log('user logged in');
         if(data.error) throw new Error(data.error)
         this.setState({
           auth: true
@@ -50,20 +47,6 @@ class App extends React.Component {
         });
       }).catch(err => { console.log('There was an error:', err) });
   }
-
-  // logIn(){
-  //   fetch('/api/login.php')
-  //     .then((resp) => {
-  //       console.log('Resp:', resp);
-        // this.setState({
-        //   auth: true
-        // }, () => {
-        //   this.props.history.push('/dashboard');
-        // });
-
-  //     }).catch(err => {console.log('There was an error:', err)});
-  //   console.log('user logged in');
-  // }
 
   render(){
     const { auth } = this.state;

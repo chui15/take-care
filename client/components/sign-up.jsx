@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 
 class SignUpScreen extends React.Component {
   constructor(props){
@@ -9,13 +9,16 @@ class SignUpScreen extends React.Component {
       email: '',
       password: '',
       confirmation: '',
-      fieldsCheck: ''
+      fieldsCheck: '',
+      auth: false
     };
     this.handleNameChange = this.handleNameChange.bind(this);
     this.handleEmailChange = this.handleEmailChange.bind(this);
     this.handlePasswordChange = this.handlePasswordChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.addUser = this.addUser.bind(this);
+    this.handleKeyPress = this.handleKeyPress.bind(this);
+    this.cancelRequest = this.cancelRequest.bind(this);
   }
 
   handleNameChange(event) {
@@ -34,6 +37,15 @@ class SignUpScreen extends React.Component {
     this.setState({
       password: event.target.value
     });
+  }
+
+  handleKeyPress(event) {
+    if (event.key === 'Enter') {
+      this.handleSubmit(event);
+    }
+    setTimeout(()=>{
+      this.props.history.push('/');
+    }, 1000);
   }
 
   handleSubmit(event) {
@@ -72,6 +84,16 @@ class SignUpScreen extends React.Component {
     fetch('/api/new_user.php', { method: 'POST', body: JSON.stringify(user), headers: { 'Content-Type': 'application/json' } })
   }
 
+  cancelRequest() {
+    const controller = new AbortController();
+    const signal = controller.signal;
+    controller.abort();
+  }
+
+  componentWillUnmount() {
+    this.cancelRequest();
+  }
+
   render(){
     let confirmation = this.state.confirmation;
     return (
@@ -98,7 +120,7 @@ class SignUpScreen extends React.Component {
           <input type="text" value={this.state.email} className="col-10 initial-input" onChange={this.handleEmailChange} placeholder="Email" />
         </div>
         <div className="row justify-content-center">
-          <input type="password" value={this.state.password} className="col-10 initial-input" onChange={this.handlePasswordChange} placeholder="Password" />
+          <input type="password" value={this.state.password} className="col-10 initial-input" onChange={this.handlePasswordChange} onKeyPress={this.handleKeyPress} placeholder="Password" />
         </div>
         <div className="row justify-content-center">
           <div className="col-10 field-check">
@@ -123,4 +145,4 @@ class SignUpScreen extends React.Component {
   }
 }
 
-export default SignUpScreen;
+export default withRouter(SignUpScreen);

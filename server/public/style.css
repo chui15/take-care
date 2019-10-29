@@ -13,7 +13,7 @@ body {
 .title-screen {
     background-image: url('./images/introscreen.png');
     background-size: cover;
-    height: 812px;
+    height: 813px;
     opacity: 0.95;
 }
 
@@ -60,7 +60,7 @@ body {
     height: 40px;
     background-color: white;
     border-radius: 25px;
-    margin-top: 50px;
+    margin-top: 30px;
     box-shadow: 0px 0px 2px gray;
     border: 2px solid rgb(146, 144, 144);
     opacity: 0.95;
@@ -150,7 +150,7 @@ body {
 }
 
 .garden-header-content, .goal-header-content {
-    font-size: 23px;
+    font-size: 20px;
 }
 
 
@@ -323,11 +323,11 @@ body {
 }
 
 .timer-message-container {
-    height: 110px;
+    height: 130px;
     width: 300px;
     background-color: white;
     border-radius: 20px;
-    margin-top: 60px;
+    margin-top: 40px;
     box-shadow: 0px 0px 2px gray;
     border: 2px solid rgb(146, 144, 144);
     opacity: 0.95;
@@ -369,7 +369,7 @@ p.goal {
 }
 
 .water-reminder {
-    font-size: 20px;
+    font-size: 17px;
     font-family: 'Livvic', serif;
     display: block;
     text-align: center;
