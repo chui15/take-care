@@ -29,15 +29,15 @@ class TimerModal extends React.Component {
           <h5 className="modal-title goal-modal-title">Hey, {user}! Would you like to do?</h5>
         </div>
         <div className="row justify-content-center">
-          <div className="button-place-plant">
-            <Link to= {`/timer/${this.props.goalID}`} className="garden-click">Timer</Link>
+          <div className="button-details button-place-plant">
+            <Link to= {`/timer/${this.props.goalID}`} className="garden-click">Set Timer</Link>
+          </div>
+          <div className="button-details">
+            <Link to={`/goals/${this.props.goalID}/details`} className="garden-click"> View Details</Link>
           </div>
           <div className="button-cancel">
-            <Link to={`/goals/${this.props.goalID}/details`} className="garden-click">Details</Link>
+            <span onClick={this.close} className="">Cancel</span>
           </div>
-        </div>
-        <div className="mt-3 text-center">
-          <span onClick={this.close} className="">Cancel</span>
         </div>
       </div>
     );

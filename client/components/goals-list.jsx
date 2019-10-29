@@ -50,7 +50,6 @@ class GoalsList extends React.Component {
   }
 
   render() {
-    console.log('List Props:', this.props);
     let user = localStorage.getItem('UserName');
     let filteredGoals;
     if(this.state.search !== ''){
