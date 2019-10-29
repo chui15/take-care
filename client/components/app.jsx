@@ -18,10 +18,32 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      auth: false
-    }
+      auth: false,
+      userName: ''
+    };
+    this._isMounted = false;
     this.logOut = this.logOut.bind(this);
     this.logIn = this.logIn.bind(this);
+  }
+
+  componentDidMount(){
+    this.getUserName();
+    this.is_Mounted = true;
+  }
+
+  componentWillUnmont(){
+    this.is_Mounted = false;
+  }
+
+  getUserName() {
+    fetch('/api/get_username.php')
+      .then(res => res.json())
+      .then(data => {
+        this.setState({
+          userName: data[0]['name']
+        });
+      })
+      .catch(err => console.error('fetch failed'));
   }
 
   logOut() {
@@ -61,10 +83,10 @@ class App extends React.Component {
             <SignUpScreen />
           </Route>
           <Route path="/dashboard">
-            <Auth auth={auth} redirect="/" component={HomeScreen} logOut={this.logOut}/>
+            <Auth auth={auth} redirect="/" component={HomeScreen} logOut={this.logOut} userName={this.state.userName}/>
           </Route>
           <Route path="/goals" exact>
-            <Auth auth={auth} redirect="/" component={GoalsList}/>
+            <Auth auth={auth} redirect="/" component={GoalsList} userName={this.state.userName}/>
           </Route>
           <Route path="/goals/details"></Route>
           <Route path="/goals/:goal_id/details" component={GoalDetails}/>
@@ -72,10 +94,14 @@ class App extends React.Component {
             <Auth auth={auth} redirect="/" component={AddGoal}/>
           </Route>
           <Route path="/garden/:garden_id">
-            <Auth auth={auth} redirect="/" component={Garden} />
+            <Auth auth={auth} redirect="/" component={Garden} userName={this.state.userName}/>
           </Route>
-          <Route path="/timer" component={TimerScreen} exact />
-          <Route path="/timer/:goal_id" component={TimerScreen} exact/>
+          <Route path="/timer">
+            <Auth auth={auth} redirect="/" component={TimerScreen} userName={this.state.userName} />
+          </Route>
+          <Route path="/timer/:goal_id">
+            <Auth auth={auth} redirect="/" component={TimerScreen} userName={this.state.userName} />
+          </Route>
         </Switch>
       </div>
     )

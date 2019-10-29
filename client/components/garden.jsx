@@ -11,14 +11,17 @@ class Garden extends React.Component {
       isClicked: false,
       plantClass: '',
       plantGrids: [],
-      plantMessageClicked: false
+      plantMessageClicked: false,
+      userName: ''
     };
+    this._isMounted = false;
     this.getPlantClass = this.getPlantClass.bind(this);
     this.getGrids = this.getGrids.bind(this);
     this.handleGridClick = this.handleGridClick.bind(this);
     this.updatePlantClass = this.updatePlantClass.bind(this);
     this.handleTap = this.handleTap.bind(this);
     this.resetGarden = this.resetGarden.bind(this);
+    this.cancelRequest = this.cancelRequest.bind(this);
   }
 
   getGrids(){
@@ -26,16 +29,18 @@ class Garden extends React.Component {
       .then(res => res.json())
       .then(data => this.setState({
         plantGrids: this.state.plantGrids.concat(data)
-      }));
+      })
+      )
+      .catch(err => { console.log('There was an error:', err) });
   }
 
   componentDidMount(){
     this.getGrids();
+    this._isMounted = true;
   }
 
   handleGridClick(value){
     if(value === true){
-      console.log('grid clicked!');
       this.setState({
         isClicked: true
       });
@@ -80,9 +85,20 @@ class Garden extends React.Component {
     return this.state.plantClass;
   }
 
+  cancelRequest() {
+    const controller = new AbortController();
+    const signal = controller.signal;
+    controller.abort();
+  }
+
+  componentWillUnmount() {
+    this.cancelRequest();
+    this._isMounted = false;
+  }
+
   render() {
     let plantClass = this.state.plantClass;
-    let user = localStorage.getItem('UserName');
+    let user = this.props.userName;
     let modalShow;
     if(this.state.plantMessageClicked !== false){
       modalShow = <GardenModal getPlantClass={this.getPlantClass} />;

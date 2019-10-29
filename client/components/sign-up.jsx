@@ -12,6 +12,7 @@ class SignUpScreen extends React.Component {
       fieldsCheck: '',
       auth: false
     };
+    this._isMounted = false;
     this.handleNameChange = this.handleNameChange.bind(this);
     this.handleEmailChange = this.handleEmailChange.bind(this);
     this.handlePasswordChange = this.handlePasswordChange.bind(this);
@@ -45,7 +46,7 @@ class SignUpScreen extends React.Component {
     }
     setTimeout(()=>{
       this.props.history.push('/');
-    }, 1000);
+    }, 3000);
   }
 
   handleSubmit(event) {
@@ -76,12 +77,14 @@ class SignUpScreen extends React.Component {
         this.setState({
           confirmation: ''
         });
-      }, 5000);
+      }, 3000);
     }
   }
 
   addUser(user) {
     fetch('/api/new_user.php', { method: 'POST', body: JSON.stringify(user), headers: { 'Content-Type': 'application/json' } })
+      .catch(err => console.error('fetch failed'));
+    this._isMounted = true;
   }
 
   cancelRequest() {
@@ -92,6 +95,7 @@ class SignUpScreen extends React.Component {
 
   componentWillUnmount() {
     this.cancelRequest();
+    this._isMounted = false;
   }
 
   render(){

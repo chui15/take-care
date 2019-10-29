@@ -573,19 +573,6 @@ p.progress {
     border: 3px solid black;
     border-radius: 20px;
 }
-/* .home-image {
-     animation: shake 2.5s infinite cubic-bezier(.36,.07,.19,.97) both;
-     transform: translate3d(0, 0, 0);
-     backface-visibility: hidden;
-     perspective: 1000px;
-}
-
-@keyframes shake {
-    10%, 90% {transform: translate3d(-1px, 0, 0);}
-    20%, 80% {transform: translate3d(2px, 0, 0);}
-    30%, 50%, 70% {transform: translate3d(-4px, 0, 0);}
-    40%, 60% {transform: translate3d(4px, 0, 0);} */
-/* } */
 
 .modal-plant-item{
     background-color: white;
@@ -604,7 +591,7 @@ p.progress {
 .modal-goal-item {
     background-color: white;
     width: 90%;
-    height: 20vh;
+    height: 25vh;
     border-radius: 10px;
     box-shadow: 0px 0px 2px gray;
     border: 2px solid rgb(180, 117, 223);
@@ -656,18 +643,27 @@ p.progress {
     font-size: 18px;
 }
 
-.button-place-plant, .button-cancel {
+.button-place-plant, .button-cancel, .button-details {
     font-family: 'Livvic', serif;
     height: 40px;
     background-color: white;
     border-radius: 25px;
-    padding: 6px;
-    margin:5px;
+    padding: 5px;
+    margin:15px;
     text-align: center;
     box-shadow: 0px 0px 2px gray;
-    border: 2px solid rgb(146, 144, 144);
     opacity: 0.95;
-    width: 110px;
+    width: 140px;
+}
+
+
+
+.button-details {
+    border: 2px solid rgb(146, 144, 144);
+}
+
+.button-cancel{
+    border: 2px solid crimson;
 }
 
 .button-place-plant {

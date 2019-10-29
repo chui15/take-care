@@ -4,10 +4,31 @@ import { Link } from 'react-router-dom';
 class HomeScreen extends React.Component {
   constructor(props){
     super(props);
+    this.state = {
+      userName: ''
+    };
+    this._isMounted = false;
+  }
+
+  // newGarden(){
+  //   fetch('/api/new_garden.php')
+  //     .catch(err => console.error('fetch failed'));
+  // }
+
+  // componentDidMount(){
+  //   this.newGarden();
+  // }
+
+  componentDidMount() {
+    this._isMounted = true;
+  }
+
+  componentWillUnmount(){
+    this._isMounted = false;
   }
 
   render() {
-    let user = localStorage.getItem('UserName');
+    let user = this.props.userName;
     return (
       <div className="home-screen">
         <div className="row">
