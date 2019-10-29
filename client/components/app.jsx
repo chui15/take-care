@@ -45,7 +45,7 @@ class App extends React.Component {
         }, () => {
           this.props.history.push('/dashboard');
         });
-      }).catch(err => { console.log('There was an error:', err) });
+      }).catch(err => { console.error('There was an error:', err) });
   }
 
   render(){

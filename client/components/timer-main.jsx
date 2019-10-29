@@ -14,6 +14,27 @@ class TimerScreen extends React.Component {
     this.startTimer = this.startTimer.bind(this);
     this.stopTimer = this.stopTimer.bind(this);
     this.handleReset = this.handleReset.bind(this);
+    this.createNewTimer = this.createNewTimer.bind(this);
+  }
+
+  componentDidMount(){
+    fetch('/api/get_goal_time.php', {
+      method: 'POST',
+      body: JSON.stringify({goalId: this.props.match.params.goal_id})
+    })
+    .then(res => res.json())
+    .then(data => {
+      if(data.error){
+        throw new Error(data.error[0]);
+      }
+
+      this.setState({
+        timerTime: data.timerTime
+      });
+    })
+    .catch(error => {
+      console.error('It all went wrong!', error);
+    });
   }
 
   handleClick(){
@@ -35,6 +56,7 @@ class TimerScreen extends React.Component {
         timerTime: Date.now() - this.state.timerStart
       });
     }, 1000);
+    // this.createNewTimer();
   }
 
   stopTimer() {
@@ -42,19 +64,35 @@ class TimerScreen extends React.Component {
       timerOn: false
     });
     clearInterval(this.timer);
+
+    this.saveTime(this.state.timerTime);
+  }
+  createNewTimer() {
+    const goalId = this.props.match.params.goal_id;
+    let object2 = {
+      goalId
+    };
+    fetch('/api/save-time.php', { method: 'POST', body: JSON.stringify(object2), headers: { 'Content-Type': 'application/json' } })
+      .catch(err => console.error('Fetch failed!', err));
+  }
+
+  saveTime(time){
+    const goalId = this.props.match.params.goal_id;
+    let object = {
+      time,
+      goalId
+    };
+    fetch('/api/save-time.php', { method: 'POST', body: JSON.stringify(object), headers: { 'Content-Type' : 'application/json' }})
+    .catch(err => console.error('Fetch failed!', err));
   }
 
   handleReset(){
-    this.stopTimer();
-
     this.setState({
       timerStart: 0,
       timerTime: 0,
-    });
+    }, () => this.stopTimer());
   }
   render() {
-    console.log('Goal ID:', this.props.match.params.goal_id);
-
     let user = localStorage.getItem('UserName');
     let timerTime = this.state.timerTime;
     let seconds = ("0" + (Math.floor(timerTime / 1000) % 60)).slice(-2);

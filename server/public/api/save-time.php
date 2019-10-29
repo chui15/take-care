@@ -4,44 +4,44 @@ require_once('start-app.php');
 
 $data = json_decode(file_get_contents('php://input'), 1);
 
-$errors = [];
 
-if (isset($_SESSION['id'])) {
+if(isset($_SESSION['id'])){
   $userId = $_SESSION['id'];
 } else {
   http_response_code(401);
-  echo json_encode(['error' => 'Not Authorized']);
+  echo json_encode(['error' => ['Not Authorized']]);
   exit;
 }
 
-if(isset($data['goalId'])){
+$errors = [];
+
+if(isset($data['time'])){
+  $time = $data['time'];
+} else {
+  $errors[] = 'No time provided';
+}
+if (isset($data['goalId'])) {
   $goalId = $data['goalId'];
 } else {
   $errors[] = 'No goalId provided';
 }
 // if (isset($data['userId'])) {
-//   $userId = $data['userId'];
+//   $userId = $data['user-id'];
 // } else {
-//   $errors[] = 'No userId provided';
+//   $errors[] = 'No goalId provided';
 // }
-// if (isset($data['startTime'])) {
-//   $startTime = $data['startTime'];
-// } else {
-//   $errors[] = 'No startTime provided';
-// }
-
 if(count($errors)){
- print_r($errors);
- exit;
+  http_response_code(422);
+  json_encode(['error' => $errors]);
+  exit;
 }
 
-$query = "INSERT INTO `goal-timers` (`goal-id`, `user-id`)
-VALUES ('$goalId','$userId')";
+$query = "UPDATE `goal-timers` SET timerTime = $time WHERE `goal-id` = $goalId AND `user-id`=$userId";
 
 $result = mysqli_query($conn, $query);
 
 if(!$result){
-  throw new Exception('timer add insert query error: ' . mysqli_error($conn));
+  throw new Exception('goal add insert query error: ' . mysqli_error($conn));
 }
 
 $timerRowCheck = mysqli_affected_rows($conn);
@@ -50,4 +50,3 @@ if(!$timerRowCheck < 0){
   $rollbackResult = mysqli_query($conn, $rollbackQuery);
   throw new Exception('Row not inserted: ' . mysqli_error($conn));
 }
-?>
