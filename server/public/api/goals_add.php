@@ -2,6 +2,14 @@
 
 require_once('start-app.php');
 
+if (isset($_SESSION['id'])) {
+  $userID = $_SESSION['id'];
+} else {
+  http_response_code(401);
+  print('unauthorized');
+  exit;
+}
+
 $data = json_decode(file_get_contents('php://input'), 1);
 
 $errors = [];
@@ -28,7 +36,7 @@ if(count($errors)){
 }
 
 
-$query = "INSERT INTO `goals` (`user-id`, `title`, `description`, `progress`, `is-completed`) VALUES ('', '$title', '$description', '$value', 'false')";
+$query = "INSERT INTO `goals` (`user-id`, `title`, `description`, `progress`, `is-completed`) VALUES ($userID, '$title', '$description', '$value', 'false')";
 
 $result = mysqli_query($conn, $query);
 

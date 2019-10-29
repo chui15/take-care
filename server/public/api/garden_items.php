@@ -4,7 +4,15 @@ require_once('start-app.php');
 
 $gardenID = $_GET['garden_id'];
 
-$query = "SELECT * FROM `garden-items` WHERE `garden-id` = $gardenID";
+if (isset($_SESSION['id'])) {
+  $userID = $_SESSION['id'];
+} else {
+  http_response_code(401);
+  print('unauthorized');
+  exit;
+}
+
+$query = "SELECT * FROM `garden-items` WHERE `garden-id` = $gardenID AND `user-id` = $userID";
 
 $result = mysqli_query($conn, $query);
 

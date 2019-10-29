@@ -32,4 +32,7 @@ if (!$result) {
   throw new Exception('user add insert query error: ' . mysqli_error($conn));
 }
 
+$_SESSION['user'] = $username;
+$_SESSION['id'] = $userID;
+
 ?>

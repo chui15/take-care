@@ -5,7 +5,6 @@ class IntroScreen extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      userName: '',
       email: '',
       password: ''
     };
@@ -36,10 +35,7 @@ class IntroScreen extends React.Component {
 
   handleSubmit(event){
     event.preventDefault();
-    this.setState({
-      email: '',
-      password: ''
-    });
+    this.props.logIn(this.state);
   }
 
   render() {
@@ -61,7 +57,7 @@ class IntroScreen extends React.Component {
         </div>
         <div className="row justify-content-center">
           <div className="col-6 intro-button">
-            <Link to="/dashboard" className="intro-click">Let's Go!</Link>
+            <span className="intro-click" onClick={this.handleSubmit}>Let's Go!</span>
           </div>
         </div>
         <div className="row justify-content-center">

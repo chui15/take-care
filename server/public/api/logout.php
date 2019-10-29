@@ -2,7 +2,7 @@
 
 session_start();
 
-$_SESSION = array();
+$_SESSION = [];
 
 session_destroy();
 
