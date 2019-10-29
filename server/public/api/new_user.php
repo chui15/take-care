@@ -2,8 +2,6 @@
 
 require_once('start-app.php');
 
-session_start();
-
 $data = json_decode(file_get_contents('php://input'), 1);
 $errors = [];
 

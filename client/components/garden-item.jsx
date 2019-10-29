@@ -12,7 +12,6 @@ class GardenItem extends React.Component {
 
   handleGridClick(){
     if (this.state.plantClass === 'plant-item'){
-      console.log('grid clicked');
       this.setState({
         isClicked: true
       });
