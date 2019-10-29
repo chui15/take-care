@@ -20,6 +20,7 @@ if(isset($data['time'])){
 } else {
   $errors[] = 'No time provided';
 }
+
 if (isset($data['goalId'])) {
   $goalId = $data['goalId'];
 } else {
