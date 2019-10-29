@@ -9,6 +9,7 @@ class TimerScreen extends React.Component {
       timerOn: false,
       timerStart: 0,
       timerTime: 0,
+      userName: ''
     };
     this.handleClick = this.handleClick.bind(this);
     this.startTimer = this.startTimer.bind(this);
@@ -38,7 +39,6 @@ class TimerScreen extends React.Component {
   }
 
   handleClick(){
-
     this.setState({
       isClicked: true
     });
@@ -75,7 +75,7 @@ class TimerScreen extends React.Component {
     fetch('/api/save-time.php', { method: 'POST', body: JSON.stringify(object2), headers: { 'Content-Type': 'application/json' } })
       .catch(err => console.error('Fetch failed!', err));
   }
-
+  
   saveTime(time){
     const goalId = this.props.match.params.goal_id;
     let object = {
@@ -92,8 +92,18 @@ class TimerScreen extends React.Component {
       timerTime: 0,
     }, () => this.stopTimer());
   }
+    
+  componentDidMount() {
+    this._isMounted = true;
+  }
+
+  componentWillUnmount() {
+    this._isMounted = false;
+  }
+
   render() {
-    let user = localStorage.getItem('UserName');
+    let user = this.props.userName;
+
     let timerTime = this.state.timerTime;
     let seconds = ("0" + (Math.floor(timerTime / 1000) % 60)).slice(-2);
     let minutes = ("0" + (Math.floor(timerTime / 60000) % 60)).slice(-2);

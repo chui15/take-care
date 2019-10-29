@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 
 class AddGoal extends React.Component {
   constructor(props) {
@@ -13,6 +13,7 @@ class AddGoal extends React.Component {
       descriptionCheck: '',
       fieldsCheck: ''
     };
+    this._isMounted = false;
     this.handleGoalChange = this.handleGoalChange.bind(this);
     this.handleDescriptionChange = this.handleDescriptionChange.bind(this);
     this.handleProgressChange = this.handleProgressChange.bind(this);
@@ -24,6 +25,7 @@ class AddGoal extends React.Component {
 
   addGoal(goal){
     fetch('/api/goals_add.php', {method: 'POST', body: JSON.stringify(goal), headers: {'Content-Type' : 'application/json'}});
+    this._isMounted = true;
   }
 
   handleProgressChange(event) {
@@ -94,6 +96,9 @@ class AddGoal extends React.Component {
       var timeout = window.setTimeout(this.fadeGoal, [1500]);
       }
     }
+    setTimeout(() => {
+      this.props.history.push('/goals');
+    }, 1000);
   }
 
   fadeGoal(){
@@ -110,6 +115,7 @@ class AddGoal extends React.Component {
 
   componentWillUnmount(){
     this.cancelRequest();
+    this._isMounted = false;
   }
 
   render() {
@@ -188,4 +194,4 @@ class AddGoal extends React.Component {
   }
 }
 
-export default AddGoal;
+export default withRouter(AddGoal);
