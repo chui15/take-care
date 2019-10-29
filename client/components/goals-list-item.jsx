@@ -85,7 +85,7 @@ class GoalsListItem extends React.Component {
           <div className={initialClass}>
           <div className="goal-plant-empty"></div>
           <div className="goal-plant-full"></div>
-            <div className="row goal-description justify-content-center">
+            <div className="row justify-content-center">
             <span className="goal-click" onClick={this.handleClick}>{name}</span>
             </div>
             <div className="slidecontainer">

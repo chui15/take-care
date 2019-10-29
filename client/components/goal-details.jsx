@@ -6,7 +6,10 @@ class GoalDetails extends React.Component {
     super(props);
     this.state = {
       value: 0,
-      id: []
+      name: null,
+      date: null,
+      description: null,
+      progress: null
     };
     this.handleProgressChange = this.handleProgressChange.bind(this);
     this.updateProgressValue = this.updateProgressValue.bind(this);
@@ -15,7 +18,6 @@ class GoalDetails extends React.Component {
 
   componentDidMount(){
     const goalId = this.props.match.params.goal_id;
-
     this.getGoalDetails(goalId);
   }
 
@@ -31,22 +33,24 @@ class GoalDetails extends React.Component {
     return null;
   }
 
-  // /api/garden_items.php?garden_id = 1
-
   getGoalDetails(goalid) {
     fetch(`/api/goals_detail.php?goal_id=${goalid}`)
       .then(res => res.json())
       .then(data => {
         console.log('Goal Details Response:', data);
+        const date = new Date(data.created);
         this.setState({
-          id: []
+          name: data.title,
+          date: date.toLocaleDateString(),
+          description: data.description,
+          progress: data.progress
         })
       });
   }
   //transer the id in the url
 
   render() {
-    let { id } = this.state;
+
     return (
       <div className="goal-details-screen">
         <div className="row align-items-start">
@@ -66,7 +70,7 @@ class GoalDetails extends React.Component {
         </div>
         <div className="row justify-content-center">
           <div className="col-10 goal-detail-info align-self-start">
-            <span className="goal-header-content">Goal Name here</span>
+            <span className="goal-header-content">{this.state.name}</span>
           </div>
         </div>
         <div className="row">
@@ -76,7 +80,7 @@ class GoalDetails extends React.Component {
         </div>
         <div className="row justify-content-center">
           <div className="col-10 goal-detail-info">
-            <span className="goal-header-content">Goal date here</span>
+            <span className="goal-header-content">{this.state.date}</span>
           </div>
         </div>
         <div className="row">
@@ -85,8 +89,8 @@ class GoalDetails extends React.Component {
           </div>
         </div>
         <div className="row justify-content-center">
-          <div className="col-10 goal-detail-info">
-            <span className="goal-header-content">Goal description here</span>
+          <div className="col-10 goal-description">
+            <span>{this.state.description}</span>
           </div>
         </div>
         <div className="row">
@@ -98,24 +102,20 @@ class GoalDetails extends React.Component {
           <div className="col-10 goals-item align-self-center">
             <div className="goal-plant-empty"></div>
             <div className="goal-plant-full"></div>
-            <div className="goal-description">
+            <div>
               <p className="goal">{name}</p>
             </div>
             <div className="slidecontainer">
               <input type="range" min="0" max="100"
-                value={this.state.value} className="slider" onChange={this.handleProgressChange}></input>
-              <p className="progress">Progress: {this.state.value}%</p>
+                value={this.state.progress} className="slider" onChange={this.handleProgressChange}></input>
+              <p className="progress">Progress: {this.state.progress}%</p>
             </div>
-          </div>
-        </div>
-        <div className="row justify-content-center">
-          <div className="col-6 goals-button">
-            <Link to="/timer" className="intro-click">Set Timer</Link>
           </div>
         </div>
       </div>
     );
   }
 }
+
 
 export default GoalDetails;
