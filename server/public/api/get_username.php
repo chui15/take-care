@@ -2,8 +2,6 @@
 
 require_once('start-app.php');
 
-$gardenID = $_GET['garden_id'];
-
 if (isset($_SESSION['id'])) {
   $userID = $_SESSION['id'];
 } else {
@@ -12,7 +10,7 @@ if (isset($_SESSION['id'])) {
   exit;
 }
 
-$query = "SELECT * FROM `garden-items` WHERE `garden-id` = $gardenID";
+$query = "SELECT `name` FROM `users` WHERE `id` = $userID";
 
 $result = mysqli_query($conn, $query);
 
@@ -21,7 +19,6 @@ if (!$result) {
 }
 
 $output = [];
-
 
 if (!mysqli_num_rows($result)) {
   print "No data was available";
@@ -34,4 +31,5 @@ while ($row = mysqli_fetch_assoc($result)) {
 
 $json_output = json_encode($output);
 print $json_output;
+
 ?>

@@ -9,6 +9,7 @@ class TimerScreen extends React.Component {
       timerOn: false,
       timerStart: 0,
       timerTime: 0,
+      userName: ''
     };
     this.handleClick = this.handleClick.bind(this);
     this.startTimer = this.startTimer.bind(this);
@@ -17,7 +18,6 @@ class TimerScreen extends React.Component {
   }
 
   handleClick(){
-
     this.setState({
       isClicked: true
     });
@@ -46,16 +46,22 @@ class TimerScreen extends React.Component {
 
   handleReset(){
     this.stopTimer();
-
     this.setState({
       timerStart: 0,
       timerTime: 0,
     });
   }
-  render() {
-    console.log('Goal ID:', this.props.match.params.goal_id);
 
-    let user = localStorage.getItem('UserName');
+  componentDidMount() {
+    this._isMounted = true;
+  }
+
+  componentWillUnmount() {
+    this._isMounted = false;
+  }
+
+  render() {
+    let user = this.props.userName;
     let timerTime = this.state.timerTime;
     let seconds = ("0" + (Math.floor(timerTime / 1000) % 60)).slice(-2);
     let minutes = ("0" + (Math.floor(timerTime / 60000) % 60)).slice(-2);

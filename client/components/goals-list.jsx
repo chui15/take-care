@@ -9,10 +9,13 @@ class GoalsList extends React.Component {
     this.state = {
       goals: [],
       filtered: [],
-      search: ''
+      search: '',
+      userName: ''
     };
+    this._isMounted = false;
     this.getGoals = this.getGoals.bind(this);
     this.handleSearch = this.handleSearch.bind(this);
+    this.cancelRequest = this.cancelRequest.bind(this);
   }
 
   getGoals(){
@@ -26,6 +29,7 @@ class GoalsList extends React.Component {
 
   componentDidMount(){
     this.getGoals();
+    this._isMounted = true;
   }
 
   handleSearch(event){
@@ -49,9 +53,19 @@ class GoalsList extends React.Component {
     });
   }
 
+  cancelRequest() {
+    const controller = new AbortController();
+    const signal = controller.signal;
+    controller.abort();
+  }
+
+  componentWillUnmount() {
+    this.cancelRequest();
+    this._isMounted = false;
+  }
+
   render() {
-    console.log('List Props:', this.props);
-    let user = localStorage.getItem('UserName');
+    let user = this.props.userName;
     let filteredGoals;
     if(this.state.search !== ''){
       filteredGoals = this.state.filtered.filter(goal => {

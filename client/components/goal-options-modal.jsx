@@ -19,14 +19,12 @@ class TimerModal extends React.Component {
   }
 
   render() {
-    console.log("goal id",this.props.goalID);
-    let user = localStorage.getItem('UserName');
     let showModal = this.state.showModal ? 'modal-goal-item' : 'hidden';
 
     return (
       <div className={showModal}>
         <div className="modal-header">
-          <h5 className="modal-title goal-modal-title">Hey, {user}! Would you like to do?</h5>
+          <h5 className="modal-title goal-modal-title">Hey, ! Would you like to do?</h5>
         </div>
         <div className="row justify-content-center">
           <div className="button-place-plant">
