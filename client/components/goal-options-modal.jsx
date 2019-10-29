@@ -19,7 +19,6 @@ class TimerModal extends React.Component {
   }
 
   render() {
-    console.log("goal id",this.props.goalID);
     let user = localStorage.getItem('UserName');
     let showModal = this.state.showModal ? 'modal-goal-item' : 'hidden';
 

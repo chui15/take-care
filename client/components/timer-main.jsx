@@ -53,8 +53,6 @@ class TimerScreen extends React.Component {
     });
   }
   render() {
-    console.log('Goal ID:', this.props.match.params.goal_id);
-
     let user = localStorage.getItem('UserName');
     let timerTime = this.state.timerTime;
     let seconds = ("0" + (Math.floor(timerTime / 1000) % 60)).slice(-2);
