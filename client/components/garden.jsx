@@ -29,7 +29,9 @@ class Garden extends React.Component {
       .then(res => res.json())
       .then(data => this.setState({
         plantGrids: this.state.plantGrids.concat(data)
-      }));
+      })
+      )
+      .catch(err => { console.log('There was an error:', err) });
   }
 
   componentDidMount(){

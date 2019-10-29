@@ -9,7 +9,7 @@ class GoalDetails extends React.Component {
       name: null,
       date: null,
       description: null,
-      progress: null
+      progress: ''
     };
     this.handleProgressChange = this.handleProgressChange.bind(this);
     this.updateProgressValue = this.updateProgressValue.bind(this);
@@ -37,7 +37,6 @@ class GoalDetails extends React.Component {
     fetch(`/api/goals_detail.php?goal_id=${goalid}`)
       .then(res => res.json())
       .then(data => {
-        console.log('Goal Details Response:', data);
         const date = new Date(data.created);
         this.setState({
           name: data.title,
@@ -45,12 +44,11 @@ class GoalDetails extends React.Component {
           description: data.description,
           progress: data.progress
         })
-      });
+      })
+      .catch(err => { console.log('There was an error:', err) });
   }
-  //transer the id in the url
 
   render() {
-
     return (
       <div className="goal-details-screen">
         <div className="row align-items-start">

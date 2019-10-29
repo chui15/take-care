@@ -24,7 +24,9 @@ class GoalsList extends React.Component {
       .then(data => this.setState({
         goals: this.state.goals.concat(data),
         filtered: this.state.filtered.concat(data)
-      }));
+      })
+      )
+      .catch(err => { console.log('There was an error:', err) });
   }
 
   componentDidMount(){
