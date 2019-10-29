@@ -26,15 +26,18 @@ class TimerModal extends React.Component {
     return (
       <div className={showModal}>
         <div className="modal-header">
-          <h5 className="modal-title goal-modal-title">Hey, {user}! Would you like to set a timer?</h5>
+          <h5 className="modal-title goal-modal-title">Hey, {user}! Would you like to do?</h5>
         </div>
         <div className="row justify-content-center">
           <div className="button-place-plant">
-            <Link to= {`/timer/${this.props.goalID}`} className="garden-click">Let's Go!</Link>
+            <Link to= {`/timer/${this.props.goalID}`} className="garden-click">Timer</Link>
           </div>
           <div className="button-cancel">
-            <span onClick={this.close} className="garden-click">I'm OK</span>
+            <Link to={`/goals/${this.props.goalID}/details`} className="garden-click">Details</Link>
           </div>
+        </div>
+        <div className="mt-3 text-center">
+          <span onClick={this.close} className="">Cancel</span>
         </div>
       </div>
     );

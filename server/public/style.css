@@ -153,6 +153,7 @@ body {
     font-size: 23px;
 }
 
+
 .timer-header-content {
     font-size: 20px;
 }
@@ -456,7 +457,7 @@ p.progress {
     justify-content: center;
 }
 
-.goal-detail-info {
+.goal-detail-info, .goal-description {
     font-family: 'Livvic', serif;
     height: 45px;
     background-color: white;
@@ -466,6 +467,11 @@ p.progress {
     box-shadow: 0px 0px 2px gray;
     border: 2px solid rgb(146, 144, 144);
     opacity: 0.95;
+}
+
+.goal-description {
+    height: 120px;
+    font-size: 23px;
 }
 
 .garden-container {

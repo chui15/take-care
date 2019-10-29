@@ -160,7 +160,7 @@ class AddGoal extends React.Component {
           <div className="col-10 goals-item align-self-center">
             <div className="goal-plant-empty"></div>
             <div className="goal-plant-full"></div>
-            <div className="goal-description">
+            <div>
               <p className="goal">{name}</p>
             </div>
             <div className="slidecontainer">
