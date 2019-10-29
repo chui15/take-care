@@ -3,8 +3,15 @@
 
 require_once('start-app.php');
 
+if(isset($_SESSION['id'])){
+  $userID = $_SESSION['id'];
+} else {
+  http_response_code(401);
+  print('unauthorized');
+  exit;
+}
 
-$query = "SELECT * FROM `goals`";
+$query = "SELECT * FROM `goals` WHERE `user-id` = $userID";
 
 $result = mysqli_query($conn, $query);
 

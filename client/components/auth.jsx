@@ -4,9 +4,6 @@ import { withRouter } from 'react-router-dom';
 class Auth extends React.Component {
   constructor(props){
     super(props);
-
-    console.log('Auth Constructor:', this.props);
-
     this.checkAuth();
   }
 

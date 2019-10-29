@@ -1,5 +1,5 @@
 import React from 'react';
-import {Switch, Route} from 'react-router-dom';
+import {Switch, Route, withRouter} from 'react-router-dom';
 import Auth from './auth';
 import SignUpScreen from './sign-up';
 import IntroScreen from './intro-screen';
@@ -18,9 +18,52 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      auth: true
+      auth: false
     }
+    this.logOut = this.logOut.bind(this);
+    this.logIn = this.logIn.bind(this);
   }
+
+  logOut() {
+    fetch('/api/logout.php')
+      .then(() => {
+        this.setState({
+          auth: false
+        });
+      });
+    console.log('user logged out');
+  }
+
+  logIn(user) {
+    fetch('/api/login.php', {
+      method: 'POST',
+      body: JSON.stringify(user)
+    })
+      .then(resp => resp.json()).then(data => {
+        console.log('Login Data:', data);
+        console.log('user logged in');
+        if(data.error) throw new Error(data.error)
+        this.setState({
+          auth: true
+        }, () => {
+          this.props.history.push('/dashboard');
+        });
+      }).catch(err => { console.log('There was an error:', err) });
+  }
+
+  // logIn(){
+  //   fetch('/api/login.php')
+  //     .then((resp) => {
+  //       console.log('Resp:', resp);
+        // this.setState({
+        //   auth: true
+        // }, () => {
+        //   this.props.history.push('/dashboard');
+        // });
+
+  //     }).catch(err => {console.log('There was an error:', err)});
+  //   console.log('user logged in');
+  // }
 
   render(){
     const { auth } = this.state;
@@ -29,36 +72,31 @@ class App extends React.Component {
       <div className="">
         <Switch>
           <Route path="/" exact>
-            <IntroScreen />
+            <IntroScreen logIn={this.logIn}/>
           </Route>
           <Route path="/signup">
             <SignUpScreen />
           </Route>
           <Route path="/dashboard">
-            <HomeScreen />
+            <Auth auth={auth} redirect="/" component={HomeScreen} logOut={this.logOut}/>
           </Route>
           <Route path="/goals" exact>
-            <Auth auth={auth} redirect="/signup" component={GoalsList}/>
+            <Auth auth={auth} redirect="/" component={GoalsList}/>
           </Route>
+          <Route path="/goals/details"></Route>
           <Route path="/goals/:goal_id/details" component={GoalDetails}/>
-          <Route path="/goals/:goal_id/edit">
-            <EditGoal/>
-          </Route>
           <Route path="/goals/add">
-            <Auth auth={auth} component={AddGoal}/>
+            <Auth auth={auth} redirect="/" component={AddGoal}/>
           </Route>
           <Route path="/garden/:garden_id">
-            <Garden />
+            <Auth auth={auth} redirect="/" component={Garden} />
           </Route>
           <Route path="/timer" component={TimerScreen} exact />
           <Route path="/timer/:goal_id" component={TimerScreen} exact/>
-          <Route path="/plantdetails">
-            <PlantDetails />
-          </Route>
         </Switch>
       </div>
     )
   }
 }
 
-export default App;
+export default withRouter(App);

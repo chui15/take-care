@@ -19,7 +19,6 @@ class SignUpScreen extends React.Component {
   }
 
   handleNameChange(event) {
-    localStorage.setItem('UserName', event.target.value);
     this.setState({
       userName: event.target.value
     });

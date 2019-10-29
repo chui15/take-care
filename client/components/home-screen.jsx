@@ -2,6 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 class HomeScreen extends React.Component {
+  constructor(props){
+    super(props);
+  }
 
   render() {
     let user = localStorage.getItem('UserName');
@@ -9,7 +12,7 @@ class HomeScreen extends React.Component {
       <div className="home-screen">
         <div className="row">
           <div className="return-home-button align-self-start">
-            <Link to="/" className="log-out">Log Out</Link>
+            <span className="log-out" onClick={this.props.logOut}>Log Out</span>
           </div>
         </div>
         <div className="row justify-content-center">
