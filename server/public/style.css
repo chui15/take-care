@@ -385,7 +385,7 @@ p.goal {
 
 .input-title {
     font-family: 'Livvic', serif;
-    font-size: 24px;
+    font-size: 20px;
     display: block;
     margin: 10px;
 }
@@ -459,10 +459,10 @@ p.progress {
 
 .goal-detail-info, .goal-description {
     font-family: 'Livvic', serif;
-    height: 45px;
+    height: 35px;
     background-color: white;
     border-radius: 25px;
-    font-size: 20px;
+    font-size:15px;
     text-align: left;
     box-shadow: 0px 0px 2px gray;
     border: 2px solid rgb(146, 144, 144);
