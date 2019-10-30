@@ -18,12 +18,32 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      auth: false,
+      auth: true,
       userName: ''
     };
     this._isMounted = false;
     this.logOut = this.logOut.bind(this);
     this.logIn = this.logIn.bind(this);
+
+    this.checkAuth();
+  }
+
+  checkAuth(){
+    fetch('/api/check_auth.php')
+      .then(resp => resp.json())
+      .then(data => {
+        if(data.auth === true){
+          this.setState({auth: true});
+          if(this.props.location.pathname === '/'){
+            this.props.history.push('/dashboard');
+          }
+        } else {
+          throw new Error('Not logged in');
+        }
+      })
+      .catch(error => {
+        this.setState({ auth: false });
+      });
   }
 
   componentDidMount(){
@@ -96,7 +116,7 @@ class App extends React.Component {
           <Route path="/garden/:garden_id">
             <Auth auth={auth} redirect="/" component={Garden} userName={this.state.userName}/>
           </Route>
-          <Route path="/timer">
+          <Route exact path="/timer">
             <Auth auth={auth} redirect="/" component={TimerScreen} userName={this.state.userName} />
           </Route>
           <Route path="/timer/:goal_id">
