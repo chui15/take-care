@@ -35,24 +35,25 @@ class GoalsList extends React.Component {
     this._isMounted = true;
   }
 
-  handleSearch(event){
+  handleSearch(event) {
     this.setState({
       search: event.target.value
     });
     let currentGoals = [];
-    let newGoals = [];
-    if (this.state.search !== ''){
+    let searchedGoals=[];
+    if(this.state.search !== "") {
       currentGoals = this.state.goals;
-      newGoals = currentGoals.filter(goal => {
-        const lowerCaseGoal = goal.toString().toLocaleLowerCase();
-        const filter = this.state.search.toString().toLocaleLowerCase();
-        return lowerCaseGoal.includes(filter);
+      searchedGoals = currentGoals.filter(goal => {
+        const _goal = goal.title.toLowerCase();
+        const filter = this.state.search.toLowerCase();
+        return _goal.includes(filter);
       });
-    } else {
-      newGoals = this.state.goals;
+    }
+    else {
+      searchedGoals = this.state.goals;
     }
     this.setState({
-      filtered: newGoals
+      filtered: searchedGoals
     });
   }
 
