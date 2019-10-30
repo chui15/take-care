@@ -10,7 +10,7 @@ class GoalDetails extends React.Component {
       date: null,
       description: null,
       progress: '',
-      timerTime: null
+      timeStart: ''
     };
     this.handleProgressChange = this.handleProgressChange.bind(this);
     this.getGoalDetails = this.getGoalDetails.bind(this);
@@ -39,20 +39,17 @@ class GoalDetails extends React.Component {
   getGoalDetails(goalid) {
     fetch(`/api/goals_detail.php?goal_id=${goalid}`)
       .then(res => res.json())
-      .then(function (responseObject) {
-        console.log('Rquested object', responseObject);
-        return responseObject;
-      })
       .then(data => {
+        console.log(data)
         const date = new Date(data.created);
-        const time = this.millisToMinutesAndSeconds(data.timerTime);
+        const time = this.millisToMinutesAndSeconds(data.timerTime)
         this.setState({
           name: data.title,
+          timeStart: time,
           date: date.toLocaleDateString(),
           description: data.description,
-          progress: data.progress,
-          timerTime: time
-        })
+          progress: data.progress
+        });
       })
       .catch(err => { console.log('There was an error:', err) });
   }
@@ -87,7 +84,7 @@ class GoalDetails extends React.Component {
         </div>
         <div className="row justify-content-center">
           <div className="col-10 goal-detail-info">
-            <span className="goal-header-content">{this.state.timerTime}</span>
+            <span className="goal-header-content">{this.state.timeStart}</span>
           </div>
         </div>
         <div className="row">

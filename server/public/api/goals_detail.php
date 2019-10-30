@@ -13,12 +13,12 @@ if(isset($_GET['goal_id'])){
   exit;
 }
 
-// WHERE id=$id
-// SELECT * FROM `goals` AS g LEFT JOIN `goal-timers` AS t ON g.id = t.id
+$query = "SELECT gt.timerTime, g.title, g.description, g.progress, g.created FROM `goals` AS g LEFT JOIN `goal-timers` AS gt ON g.id=gt.`goal-id` WHERE g.id = $id";
 
-$query = "SELECT * FROM `goals` AS g INNER JOIN `goal-timers` AS t ON g.id = t.id WHERE g.id = $id";
 
 $result = mysqli_query($conn, $query);
+
+
 
 if (!$result) {
   throw new Exception("The connection failed or no data was received!",  mysqli_connect_error());
@@ -32,6 +32,7 @@ if (!mysqli_num_rows($result)) {
 }
 
 $output = mysqli_fetch_assoc($result);
+
 
 $json_output = json_encode($output);
 print $json_output;
