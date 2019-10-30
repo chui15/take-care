@@ -19,7 +19,11 @@ class SignUpScreen extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.addUser = this.addUser.bind(this);
     this.handleKeyPress = this.handleKeyPress.bind(this);
-    this.cancelRequest = this.cancelRequest.bind(this);
+    this.newGarden = this.newGarden.bind(this);
+  }
+
+  componentDidMount(){
+    this._isMounted = true;
   }
 
   handleNameChange(event) {
@@ -49,6 +53,11 @@ class SignUpScreen extends React.Component {
     }, 3000);
   }
 
+  newGarden() {
+    fetch('/api/new_garden.php')
+      .catch(err => console.error('fetch failed'));
+  }
+
   handleSubmit(event) {
     event.preventDefault();
     if (this.state.userName === '' || this.state.email === '' || this.state.password === ''){
@@ -67,6 +76,7 @@ class SignUpScreen extends React.Component {
         password: this.state.password
       };
       this.addUser(newUser);
+      // this.newGarden();
       this.setState({
         userName: '',
         email: '',
@@ -84,17 +94,9 @@ class SignUpScreen extends React.Component {
   addUser(user) {
     fetch('/api/new_user.php', { method: 'POST', body: JSON.stringify(user), headers: { 'Content-Type': 'application/json' } })
       .catch(err => console.error('fetch failed'));
-    this._isMounted = true;
-  }
-
-  cancelRequest() {
-    const controller = new AbortController();
-    const signal = controller.signal;
-    controller.abort();
   }
 
   componentWillUnmount() {
-    this.cancelRequest();
     this._isMounted = false;
   }
 

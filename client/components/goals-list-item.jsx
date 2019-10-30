@@ -72,11 +72,11 @@ class GoalsListItem extends React.Component {
     if (goalCompleted === 'true') {
       goalModal = null;
     } else if (Number.parseFloat(this.state.value) === 100){
-      goalModal = <GoalModal />;
+      goalModal = <GoalModal userName={this.props.userName} goalID={goalID}/>;
     }
     let optionsModal;
     if (this.state.clicked === true) {
-      optionsModal = <GoalOptionsModal goalID={goalID}/>;
+      optionsModal = <GoalOptionsModal goalID={goalID} userName={this.props.userName}/>;
     } else {
       optionsModal = null;
     }

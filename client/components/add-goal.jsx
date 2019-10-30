@@ -20,11 +20,15 @@ class AddGoal extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.addGoal = this.addGoal.bind(this);
     this.fadeGoal = this.fadeGoal.bind(this);
-    this.cancelRequest = this.cancelRequest.bind(this);
   }
 
   addGoal(goal){
-    fetch('/api/goals_add.php', {method: 'POST', body: JSON.stringify(goal), headers: {'Content-Type' : 'application/json'}});
+    if(this._isMounted) {
+      fetch('/api/goals_add.php', {method: 'POST', body: JSON.stringify(goal), headers: {'Content-Type' : 'application/json'}});
+    }
+  }
+
+  componentDidMount(){
     this._isMounted = true;
   }
 
@@ -49,77 +53,73 @@ class AddGoal extends React.Component {
 
   handleSubmit(event){
     event.preventDefault();
-    if (this.state.title === '' || this.state.description === ''){
-      this.setState({
-        fieldsCheck: 'Fields can\'t be empty (◕︿◕✿)'
-      });
-      setTimeout(() => {
+    if (this._isMounted) {
+      if (this.state.title === '' || this.state.description === ''){
         this.setState({
-          fieldsCheck: ''
-        });
-      }, 3000);
-    } else {
-      const regex = /.{5,}/;
-      if (!regex.test(this.state.description) && this.state.description !== '') {
-        this.setState({
-          descriptionCheck: 'bigger (/#-_-)/~┻┻〃'
+          fieldsCheck: 'Fields can\'t be empty (◕︿◕✿)'
         });
         setTimeout(() => {
           this.setState({
-            descriptionCheck: ''
-          });
-        }, 3000);
-      }
-      if (!regex.test(this.state.title) && this.state.title !== '') {
-        this.setState({
-          goalCheck: 'We can do bigger ( •̀ω•́ )σ'
-        });
-        setTimeout(() => {
-          this.setState({
-            goalCheck: ''
+            fieldsCheck: ''
           });
         }, 3000);
       } else {
-      let progressValue = Number.parseFloat(this.state.value);
-      let newGoal = {
-        title: this.state.title,
-        description: this.state.description,
-        value: progressValue
-      };
-      this.addGoal(newGoal);
-      this.setState({
-        title: '',
-        description: '',
-        value: 0,
-        goalAdded: true
-      });
-      var timeout = window.setTimeout(this.fadeGoal, [1500]);
+        const regex = /.{5,}/;
+        if (!regex.test(this.state.description) && this.state.description !== '') {
+          this.setState({
+            descriptionCheck: 'bigger (/#-_-)/~┻┻〃'
+          });
+          setTimeout(() => {
+            this.setState({
+              descriptionCheck: ''
+            });
+          }, 3000);
+        }
+        if (!regex.test(this.state.title) && this.state.title !== '') {
+          this.setState({
+            goalCheck: 'We can do bigger ( •̀ω•́ )σ'
+          });
+          setTimeout(() => {
+            this.setState({
+              goalCheck: ''
+            });
+          }, 3000);
+        } else {
+        let progressValue = Number.parseFloat(this.state.value);
+        let newGoal = {
+          title: this.state.title,
+          description: this.state.description,
+          value: progressValue
+        };
+        this.addGoal(newGoal);
+        this.setState({
+          title: '',
+          description: '',
+          value: 0,
+          goalAdded: true
+        });
+        var timeout = window.setTimeout(this.fadeGoal, [1500]);
+        }
       }
+      setTimeout(() => {
+        this.props.history.push('/goals');
+      }, 1000);
     }
-    setTimeout(() => {
-      this.props.history.push('/goals');
-    }, 1000);
   }
 
   fadeGoal(){
-    this.setState({
-      goalAdded: false
-    })
-  }
-
-  cancelRequest(){
-    const controller = new AbortController();
-    const signal = controller.signal;
-    controller.abort();
+    if(this._isMounted) {
+        this.setState({
+        goalAdded: false
+      })
+    }
   }
 
   componentWillUnmount(){
-    this.cancelRequest();
     this._isMounted = false;
   }
 
   render() {
-    let user = localStorage.getItem('UserName');
     let catchFade = this.state.goalAdded ? 'goal-completed' : 'hidden';
     return (
       <div className="add-goal-screen">

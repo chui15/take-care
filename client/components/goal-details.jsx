@@ -12,7 +12,6 @@ class GoalDetails extends React.Component {
       progress: ''
     };
     this.handleProgressChange = this.handleProgressChange.bind(this);
-    this.updateProgressValue = this.updateProgressValue.bind(this);
     this.getGoalDetails = this.getGoalDetails.bind(this);
   }
 
@@ -25,12 +24,6 @@ class GoalDetails extends React.Component {
     this.setState({
       value: event.target.value
     });
-    this.updateProgressValue(this.state.value);
-  }
-
-  updateProgressValue(newValue){
-    //fetch call here to update the value
-    return null;
   }
 
   getGoalDetails(goalid) {

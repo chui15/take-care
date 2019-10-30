@@ -19,13 +19,13 @@ class TimerModal extends React.Component {
   }
 
   render() {
-    let user = localStorage.getItem('UserName');
+    let user = this.props.userName;
     let showModal = this.state.showModal ? 'modal-goal-item' : 'hidden';
 
     return (
       <div className={showModal}>
         <div className="modal-header">
-          <h5 className="modal-title goal-modal-title">Hey, ! Would you like to do?</h5>
+          <h5 className="modal-title goal-modal-title">Hey, {user}! Would you like to do?</h5>
         </div>
         <div className="row justify-content-center">
           <div className="button-details button-place-plant">
@@ -35,7 +35,7 @@ class TimerModal extends React.Component {
             <Link to={`/goals/${this.props.goalID}/details`} className="garden-click"> View Details</Link>
           </div>
           <div className="button-cancel">
-            <span onClick={this.close} className="">Cancel</span>
+            <span onClick={this.close}>Cancel</span>
           </div>
         </div>
       </div>

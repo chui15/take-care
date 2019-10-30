@@ -19,7 +19,8 @@ class GoalModal extends React.Component {
   }
 
   render(){
-    let user = localStorage.getItem('UserName');
+    let user = this.props.userName;
+    let goalID = this.props.goalID;
     let showModal = this.state.showModal ? 'modal-goal-item' : 'hidden';
 
     return (
