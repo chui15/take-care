@@ -63,7 +63,6 @@ class App extends React.Component {
           gardenID: Number.parseInt(data[1]['user-id'])
         })
       }
-      console.log(this.state.gardenID);
     })
       .catch(err => console.error('fetch failed'));
   }
