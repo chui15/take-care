@@ -6,30 +6,37 @@ $data = json_decode(file_get_contents('php://input'), 1);
 
 $errors = [];
 
+if (isset($_SESSION['id'])) {
+  $userId = $_SESSION['id'];
+} else {
+  http_response_code(401);
+  echo json_encode(['error' => 'Not Authorized']);
+  exit;
+}
 
 if(isset($data['goalId'])){
   $goalId = $data['goalId'];
 } else {
   $errors[] = 'No goalId provided';
 }
-if (isset($data['userId'])) {
-  $userId = $data['userId'];
-} else {
-  $errors[] = 'No userId provided';
-}
-if (isset($data['startTime'])) {
-  $startTime = $data['startTime'];
-} else {
-  $errors[] = 'No startTime provided';
-}
+// if (isset($data['userId'])) {
+//   $userId = $data['userId'];
+// } else {
+//   $errors[] = 'No userId provided';
+// }
+// if (isset($data['startTime'])) {
+//   $startTime = $data['startTime'];
+// } else {
+//   $errors[] = 'No startTime provided';
+// }
 
 if(count($errors)){
  print_r($errors);
  exit;
 }
 
-$query = "INSERT INTO `goal-timers` (`goal-id`, `user-id`, `start-time`)
-VALUES ('$goalId','$userId', '$startTime')";
+$query = "INSERT INTO `goal-timers` (`goal-id`, `user-id`)
+VALUES ('$goalId','$userId')";
 
 $result = mysqli_query($conn, $query);
 
