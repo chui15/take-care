@@ -17,12 +17,13 @@ class App extends React.Component {
 
     this.state = {
       auth: true,
-      userName: ''
+      userName: '',
+      gardenID: ''
     };
     this._isMounted = false;
     this.logOut = this.logOut.bind(this);
     this.logIn = this.logIn.bind(this);
-
+    this.getUserInfo = this.getUserInfo.bind(this);
     this.checkAuth();
   }
 
@@ -52,13 +53,14 @@ class App extends React.Component {
     this.is_Mounted = false;
   }
 
-  getUserName() {
+  getUserInfo() {
     fetch('/api/get_username.php')
       .then(res => res.json())
       .then(data => {
         if(this.is_Mounted){
           this.setState({
-          userName: data[0]['name']
+          userName: data[0]['name'],
+          gardenID: Number.parseInt(data[1]['user-id'])
         })
       }
     })
@@ -86,7 +88,7 @@ class App extends React.Component {
         }, () => {
           this.props.history.push('/dashboard');
         });
-        this.getUserName();
+        this.getUserInfo();
       }).catch(err => { console.log('There was an error:', err) });
   }
 
@@ -106,7 +108,7 @@ class App extends React.Component {
             <Auth auth={auth} redirect="/" component={HomeScreen} logOut={this.logOut} userName={this.state.userName}/>
           </Route>
           <Route path="/goals" exact>
-            <Auth auth={auth} redirect="/" component={GoalsList} userName={this.state.userName}/>
+            <Auth auth={auth} redirect="/" component={GoalsList} userName={this.state.userName} gardenID={this.state.gardenID}/>
           </Route>
           <Route path="/goals/details"></Route>
           <Route path="/goals/:goal_id/details" component={GoalDetails}/>

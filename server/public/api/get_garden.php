@@ -10,13 +10,9 @@ if (isset($_SESSION['id'])) {
   exit;
 }
 
-$query = "SELECT `name` FROM `users` WHERE `id` = $userID";
+$query = "SELECT * FROM `garden` WHERE `user-id` = $userID";
 
 $result = mysqli_query($conn, $query);
-
-$gardenQuery = "SELECT * FROM `garden` WHERE `user-id` = $userID";
-
-$gardenResult = mysqli_query($conn, $gardenQuery);
 
 if (!$result) {
   throw new Exception("The connection failed or no data was received!",  mysqli_connect_error());
@@ -31,10 +27,6 @@ if (!mysqli_num_rows($result)) {
 
 while ($row = mysqli_fetch_assoc($result)) {
   array_push($output, $row);
-}
-
-while ($gardenRow = mysqli_fetch_assoc($gardenResult)){
-  array_push($output, $gardenRow);
 }
 
 $json_output = json_encode($output);

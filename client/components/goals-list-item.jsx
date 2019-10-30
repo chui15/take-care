@@ -60,6 +60,7 @@ class GoalsListItem extends React.Component {
   render(){
     let name = this.props.goal.title;
     let goalID = this.props.goal.id;
+    let gardenID = this.props.gardenID;
     let goalCompleted = this.props.goal['is-completed'];
     let initialClass = '';
     if (Number.parseFloat(this.state.value) === 100){
@@ -72,7 +73,7 @@ class GoalsListItem extends React.Component {
     if (goalCompleted === 'true') {
       goalModal = null;
     } else if (Number.parseFloat(this.state.value) === 100){
-      goalModal = <GoalModal userName={this.props.userName} goalID={goalID}/>;
+      goalModal = <GoalModal userName={this.props.userName} goalID={goalID} gardenID={gardenID}/>;
     }
     let optionsModal;
     if (this.state.clicked === true) {

@@ -16,14 +16,17 @@ $id = $data['id'];
 $progress = $data['progress'];
 
 if($progress === 100){
-  $query = "UPDATE `goals` SET `progress` = $progress, `is-completed` = 'true', `completed` = NOW() WHERE `id` = $id AND `user-id` = $userID";
+  $progressQuery = "UPDATE `goals` SET `progress` = $progress, `is-completed` = 'true', `completed` = NOW() WHERE `id` = $id AND `user-id` = $userID";
+  $plantQuery = "UPDATE `garden` SET `plants_available` = `plants_available` + 1 WHERE `user-id` = $userID";
 } else {
-  $query = "UPDATE `goals` SET `progress` = $progress, `is-completed` = 'false', `completed` = NULL WHERE `id` = $id AND `user-id` = $userID";
+  $progressQuery = "UPDATE `goals` SET `progress` = $progress, `is-completed` = 'false', `completed` = NULL WHERE `id` = $id AND `user-id` = $userID";
+  $plantQuery = null;
 }
 
-$result = mysqli_query($conn, $query);
+$progressResult = mysqli_query($conn, $progressQuery);
+$plantResult = mysqli_query($conn, $plantQuery);
 
-if(!$result){
+if(!$progressResult || !$plantResult){
   throw new Exception('Progress update query error: ' . mysqli_error($conn));
 }
 
@@ -31,5 +34,6 @@ $goalsRowCheck = mysqli_affected_rows($conn);
 if(!$goalsRowCheck < 0){
   throw new Exception('Progress not updated: ' . mysqli_error($conn));
 }
+
 
 ?>

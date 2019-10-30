@@ -63,6 +63,7 @@ class GoalsList extends React.Component {
 
   render() {
     let user = this.props.userName;
+    let gardenID = this.props.gardenID;
     let filteredGoals;
     if(this.state.search !== ''){
       filteredGoals = this.state.filtered.filter(goal => {
@@ -74,7 +75,7 @@ class GoalsList extends React.Component {
     const listItems = filteredGoals.map(goal => {
       return (
         <GoalsListItem key={goal.id}
-          goal={goal} userName={this.props.userName}/>
+          goal={goal} userName={this.props.userName} gardenID={gardenID}/>
       );
     })
     let initialClass = '';
