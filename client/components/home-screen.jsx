@@ -43,7 +43,7 @@ class HomeScreen extends React.Component {
               <img src="/images/timer.png" className="button-home-image"></img></Link>
             </div>
             <div className="button-home">
-              <Link to="/garden/1" className="intro-click">Garden
+              <Link to={`/garden/${this.props.gardenID}`} className="intro-click">Garden
               <img src="/images/garden.png" className="button-home-image-garden"></img></Link>
             </div>
           </div>

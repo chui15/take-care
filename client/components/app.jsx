@@ -105,7 +105,7 @@ class App extends React.Component {
             <SignUpScreen />
           </Route>
           <Route path="/dashboard">
-            <Auth auth={auth} redirect="/" component={HomeScreen} logOut={this.logOut} userName={this.state.userName}/>
+            <Auth auth={auth} redirect="/" component={HomeScreen} logOut={this.logOut} userName={this.state.userName} gardenID={this.state.gardenID}/>
           </Route>
           <Route path="/goals" exact>
             <Auth auth={auth} redirect="/" component={GoalsList} userName={this.state.userName} gardenID={this.state.gardenID}/>
