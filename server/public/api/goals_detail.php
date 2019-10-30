@@ -13,8 +13,10 @@ if(isset($_GET['goal_id'])){
   exit;
 }
 
+// WHERE id=$id
+// SELECT * FROM `goals` AS g LEFT JOIN `goal-timers` AS t ON g.id = t.id
 
-$query = "SELECT * FROM `goals` WHERE id=$id";
+$query = "SELECT * FROM `goals` AS g INNER JOIN `goal-timers` AS t ON g.id = t.id WHERE g.id = $id";
 
 $result = mysqli_query($conn, $query);
 

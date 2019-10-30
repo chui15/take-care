@@ -9,11 +9,14 @@ class GoalDetails extends React.Component {
       name: null,
       date: null,
       description: null,
-      progress: ''
+      progress: '',
+      timerTime: null
     };
     this.handleProgressChange = this.handleProgressChange.bind(this);
     this.getGoalDetails = this.getGoalDetails.bind(this);
+    this.millisToMinutesAndSeconds = this.millisToMinutesAndSeconds.bind(this)
   }
+
 
   componentDidMount(){
     const goalId = this.props.match.params.goal_id;
@@ -26,16 +29,29 @@ class GoalDetails extends React.Component {
     });
   }
 
+
+  millisToMinutesAndSeconds(millis) {
+    var minutes = Math.floor(millis / 60000);
+    var seconds = ((millis % 60000) / 1000).toFixed(0);
+    return minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
+  }
+
   getGoalDetails(goalid) {
     fetch(`/api/goals_detail.php?goal_id=${goalid}`)
       .then(res => res.json())
+      .then(function (responseObject) {
+        console.log('Rquested object', responseObject);
+        return responseObject;
+      })
       .then(data => {
         const date = new Date(data.created);
+        const time = this.millisToMinutesAndSeconds(data.timerTime);
         this.setState({
           name: data.title,
           date: date.toLocaleDateString(),
           description: data.description,
-          progress: data.progress
+          progress: data.progress,
+          timerTime: time
         })
       })
       .catch(err => { console.log('There was an error:', err) });
@@ -71,7 +87,7 @@ class GoalDetails extends React.Component {
         </div>
         <div className="row justify-content-center">
           <div className="col-10 goal-detail-info">
-            <span className="goal-header-content">{this.state.date}</span>
+            <span className="goal-header-content">{this.state.timerTime}</span>
           </div>
         </div>
         <div className="row">
