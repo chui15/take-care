@@ -9,7 +9,8 @@ class TimerScreen extends React.Component {
       timerOn: false,
       timerStart: 0,
       timerTime: 0,
-      userName: ''
+      userName: '',
+      goalTitle: ''
     };
     this.handleClick = this.handleClick.bind(this);
     this.startTimer = this.startTimer.bind(this);
@@ -23,16 +24,20 @@ class TimerScreen extends React.Component {
 
     fetch('/api/get_goal_time.php', {
       method: 'POST',
-      body: JSON.stringify({goalId: this.props.match.params.goal_id})
+      body: JSON.stringify({
+        goalId: this.props.match.params.goal_id
+      })
     })
     .then(res => res.json())
     .then(data => {
+      console.log('Get Timer data:', data);
       if(data.error){
         throw new Error(data.error[0]);
       }
 
       this.setState({
-        timerTime: data.timerTime
+        timerTime: data.timerTime,
+        goalTitle: data.title
       });
     })
     .catch(error => {
@@ -101,11 +106,17 @@ class TimerScreen extends React.Component {
 
   render() {
     let user = this.props.userName;
-
+    var goal1 = "goal test";
     let timerTime = this.state.timerTime;
     let seconds = ("0" + (Math.floor(timerTime / 1000) % 60)).slice(-2);
     let minutes = ("0" + (Math.floor(timerTime / 60000) % 60)).slice(-2);
     let hours = ("0" + Math.floor(timerTime / 3600000)).slice(-2);
+    let goalTitleClass = "";
+    if (this.state.goalTitle !=='') {
+      goalTitleClass = "timer-goal-message-container align-items-start";
+    } else {
+      goalTitleClass = "no-goals-hidden";
+    }
 
     return (
       <div className="timer-screen">
@@ -145,6 +156,9 @@ class TimerScreen extends React.Component {
           </div>
         </div>
         <div className="row justify-content-center">
+          <div className={goalTitleClass}>
+          <div className="goal-div">Timer is set to the following goal: <h4 className="goal-timer">{this.state.goalTitle}</h4></div>
+          </div>
           <div className="timer-message-container align-items-start">
             <span className="water-reminder">Hey {user}, did you remember to drink water and stretch?</span>
             <span className="water-reminder">~~旦_(-ω-｀｡)</span>
