@@ -6,12 +6,10 @@ import IntroScreen from './intro-screen';
 import HomeScreen from './home-screen';
 import GoalsList from './goals-list';
 import GoalDetails from './goal-details';
-import EditGoal from './edit-goal';
 import Garden from './garden';
 import GardenModal from './garden-item-modal';
 import TimerScreen from './timer-main';
 import AddGoal from './add-goal';
-import PlantDetails from "./plant-details";
 
 class App extends React.Component {
   constructor(props){
@@ -27,11 +25,10 @@ class App extends React.Component {
   }
 
   componentDidMount(){
-    this.getUserName();
     this.is_Mounted = true;
   }
 
-  componentWillUnmont(){
+  componentWillUnmount(){
     this.is_Mounted = false;
   }
 
@@ -39,10 +36,12 @@ class App extends React.Component {
     fetch('/api/get_username.php')
       .then(res => res.json())
       .then(data => {
-        this.setState({
+        if(this.is_Mounted){
+          this.setState({
           userName: data[0]['name']
-        });
-      })
+        })
+      }
+    })
       .catch(err => console.error('fetch failed'));
   }
 
@@ -67,6 +66,7 @@ class App extends React.Component {
         }, () => {
           this.props.history.push('/dashboard');
         });
+        this.getUserName();
       }).catch(err => { console.log('There was an error:', err) });
   }
 

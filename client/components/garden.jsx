@@ -21,7 +21,6 @@ class Garden extends React.Component {
     this.updatePlantClass = this.updatePlantClass.bind(this);
     this.handleTap = this.handleTap.bind(this);
     this.resetGarden = this.resetGarden.bind(this);
-    this.cancelRequest = this.cancelRequest.bind(this);
   }
 
   getGrids(){
@@ -85,14 +84,7 @@ class Garden extends React.Component {
     return this.state.plantClass;
   }
 
-  cancelRequest() {
-    const controller = new AbortController();
-    const signal = controller.signal;
-    controller.abort();
-  }
-
   componentWillUnmount() {
-    this.cancelRequest();
     this._isMounted = false;
   }
 

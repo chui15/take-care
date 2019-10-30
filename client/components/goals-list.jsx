@@ -15,17 +15,18 @@ class GoalsList extends React.Component {
     this._isMounted = false;
     this.getGoals = this.getGoals.bind(this);
     this.handleSearch = this.handleSearch.bind(this);
-    this.cancelRequest = this.cancelRequest.bind(this);
   }
 
   getGoals(){
     fetch('/api/goals_list.php')
       .then(res => res.json())
-      .then(data => this.setState({
-        goals: this.state.goals.concat(data),
-        filtered: this.state.filtered.concat(data)
-      })
-      )
+      .then(data => {
+        if(this._isMounted){
+          this.setState({
+            goals: this.state.goals.concat(data),
+            filtered: this.state.filtered.concat(data)
+        })
+      }})
       .catch(err => { console.log('There was an error:', err) });
   }
 
@@ -55,14 +56,7 @@ class GoalsList extends React.Component {
     });
   }
 
-  cancelRequest() {
-    const controller = new AbortController();
-    const signal = controller.signal;
-    controller.abort();
-  }
-
   componentWillUnmount() {
-    this.cancelRequest();
     this._isMounted = false;
   }
 
@@ -79,7 +73,7 @@ class GoalsList extends React.Component {
     const listItems = filteredGoals.map(goal => {
       return (
         <GoalsListItem key={goal.id}
-          goal={goal} />
+          goal={goal} userName={this.props.userName}/>
       );
     })
     let initialClass = '';
