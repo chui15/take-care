@@ -20,16 +20,13 @@ if(isset($data['time'])){
 } else {
   $errors[] = 'No time provided';
 }
+
 if (isset($data['goalId'])) {
   $goalId = $data['goalId'];
 } else {
   $errors[] = 'No goalId provided';
 }
-// if (isset($data['userId'])) {
-//   $userId = $data['user-id'];
-// } else {
-//   $errors[] = 'No goalId provided';
-// }
+
 if(count($errors)){
   http_response_code(422);
   json_encode(['error' => $errors]);

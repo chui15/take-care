@@ -19,6 +19,8 @@ class TimerScreen extends React.Component {
   }
 
   componentDidMount(){
+    this._isMounted = true;
+
     fetch('/api/get_goal_time.php', {
       method: 'POST',
       body: JSON.stringify({goalId: this.props.match.params.goal_id})
@@ -75,8 +77,8 @@ class TimerScreen extends React.Component {
     fetch('/api/save-time.php', { method: 'POST', body: JSON.stringify(object2), headers: { 'Content-Type': 'application/json' } })
       .catch(err => console.error('Fetch failed!', err));
   }
-  
-  saveTime(time){
+
+  saveTime(time) {
     const goalId = this.props.match.params.goal_id;
     let object = {
       time,
@@ -91,10 +93,6 @@ class TimerScreen extends React.Component {
       timerStart: 0,
       timerTime: 0,
     }, () => this.stopTimer());
-  }
-    
-  componentDidMount() {
-    this._isMounted = true;
   }
 
   componentWillUnmount() {
