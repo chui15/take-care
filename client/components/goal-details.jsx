@@ -66,6 +66,16 @@ class GoalDetails extends React.Component {
         </div>
         <div className="row">
           <div className="col align-self-start">
+            <span className="input-title">Time on Goal :</span>
+          </div>
+        </div>
+        <div className="row justify-content-center">
+          <div className="col-10 goal-detail-info">
+            <span className="goal-header-content">{this.state.date}</span>
+          </div>
+        </div>
+        <div className="row">
+          <div className="col align-self-start">
             <span className="input-title">Dated Created :</span>
           </div>
         </div>
