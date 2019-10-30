@@ -30,12 +30,12 @@ $output = [
   'timerTime' => 0
 ];
 
-$query = "SELECT timerTime FROM `goal-timers` WHERE `goal-id`=$goalId AND `user-id`=$userId";
+$query = "SELECT gt.timerTime, g.title FROM `goal-timers` AS gt JOIN goals AS g ON g.id=gt.`goal-id` WHERE gt.`goal-id`=$goalId AND gt.`user-id`=$userId";
 
 $result = mysqli_query($conn, $query);
 
 if(mysqli_num_rows($result) > 0){
-  $output['timerTime'] = (int) mysqli_fetch_assoc($result)['timerTime'];
+  $output = mysqli_fetch_assoc($result);
 } else {
   $addQuery = "INSERT INTO `goal-timers` (`goal-id`, `user-id`, `timerTime`) VALUES ($goalId, $userId, 0)";
   $addResult = mysqli_query($conn, $addQuery);
