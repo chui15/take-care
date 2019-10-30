@@ -23,8 +23,8 @@ class Garden extends React.Component {
     this.resetGarden = this.resetGarden.bind(this);
   }
 
-  getGrids(){
-    fetch('/api/garden_items.php?garden_id=1')
+  getGrids(gardenID){
+    fetch(`/api/garden_items.php?garden_id=${gardenID}`)
       .then(res => res.json())
       .then(data => this.setState({
         plantGrids: this.state.plantGrids.concat(data)
@@ -34,8 +34,9 @@ class Garden extends React.Component {
   }
 
   componentDidMount(){
-    this.getGrids();
     this._isMounted = true;
+    const gardenID = this.props.match.params.garden_id;
+    this.getGrids(gardenID);
   }
 
   handleGridClick(value){

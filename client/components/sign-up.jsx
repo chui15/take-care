@@ -47,53 +47,59 @@ class SignUpScreen extends React.Component {
   handleKeyPress(event) {
     if (event.key === 'Enter') {
       this.handleSubmit(event);
+      setTimeout(() => {
+        this.props.history.push('/');
+      }, 3000);
     }
-    setTimeout(()=>{
-      this.props.history.push('/');
-    }, 3000);
   }
 
   newGarden() {
-    fetch('/api/new_garden.php')
-      .catch(err => console.error('fetch failed'));
+    if(this._isMounted) {
+      fetch('/api/new_garden.php')
+        .catch(err => console.error('fetch failed'));
+      }
   }
 
   handleSubmit(event) {
     event.preventDefault();
-    if (this.state.userName === '' || this.state.email === '' || this.state.password === ''){
-      this.setState({
-        fieldsCheck: 'Fields can\'t be empty (◕︿◕✿)'
-      });
-      setTimeout(() => {
+    if(this._isMounted) {
+        if (this.state.userName === '' || this.state.email === '' || this.state.password === ''){
         this.setState({
-          fieldsCheck: ''
+          fieldsCheck: 'Fields can\'t be empty (◕︿◕✿)'
         });
-      }, 3000);
-    } else {
-      let newUser = {
-        user: this.state.userName,
-        email: this.state.email,
-        password: this.state.password
-      };
-      this.addUser(newUser);
-      // this.newGarden();
-      this.setState({
-        userName: '',
-        email: '',
-        password: '',
-        confirmation: 'Account successfully created (つ▀¯▀)つ'
-      });
-      setTimeout(() => {
+        setTimeout(() => {
+          this.setState({
+            fieldsCheck: ''
+          });
+        }, 3000);
+      } else {
+        let newUser = {
+          user: this.state.userName,
+          email: this.state.email,
+          password: this.state.password
+        };
+        this.addUser(newUser);
+        this.newGarden();
         this.setState({
-          confirmation: ''
+          userName: '',
+          email: '',
+          password: '',
+          confirmation: 'Account successfully created (つ▀¯▀)つ'
         });
-      }, 3000);
+        setTimeout(() => {
+          this.setState({
+            confirmation: ''
+          });
+        }, 3000);
+      }
     }
   }
 
   addUser(user) {
-    fetch('/api/new_user.php', { method: 'POST', body: JSON.stringify(user), headers: { 'Content-Type': 'application/json' } })
-      .catch(err => console.error('fetch failed'));
+    if(this._isMounted){
+        fetch('/api/new_user.php', { method: 'POST', body: JSON.stringify(user), headers: { 'Content-Type': 'application/json' } })
+          .catch(err => console.error('fetch failed'));
+    }
   }
 
   componentWillUnmount() {
