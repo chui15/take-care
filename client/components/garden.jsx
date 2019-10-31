@@ -38,6 +38,16 @@ class Garden extends React.Component {
     this._isMounted = true;
     const gardenID = this.props.match.params.garden_id;
     this.getGrids(gardenID);
+    if (this._isMounted) {
+      fetch('/api/plants_available.php')
+        .then(res => res.json())
+        .then(data => {
+          let plantsAvailable = Number.parseInt(data[0]['plants_available']);
+          this.setState({
+            plantsAvailable: plantsAvailable
+          });
+        });
+    }
   }
 
   handleGridClick(value){
@@ -52,7 +62,7 @@ class Garden extends React.Component {
   }
 
   resetGarden(){
-    fetch('/api/reset_garden.php?garden_id=1')
+    fetch(`/api/reset_garden.php?garden_id=${this.props.gardenID}`)
     .then(() => {
       this.setState({
         plantGrids: []
@@ -61,20 +71,10 @@ class Garden extends React.Component {
   }
 
   handleTap(){
-    if(this._isMounted){
-      fetch('/api/plants_available.php')
-        .then(res => res.json())
-        .then(data => {
-          let plantsAvailable = Number.parseInt(data[0]['plants_available']);
-          this.setState({
-            plantsAvailable: plantsAvailable
-          });
-        });
-      if(this.state.plantsAvailable !== 0){
-        this.setState({
-          plantMessageClicked: true
-        });
-      }
+    if(this.state.plantsAvailable !== 0){
+      this.setState({
+        plantMessageClicked: true
+      });
     }
   }
 
@@ -102,7 +102,7 @@ class Garden extends React.Component {
     let user = this.props.userName;
     let modalShow;
     if(this.state.plantMessageClicked !== false){
-      modalShow = <GardenModal getPlantClass={this.getPlantClass} userName={user}/>;
+      modalShow = <GardenModal getPlantClass={this.getPlantClass} userName={user} plantModal={this.state.plantMessageClicked}/>;
     } else {
       modalShow = null;
     }

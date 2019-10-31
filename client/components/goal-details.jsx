@@ -40,7 +40,6 @@ class GoalDetails extends React.Component {
     fetch(`/api/goals_detail.php?goal_id=${goalid}`)
       .then(res => res.json())
       .then(data => {
-        console.log(data)
         const date = new Date(data.created);
         const time = this.millisToMinutesAndSeconds(data.timerTime)
         this.setState({
