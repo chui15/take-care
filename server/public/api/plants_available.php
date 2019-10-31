@@ -1,7 +1,15 @@
 <?php
 require_once('start-app.php');
 
-$query = "SELECT * FROM `plants`";
+if (isset($_SESSION['id'])) {
+  $userID = $_SESSION['id'];
+} else {
+  http_response_code(401);
+  print('unauthorized');
+  exit;
+}
+
+$query = "SELECT `plants_available` FROM `garden` WHERE `user-id` = $userID";
 
 $result = mysqli_query($conn, $query);
 

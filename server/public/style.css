@@ -333,7 +333,7 @@ body {
     opacity: 0.95;
 }
 .timer-goal-message-container {
-    height: 130px;
+    height: 50px;
     width: 300px;
     background-color: white;
     border-radius: 20px;
@@ -344,6 +344,7 @@ body {
 }
 
 .goal-div {
+    font-family: 'Livvic', serif;
     text-align: center;
 }
 
