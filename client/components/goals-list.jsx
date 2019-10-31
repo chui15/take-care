@@ -40,7 +40,6 @@ class GoalsList extends React.Component {
       }
       return true;
     });
-    console.log(copy);
     fetch('/api/goal_delete.php', { method: 'DELETE', body: JSON.stringify(goalID), headers: { 'Content-Type': 'application/json' } })
       .then(this.setState({goals: copy, filtered: copy}))
       .catch (err => { console.log('There was an error:', err) });
