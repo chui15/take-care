@@ -6,7 +6,7 @@ class GardenModal extends React.Component {
     super(props);
     this.state = {
       isClicked: true,
-      plantModal: true
+      plantModal: this.props.plantModal
     };
     this.close = this.close.bind(this);
     this.handleAloe = this.handleAloe.bind(this);

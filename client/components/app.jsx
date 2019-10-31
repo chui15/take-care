@@ -96,7 +96,7 @@ class App extends React.Component {
     const { auth } = this.state;
 
     return (
-      <div className="">
+      <div>
         <Switch>
           <Route path="/" exact>
             <IntroScreen logIn={this.logIn}/>
@@ -110,13 +110,14 @@ class App extends React.Component {
           <Route path="/goals" exact>
             <Auth auth={auth} redirect="/" component={GoalsList} userName={this.state.userName} gardenID={this.state.gardenID}/>
           </Route>
-          <Route path="/goals/details"></Route>
-          <Route path="/goals/:goal_id/details" component={GoalDetails}/>
+          <Route path="/goals/:goal_id/details">
+            <Auth auth={auth} redirect="/" component={GoalDetails} />
+          </Route>
           <Route path="/goals/add">
             <Auth auth={auth} redirect="/" component={AddGoal}/>
           </Route>
           <Route path="/garden/:garden_id">
-            <Auth auth={auth} redirect="/" component={Garden} userName={this.state.userName}/>
+            <Auth auth={auth} redirect="/" component={Garden} userName={this.state.userName} gardenID={this.state.gardenID}/>
           </Route>
           <Route exact path="/timer">
             <Auth auth={auth} redirect="/" component={TimerScreen} userName={this.state.userName} />
