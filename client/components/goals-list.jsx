@@ -15,6 +15,7 @@ class GoalsList extends React.Component {
     this._isMounted = false;
     this.getGoals = this.getGoals.bind(this);
     this.handleSearch = this.handleSearch.bind(this);
+    this.deleteGoal = this.deleteGoal.bind(this);
   }
 
   getGoals(){
@@ -30,9 +31,27 @@ class GoalsList extends React.Component {
       .catch(err => { console.log('There was an error:', err) });
   }
 
+  deleteGoal(goalID) {
+    let updatedGoals = {};
+    let copy = this.state.goals.filter(goal => {
+      const copyGoals = Object.assign({}, goal);
+      if (copyGoals.id == goalID) {
+        return false;
+      }
+      return true;
+    });
+    console.log(copy);
+    fetch('/api/goal_delete.php', { method: 'DELETE', body: JSON.stringify(goalID), headers: { 'Content-Type': 'application/json' } })
+      .then(this.setState({goals: copy, filtered: copy}))
+      .catch (err => { console.log('There was an error:', err) });
+  }
+
+
   componentDidMount(){
-    this.getGoals();
     this._isMounted = true;
+    if(this._isMounted){
+      this.getGoals();
+    }
   }
 
   handleSearch(event) {
@@ -75,9 +94,9 @@ class GoalsList extends React.Component {
     const listItems = filteredGoals.map(goal => {
       return (
         <GoalsListItem key={goal.id}
-          goal={goal} userName={this.props.userName} gardenID={gardenID}/>
+          goal={goal} userName={this.props.userName} gardenID={gardenID} deleteGoal={this.deleteGoal}/>
       );
-    })
+    });
     let initialClass = '';
     if (this.state.goals.length === 0){
       initialClass = 'col-8 no-goals';

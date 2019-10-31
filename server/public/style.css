@@ -359,7 +359,7 @@ body {
 }
 
 .goals-item, .goals-item-completed {
-    height: 125px;
+    height: 130px;
     width: 300px;
     background-color: white;
     border-radius: 10px;
@@ -709,4 +709,12 @@ p.progress {
 
 .new-user-check {
     color: white;
+}
+
+.closeX{
+    position: absolute;
+    width: 32px;
+    right: -10px;
+    top: 1px;
+    color: red;
 }
