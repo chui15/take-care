@@ -84,6 +84,7 @@ class GoalsListItem extends React.Component {
     return (
       <div className="row justify-content-center">
           <div className={initialClass}>
+          <span className="closeX" onClick={() => {this.props.deleteGoal(goalID)}}>x</span>
           <div className="goal-plant-empty"></div>
           <div className="goal-plant-full"></div>
             <div className="row justify-content-center">
