@@ -30,7 +30,6 @@ class TimerScreen extends React.Component {
     })
     .then(res => res.json())
     .then(data => {
-      console.log('Get Timer data:', data);
       if(data.error){
         throw new Error(data.error[0]);
       }
