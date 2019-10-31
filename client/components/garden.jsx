@@ -12,7 +12,8 @@ class Garden extends React.Component {
       plantClass: '',
       plantGrids: [],
       plantMessageClicked: false,
-      userName: ''
+      userName: '',
+      plantsAvailable: ''
     };
     this._isMounted = false;
     this.getPlantClass = this.getPlantClass.bind(this);
@@ -60,14 +61,21 @@ class Garden extends React.Component {
   }
 
   handleTap(){
-    this.setState({
-      plantMessageClicked: true
-    });
-    setTimeout(() => {
-      this.setState({
-        plantMessageClicked: false
-      });
-    }, 6000);
+    if(this._isMounted){
+      fetch('/api/plants_available.php')
+        .then(res => res.json())
+        .then(data => {
+          let plantsAvailable = Number.parseInt(data[0]['plants_available']);
+          this.setState({
+            plantsAvailable: plantsAvailable
+          });
+        });
+      if(this.state.plantsAvailable !== 0){
+        this.setState({
+          plantMessageClicked: true
+        });
+      }
+    }
   }
 
   getPlantClass(plantClassName){
@@ -94,7 +102,7 @@ class Garden extends React.Component {
     let user = this.props.userName;
     let modalShow;
     if(this.state.plantMessageClicked !== false){
-      modalShow = <GardenModal getPlantClass={this.getPlantClass} />;
+      modalShow = <GardenModal getPlantClass={this.getPlantClass} userName={user}/>;
     } else {
       modalShow = null;
     }

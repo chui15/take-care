@@ -30,7 +30,6 @@ class TimerScreen extends React.Component {
     })
     .then(res => res.json())
     .then(data => {
-      console.log('Get Timer data:', data);
       if(data.error){
         throw new Error(data.error[0]);
       }
@@ -63,7 +62,6 @@ class TimerScreen extends React.Component {
         timerTime: Date.now() - this.state.timerStart
       });
     }, 1000);
-    // this.createNewTimer();
   }
 
   stopTimer() {
@@ -74,22 +72,23 @@ class TimerScreen extends React.Component {
 
     this.saveTime(this.state.timerTime);
   }
+
   createNewTimer() {
     const goalId = this.props.match.params.goal_id;
-    let object2 = {
+    let timeObject = {
       goalId
     };
-    fetch('/api/save-time.php', { method: 'POST', body: JSON.stringify(object2), headers: { 'Content-Type': 'application/json' } })
+    fetch('/api/save-time.php', { method: 'POST', body: JSON.stringify(timeObject), headers: { 'Content-Type': 'application/json' } })
       .catch(err => console.error('Fetch failed!', err));
   }
 
   saveTime(time) {
     const goalId = this.props.match.params.goal_id;
-    let object = {
+    let timeObject = {
       time,
       goalId
     };
-    fetch('/api/save-time.php', { method: 'POST', body: JSON.stringify(object), headers: { 'Content-Type' : 'application/json' }})
+    fetch('/api/save-time.php', { method: 'POST', body: JSON.stringify(timeObject), headers: { 'Content-Type' : 'application/json' }})
     .catch(err => console.error('Fetch failed!', err));
   }
 
@@ -112,7 +111,7 @@ class TimerScreen extends React.Component {
     let minutes = ("0" + (Math.floor(timerTime / 60000) % 60)).slice(-2);
     let hours = ("0" + Math.floor(timerTime / 3600000)).slice(-2);
     let goalTitleClass = "";
-    if (this.state.goalTitle !=='') {
+    if (this.state.goalTitle !== '') {
       goalTitleClass = "timer-goal-message-container align-items-start";
     } else {
       goalTitleClass = "no-goals-hidden";
@@ -156,9 +155,9 @@ class TimerScreen extends React.Component {
           </div>
         </div>
         <div className="row justify-content-center">
-          <div className={goalTitleClass}>
-          <div className="goal-div">Timer is set to the following goal: <h4 className="goal-timer">{this.state.goalTitle}</h4></div>
-          </div>
+          {/* <div className={goalTitleClass}>
+            <div className="goal-div">Timer is set to the following goal: <h5 className="goal-timer">{this.state.goalTitle}</h5>
+          </div> */}
           <div className="timer-message-container align-items-start">
             <span className="water-reminder">Hey {user}, did you remember to drink water and stretch?</span>
             <span className="water-reminder">~~旦_(-ω-｀｡)</span>

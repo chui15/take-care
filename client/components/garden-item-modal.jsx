@@ -58,7 +58,7 @@ class GardenModal extends React.Component {
   }
 
   render() {
-    let user = localStorage.getItem('UserName');
+    let user = this.props.userName;
     let showModal = this.state.plantModal ? 'modal-plant-item' : 'hidden';
     return (
       <div className={showModal} >

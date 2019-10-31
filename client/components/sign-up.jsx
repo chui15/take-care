@@ -49,7 +49,7 @@ class SignUpScreen extends React.Component {
       this.handleSubmit(event);
       setTimeout(() => {
         this.props.history.push('/');
-      }, 3000);
+      }, 2000);
     }
   }
 
