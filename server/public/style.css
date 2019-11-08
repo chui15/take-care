@@ -1,0 +1,720 @@
+html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    overflow-x: hidden;
+}
+
+body {
+    background-color: whitesmoke;
+}
+
+.title-screen {
+    background-image: url('./images/introscreen.png');
+    background-size: cover;
+    height: 813px;
+    opacity: 0.95;
+}
+
+.home-screen, .garden-screen, .plant-details-screen, .signup-screen {
+    height: 100%;
+    width: 100%;
+    background-image: linear-gradient(-130deg, white, rgb(107, 194, 107));
+}
+
+.garden-screen, .signup-screen {
+    height: 850px;
+}
+
+.home-screen {
+    height: 365px;
+}
+
+.add-goal-screen, .goal-details-screen {
+    height: 900px;
+    background-image: linear-gradient(-130deg, white, rgb(179, 127, 179));
+}
+
+.goals-screen {
+    height: 260px;
+    width: 100%;
+    background-image: linear-gradient(-130deg, white, rgb(179, 127, 179));
+}
+
+.timer-screen {
+    height: 300px;
+    width: 100%;
+    background-image: linear-gradient(-130deg, white, rgb(110, 196, 224));
+}
+
+.bulbasaur-home {
+    background-image: url('./images/bulbasaur.png');
+    background-size: cover;
+    height: 300px;
+    width: 80px;
+    justify-content: center;
+}
+
+.intro-message-container {
+    height: 40px;
+    background-color: white;
+    border-radius: 25px;
+    margin-top: 30px;
+    box-shadow: 0px 0px 2px gray;
+    border: 2px solid rgb(146, 144, 144);
+    opacity: 0.95;
+    text-align: center;
+}
+
+.intro-message {
+    font-family: 'Livvic', serif;
+    font-size: 19px;
+}
+
+.home-message {
+    font-family: 'Livvic', serif;
+    vertical-align: center;
+    font-size: 18px;
+    padding: 2px;
+}
+
+.button, .header, .intro-button {
+    font-family: 'Livvic', serif;
+    height: 65px;
+    background-color: white;
+    border-radius: 25px;
+    margin-top: 75px;
+    font-size: 35px;
+    text-align: center;
+    box-shadow: 0px 0px 2px gray;
+    border: 2px solid rgb(146, 144, 144);
+    opacity: 0.95;
+}
+
+.intro-button {
+    margin-top: 40px;
+}
+
+.goal-input, .description-input, .search-input, .initial-input {
+    font-family: 'Livvic', serif;
+    height: 50px;
+    background-color: white;
+    border-radius: 25px;
+    font-size: 20px;
+    text-align: left;
+    box-shadow: 0px 0px 2px gray;
+    border: 2px solid rgb(146, 144, 144);
+    opacity: 0.95;
+    margin-left: 5px;
+}
+
+.initial-input {
+    margin-top: 20px;
+}
+
+.search-input {
+    margin-top: 25px;
+}
+
+.description-input {
+    height: 80px;
+    padding-top:0;
+    padding-bottom:0.4em;
+    padding-right: 0.4em;
+    text-align: left;
+}
+
+.intro-click {
+    font-family: 'Livvic', serif;
+    font-size: 23px;
+    color: black;
+    text-align: left;
+}
+
+.goal-click {
+    font-family: 'Livvic', serif;
+    font-size: 20px;
+    color: black;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.header {
+    height: 75px;
+    font-size: 30px;
+    vertical-align: center;
+    padding: 10px;
+    margin-top: 25px;
+    border-radius: 25px;
+}
+
+.garden-header-content, .goal-header-content {
+    font-size: 20px;
+}
+
+
+.timer-header-content {
+    font-size: 20px;
+}
+
+.button-home-timer {
+    font-family: 'Livvic', serif;
+    height: 65px;
+    background-color: white;
+    border-radius: 25px;
+    margin-top: 50px;
+    font-size: 30px;
+    text-align: center;
+    box-shadow: 0px 0px 2px gray;
+    border: 2px solid rgb(146, 144, 144);
+    opacity: 0.95;
+    padding: 5px;
+}
+
+.home-buttons-container {
+    padding: 8px;
+}
+
+.home-row {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+}
+
+.button-home {
+    flex-basis: 44%;
+    position: relative;
+    padding: 20px;
+    box-sizing: border-box;
+    height: 190px;
+    margin-right: 10px;
+    margin-left: 10px;
+    margin-bottom: 35px;
+    border-radius: 8px;
+    background-color: white;
+    box-shadow: 0px 0px 2px gray;
+}
+
+.home-message-container {
+    height: 100px;
+    width: 185px;
+    background-color: white;
+    border-radius: 20px;
+    margin-top: 50px;
+    box-shadow: 0px 0px 2px gray;
+    border: 2px solid rgb(146, 144, 144);
+    opacity: 0.95;
+}
+
+.button-home-image {
+    vertical-align: center;
+    height: 68%;
+    width: 100%
+}
+
+.button-home-image-garden {
+    vertical-align: center;
+    height: 73%;
+    width: 100%;
+}
+
+.home-image {
+    background-image: url('./images/bulbasaur-home.png');
+    background-size: contain;
+    height: 170px;
+    width: 190px;
+}
+
+.return-home, .log-out {
+    color: black;
+    font-size: 25px;
+    padding: 12px;
+    font-family: 'Livvic', serif;
+}
+
+.log-out {
+    font-size: 20px;
+    padding: 5px;
+    text-align: center;
+}
+
+.return-home-button, .log-out-button {
+    height: 100x;
+    width: 95px;
+    background-color: white;
+    border-radius: 10px;
+    margin-top: 25px;
+    margin-left: 35px;
+    box-shadow: 0px 0px 2px gray;
+    border: 2px solid rgb(146, 144, 144);
+}
+
+.log-out-button {
+    width: 100px;
+    text-align: center;
+}
+
+.timer-container {
+    height: 120px;
+    width: 350px;
+    background-color: white;
+    border-radius: 20px;
+    margin-top: 60px;
+    box-shadow: 0px 0px 2px gray;
+    border: 2px solid green;
+}
+
+.button-start-timer, .button-reset-timer, .goals-button, .stop-timer {
+    font-family: 'Livvic', serif;
+    height: 65px;
+    background-color: white;
+    border-radius: 25px;
+    font-size: 30px;
+    padding: 6px;
+    margin: 5px;
+    margin-top: 50px;
+    text-align: center;
+    box-shadow: 0px 0px 2px gray;
+    border: 2px solid rgb(205, 148, 243);
+    opacity: 0.95;
+    width: 150px;
+}
+
+.button-start-timer {
+    color: green;
+    border: 2px solid green;
+}
+
+.stop-timer {
+    color: red;
+    border: 2px solid red;
+}
+
+.goals-button {
+    margin-top: 35px;
+}
+
+.no-goals {
+    height: 250px;
+    width: 150px;
+    background-color: white;
+    border-radius: 20px;
+    margin-top: 40px;
+    box-shadow: 0px 0px 2px gray;
+    border: 2px solid rgb(146, 144, 144);
+}
+
+.no-goals-hidden {
+    height: 250px;
+    width: 150px;
+    background-color: white;
+    border-radius: 20px;
+    margin-top: 40px;
+    box-shadow: 0px 0px 2px gray;
+    border: 2px solid rgb(146, 144, 144);
+    display: none;
+}
+
+.no-goals-content {
+    font-family: 'Livvic', 'serif';
+    font-size: 20px;
+    vertical-align: center;
+}
+
+.timer-message-container {
+    height: 130px;
+    width: 300px;
+    background-color: white;
+    border-radius: 20px;
+    margin-top: 40px;
+    box-shadow: 0px 0px 2px gray;
+    border: 2px solid rgb(146, 144, 144);
+    opacity: 0.95;
+}
+.timer-goal-message-container {
+    height: 50px;
+    width: 300px;
+    background-color: white;
+    border-radius: 20px;
+    margin-top: 40px;
+    box-shadow: 0px 0px 2px gray;
+    border: 2px solid rgb(146, 144, 144);
+    opacity: 0.95;
+}
+
+.goal-div {
+    font-family: 'Livvic', serif;
+    text-align: center;
+}
+
+.goals-container {
+    height: 600px;
+    width: 370px;
+    border-radius: 5px;
+    margin-top: 50px;
+    margin-left: 25px;
+    opacity: 0.95;
+    justify-content: center;
+}
+
+.goals-item, .goals-item-completed {
+    height: 130px;
+    width: 300px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 0px 2px gray;
+    border: 2px solid rgb(146, 144, 144);
+    margin-top: 30px;
+    padding: 10px;
+}
+
+.goals-item-completed {
+    box-shadow: 0px 0px 2px gray;
+    border: 2px solid lightgreen;
+    opacity: 0.8;
+}
+
+p.goal {
+    width: 100%;
+    font-size: 20px;
+    font-family: 'Livvic', serif;
+    justify-content: center;
+    text-align: center;
+}
+
+.water-reminder {
+    font-size: 17px;
+    font-family: 'Livvic', serif;
+    display: block;
+    text-align: center;
+    padding: 4px;
+    margin-bottom: 0px;
+}
+
+.timer-display {
+    font-family: 'Livvic', serif;
+    font-size: 75px;
+    vertical-align: center;
+}
+
+.input-title {
+    font-family: 'Livvic', serif;
+    font-size: 20px;
+    display: block;
+    margin: 10px;
+}
+
+
+.slidecontainer {
+    top: 0px;
+    height: 10px;
+    width: 100%;
+}
+
+.slider {
+    -webkit-appearance: none;
+    width: 70%;
+    height: 2px;
+    margin-left: 40px;
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+}
+
+.slider:hover {
+    opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    border-radius: 20px;
+    cursor: pointer;
+    background-size: cover;
+    height: 40px;
+    width: 40px;
+    margin-bottom: 20px;
+    justify-content: center;
+    background-image: url('./images/bulbasaur-home.png');
+}
+
+.goal-timer {
+    padding-top: 3px;
+    text-align: center;
+}
+
+.goal-plant-empty{
+    background-size: cover;
+    height: 45px;
+    width: 45px;
+    position: absolute;
+    left: 0px;
+    bottom: 20px;
+    margin: 10px;
+    justify-content: center;
+    background-image: url('./images/ball-cactus.png');
+}
+
+.goal-plant-full{
+    background-size: cover;
+    height: 45px;
+    width: 42px;
+    position: absolute;
+    right: 15px;
+    bottom: 30px;
+    justify-content: center;
+    background-image: url('./images/aloe-plant.png');
+
+}
+
+p.progress {
+    background-color: white;
+    font-family: 'Livvic', serif;
+    font-size: 20px;
+    height: 28px;
+    justify-content: center;
+}
+
+.goal-detail-info, .goal-description {
+    font-family: 'Livvic', serif;
+    height: 35px;
+    background-color: white;
+    border-radius: 25px;
+    font-size:15px;
+    text-align: left;
+    box-shadow: 0px 0px 2px gray;
+    border: 2px solid rgb(146, 144, 144);
+    opacity: 0.95;
+}
+
+.goal-description {
+    height: 120px;
+    font-size: 23px;
+}
+
+.garden-container {
+    background-image: url('./images/garden-backround.png');
+    background-size: cover;
+    height: 350px;
+    width: 350px;
+    margin: 10px;
+}
+
+.grid-container {
+    margin-top: 44px;
+    margin-left: 34px;
+    height: 268px;
+    width: 280px;
+}
+
+.garden-row {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+}
+
+.clear-garden {
+    font-family: 'Livvic', serif;
+    font-size: 22px;
+    text-align: center;
+}
+
+.clear-garden-button {
+    height: 42px;
+    background-color: white;
+    border-radius: 10px;
+    margin-top: 25px;
+    margin-left: 75px;
+    box-shadow: 0px 0px 2px gray;
+    border: 2px solid rgb(146, 144, 144);
+}
+
+.plant-item {
+    flex-basis: 24.2%;
+    position: relative;
+    padding: 10px;
+    box-sizing: border-box;
+    height: 65px;
+    margin: 1px;
+}
+
+.plant-item:hover {
+    cursor: pointer;
+}
+
+.succulent1, .succulent2, .succulent3, .succulent4, .succulent5 {
+    background-image: url('./images/aloe-plant.png');
+    background-size: cover;
+    height: 65px;
+    width: 22%;
+    margin-left: 3px;
+}
+
+.succulent2 {
+    background-image: url('./images/blueberry-bush.png');
+}
+
+.succulent3 {
+    background-image: url('./images/moon-cactus.png');
+}
+
+.succulent4 {
+    background-image: url('./images/ball-cactus.png');
+}
+
+.succulent5 {
+    background-image: url('./images/yellow-daffodil.png');
+}
+
+.plantImg {
+    background-image: url("./images/aloe-plant.png");
+    height: 200px;
+    width: 200px;
+    background-size: cover;
+    margin: auto;
+    margin-top: 100px;
+}
+.back-container .back-button{
+    padding: 15px;
+    font-size: 20px;
+}
+.info-container {
+    text-align: center;
+    margin-top: 30px;
+}
+.succulent-icon-container,.date-container,.goal-origin-container {
+    background-color: white;
+    margin: 50px;
+    margin-left: 75px;
+    margin-right: 75px;
+    font-size: 20px;
+    border: 3px solid black;
+    border-radius: 20px;
+}
+
+.modal-plant-item{
+    background-color: white;
+    width: 90%;
+    height: 20vh;
+    border-radius: 10px;
+    box-shadow: 0px 0px 2px gray;
+    border: 2px solid rgb(146, 144, 144);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+}
+
+.modal-goal-item {
+    background-color: white;
+    width: 90%;
+    height: 30vh;
+    border-radius: 10px;
+    box-shadow: 0px 0px 2px gray;
+    border: 2px solid rgb(180, 117, 223);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+}
+
+.goal-modal-title {
+    font-family: 'Livvic', serif;
+    font-size: 20px;
+}
+
+.highlight-plant:hover{
+    background-color: springgreen;
+
+}
+.goal-completed{
+    position: absolute;
+    z-index: 1;
+    width: 80%;
+    font-family: 'Livvic', serif;
+    background-color: white;
+    border-radius: 20px;
+    font-size: 25px;
+    text-align: center;
+    border: 2px solid green;
+    margin-top: 35px;
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 2s linear;
+}
+
+.fade {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s 5s, opacity 2s linear;
+}
+
+.hidden{
+    position: absolute;
+    visibility: hidden;
+}
+
+.garden-modal-title {
+    font-family: 'Livvic', serif;
+    font-size: 18px;
+}
+
+.button-place-plant, .button-cancel, .button-details {
+    font-family: 'Livvic', serif;
+    height: 40px;
+    background-color: white;
+    border-radius: 25px;
+    padding: 5px;
+    margin:15px;
+    text-align: center;
+    box-shadow: 0px 0px 2px gray;
+    opacity: 0.95;
+    width: 140px;
+}
+
+.button-details {
+    border: 2px solid rgb(146, 144, 144);
+}
+
+.button-cancel{
+    border: 2px solid crimson;
+    font-size: 20px;
+}
+
+.button-place-plant {
+    border: 2px solid lightgreen;
+}
+
+.garden-click {
+    text-align: center;
+    color: black;
+    font-size: 20px;
+}
+
+.goal-check, .field-check, .new-user-check {
+    font-family: 'Livvic', serif;
+    font-size: 16px;
+    display: inline-block;
+    color: red;
+    margin-left: 10px;
+}
+
+.field-check {
+    font-size: 20px;
+}
+
+.new-user-check {
+    color: white;
+}
+
+.closeX{
+    position: absolute;
+    width: 32px;
+    right: -10px;
+    top: 1px;
+    color: red;
+}
