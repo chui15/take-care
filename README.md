@@ -29,3 +29,26 @@ Try the application live at [https://takecare819.com]
 - User can view a personal "garden" representing the amount of goals/tasks completed.
 - User can plant a "succulent" in their garden upon completion of a goal/task.
 - User can clear the garden upon filling up the allotted spaces.
+
+## Development
+
+#### Getting Started
+
+1. Clone the repository.
+
+    ```shell
+    git clone https://github.com/chui15/take-care.git
+    cd take-care
+    ```
+
+1. Install all dependencies with NPM.
+
+    ```shell
+    npm install
+    ```
+
+1. Start the project. Once started you can view the application by opening http://localhost:3000 in your browser.
+
+    ```shell
+    npm run dev
+    ```
