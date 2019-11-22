@@ -18,6 +18,7 @@ It can be difficult to concentrate on tasks, especially when there are several t
 ## Live Demo
 
 Try the application live at [http://www.takecare819.com]
+*Note: this application is best viewed on mobile. If using desktop to view, this application is best viewed using Chrome's device tool bar set to an iPhone model (X, 6/7/8).
 
 ## Features
 
