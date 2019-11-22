@@ -17,7 +17,7 @@ It can be difficult to concentrate on tasks, especially when there are several t
 
 ## Live Demo
 
-Try the application live at [https://takecare819.com]
+Try the application live at [http://www.takecare819.com]
 
 ## Features
 
