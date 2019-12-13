@@ -32,23 +32,4 @@ Link to live user demo: https://drive.google.com/file/d/1qvHUz3sEDxQJp2ikcbKTaTj
 
 ## Development
 
-#### Getting Started
-
-1. Clone the repository.
-
-    ```shell
-    git clone https://github.com/chui15/take-care.git
-    cd take-care
-    ```
-
-1. Install all dependencies with NPM.
-
-    ```shell
-    npm install
-    ```
-
-1. Start the project. Once started you can view the application by opening http://localhost:3000 in your browser.
-
-    ```shell
-    npm run dev
-    ```
+Application is still currently undergoing development.
