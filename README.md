@@ -9,6 +9,7 @@ It can be difficult to concentrate on tasks, especially when there are several t
 ## ✨ Technologies Used
 
 - React.js
+- React Router
 - Webpack 4
 - Bootstrap 4
 - PHP
